@@ -224,6 +224,8 @@ A valid empty financial reporting interval returns zero recorded monetary amount
 
 ## AI Assistant configuration
 
+For the Vercel/FastAPI/Supabase deployment configuration and required live checks, see [deployment preparation](docs/deployment.md). Hosting configuration alone does not mean the application is live.
+
 Set `OPENAI_API_KEY` only in the backend environment (or ignored `backend/.env`) and restart the backend. `OPENAI_MODEL` defaults to `gpt-4.1-mini` and can be changed to a Responses-compatible model with function calling available to your API project. Never use a `VITE_` variable for credentials. The implementation uses the existing HTTP client and the [OpenAI Responses API function-calling contract](https://developers.openai.com/api/docs/guides/function-calling); the [default model documentation](https://developers.openai.com/api/docs/models/gpt-4.1-mini) lists Responses and function-calling support.
 
 Open **AI Assistant**, load the historical reporting period, and enter a complete goal such as: “Increase my operating profit by 20% without increasing advertising costs.” Each message is independent; repeat all constraints when refining a goal. If bounds are omitted, the disclosed exploration defaults are price changes from 0% to 10%, additional discount up to 10%, no extra advertising or operating spending, and unchanged conversion, visitors and unit costs. The applied optimizer request and limitations are visible with the result. Use **Send to A/B Arena** to compare a calculated recommendation against the historical strategy.

@@ -8,7 +8,8 @@ import { simulationPeriodSchema, simulationRequestSchema, simulationResponseSche
 /** Demo Mode serves the bundled sample dataset and never contacts a backend. Read at call time so tests can toggle it. */
 export const isDemoMode = () => import.meta.env.VITE_DEMO_MODE === 'true';
 
-export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000').replace(/\/+$/, '');
+export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL
+  || (import.meta.env.PROD ? window.location.origin : 'http://127.0.0.1:8000')).replace(/\/+$/, '');
 const serverErrorSchema = z.object({ message: z.string() });
 const validationErrorSchema = z.object({ detail: z.array(z.object({ msg: z.string() })).min(1) });
 
