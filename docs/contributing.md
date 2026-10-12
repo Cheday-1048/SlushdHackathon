@@ -1,6 +1,6 @@
 # İki geliştirici için çalışma düzeni
 
-Hedef repository: https://github.com/Helincharm/SlushdHackathon. Mevcut React/Vite frontend kök dizinde, FastAPI backend `backend/` altında kalır. Klasör taşıma veya mimari refactoring gerekli değildir.
+Hedef repository: https://github.com/Cheday-1048/SlushdHackathon. Mevcut React/Vite frontend kök dizinde, FastAPI backend `backend/` altında kalır. Klasör taşıma veya mimari refactoring gerekli değildir.
 
 ## Branch düzeni
 
@@ -30,7 +30,7 @@ Ortak bir npm/Python dependency manifesti yoktur. Ortak bağımlılıklar HTTP A
 MVP ve çalışma branch'leri GitHub'da yayınlandıktan sonra:
 
 ```sh
-git clone https://github.com/Helincharm/SlushdHackathon.git
+git clone https://github.com/Cheday-1048/SlushdHackathon.git
 cd SlushdHackathon
 git fetch origin
 # Backend geliştiricisi:

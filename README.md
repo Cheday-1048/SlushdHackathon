@@ -4,7 +4,7 @@ A React dashboard backed by FastAPI and persistent PostgreSQL records for one **
 
 See the [Phase 04 analytics report](docs/phase-04-report.md), [financial definitions and assumptions](docs/phase-03-financial-engine.md), and the [actual financial example response](docs/phase-03-summary-example.json).
 
-GitHub target: [Helincharm/SlushdHackathon](https://github.com/Helincharm/SlushdHackathon). See [the two-developer workflow](docs/contributing.md) for cloning, branch ownership and integration, and [the API handoff](docs/api.md) for request/response contracts. These instructions apply after the MVP has been pushed; local preparation alone does not confirm GitHub publication.
+GitHub target: [Cheday-1048/SlushdHackathon](https://github.com/Cheday-1048/SlushdHackathon). See [the two-developer workflow](docs/contributing.md) for cloning, branch ownership and integration, and [the API handoff](docs/api.md) for request/response contracts. Publication status is recorded in [the import report](docs/github-import-report.md).
 
 Supabase is the intended PostgreSQL host. Its credentials were not supplied during development, so a live Supabase connection has **not** been verified. Local PostgreSQL verification and its limits are recorded in [the Phase 04 report](docs/phase-04-report.md).
 
