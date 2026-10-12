@@ -13,9 +13,12 @@ Supabase is the intended PostgreSQL host. Its credentials were not supplied duri
 ```text
 src/
   api/             Typed fetch client and Zod response validation
-  components/      Existing layout, KPI cards and UI primitives
-  hooks/           Loading, error and retry lifecycle
-  pages/           Dashboard, including an empty reporting state
+  components/      App shell (layout/), dashboard widgets (dashboard/), analytics charts, reporting filter
+  design-system/   Design tokens, theme/accent/density/motion providers, background styles
+  shared/          UI primitives (button, card, dialog, …) and layout helpers built on the design system
+  hooks/           Loading, error and retry lifecycle, media-query and focus helpers
+  lib/             Display-only formatting
+  pages/           Dashboard, including empty, loading and error reporting states
 backend/app/
   api/             Health, analytics, finance, legacy dashboard, products and expenses routes
   core/            Environment configuration
@@ -36,7 +39,7 @@ The nine models are `Organization`, `Store`, `Product`, `Order`, `OrderItem`, `R
 
 Only the fixed demo organization/store IDs with both `is_demo` flags are accessible through the public API. There are no organization/store query selectors; unknown parameters return 422. Keep `retail` out of Supabase's **exposed API schemas**. These boundaries support the unauthenticated demo; authentication and permissions for real tenants belong to a later phase.
 
-Pinned backend versions include FastAPI **0.115.12**, Pydantic **2.11.3**, SQLAlchemy **2.0.54**, Alembic **1.20.0**, psycopg **3.3.6** and pytest **8.3.5**. The frontend retains React, TypeScript, Vite, React Router, Tailwind CSS v4, Zod, Lucide and the local shadcn/ui-style primitive. Existing optional UI libraries remain installed without adding future features.
+Pinned backend versions include FastAPI **0.115.12**, Pydantic **2.11.3**, SQLAlchemy **2.0.54**, Alembic **1.20.0**, psycopg **3.3.6** and pytest **8.3.5**. The frontend uses React, TypeScript, Vite, React Router, Tailwind CSS v4, Zod, Lucide, Motion, Radix UI and Recharts on a shared design system (see [UI integration](docs/ui-integration.md) for the template mapping). Existing optional UI libraries remain installed without adding future features.
 
 ## Prerequisites
 
@@ -155,7 +158,9 @@ npm run dev
 
 The backend launcher locates `.venv` using platform-independent paths. Set `RDL_PYTHON` only if you need a different interpreter. Alternatively, run `.venv/bin/python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload` on macOS, or replace the executable with `.\.venv\Scripts\python.exe` on Windows.
 
-Open [the dashboard](http://127.0.0.1:5173) and [FastAPI's API documentation](http://127.0.0.1:8000/docs). For the production build, run `npm run build`, then `npm run preview`, and open port 4173. Default CORS origins cover `localhost` and `127.0.0.1` on ports 5173 and 4173. Stop conflicting servers before starting these commands.
+Open [the dashboard](http://127.0.0.1:5173) and [FastAPI's API documentation](http://127.0.0.1:8000/docs). For the production build, run `npm run build`, then `npm run preview`, and open port 4173. Default CORS origins cover `localhost` and `127.0.0.1` on ports 5173 and 4173. Stop conflicting servers before starting these commands. If port 5173 is taken, run `npm run dev -- --port 5174` and start the backend with `RDL_CORS_ORIGINS` set to a JSON array that includes the new origin.
+
+Without a configured `DATABASE_URL` the application still opens, but the dashboard shows "DATABASE_URL is not configured". That is the expected backend response, not a frontend error; configure the database and run the migration and seed steps above to see data.
 
 ## API contracts and metric definitions
 
