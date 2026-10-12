@@ -5,7 +5,8 @@ import { z } from 'zod';
 import { analyticsDashboardSchema, dashboardSummarySchema, financeSummarySchema, healthSchema, reportingFilterSchema, type ReportingFilter } from './schemas';
 import { simulationPeriodSchema, simulationRequestSchema, simulationResponseSchema, type SimulationPeriod, type SimulationRequest } from './simulation';
 
-export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000').replace(/\/+$/, '');
+export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL
+  || (import.meta.env.PROD ? window.location.origin : 'http://127.0.0.1:8000')).replace(/\/+$/, '');
 const serverErrorSchema = z.object({ message: z.string() });
 const validationErrorSchema = z.object({ detail: z.array(z.object({ msg: z.string() })).min(1) });
 
