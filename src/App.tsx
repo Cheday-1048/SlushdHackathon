@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/layout/app-shell';
 import { DashboardPage } from './pages/dashboard';
+import { GuidePage } from './pages/guide';
 import { useTheme } from '@/design-system/theme-context';
 import { ThemeProvider } from '@/design-system/theme-provider';
 import { BackgroundProvider } from '@/shared/components/layout/background-provider';
@@ -19,6 +20,7 @@ export function App() {
   return <ThemeProvider><BackgroundProvider><Motion><AppShell><Routes>
     <Route path="/" element={<Navigate to="/dashboard" replace />} />
     <Route path="/dashboard" element={<DashboardPage />} />
+    <Route path="/guide" element={<GuidePage />} />
     <Route path="*" element={<Card className="items-start gap-3 p-8"><h2 className="text-2xl font-semibold">Page not found</h2><p className="text-muted-foreground">This page is not available in Phase 04.</p><Button asChild><Link to="/dashboard">Back to dashboard</Link></Button></Card>} />
   </Routes></AppShell></Motion></BackgroundProvider></ThemeProvider>;
 }

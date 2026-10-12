@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Tooltip } from '@/shared/components/ui/tooltip';
 import { useFocusOnMount } from '@/hooks/use-focus-on-mount';
 
-const titles: Record<string, string> = { '/dashboard': 'Dashboard' };
+const titles: Record<string, string> = { '/dashboard': 'Dashboard', '/guide': 'Guide' };
 
 /** Page title with a key so focus moves to it whenever the page changes. */
 function PageTitle({ title }: { title: string }) {

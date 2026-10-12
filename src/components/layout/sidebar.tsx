@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { BarChart3, Bot, FlaskConical, LayoutDashboard, PanelLeftClose, PanelLeftOpen, Split, type LucideIcon } from 'lucide-react';
+import { BarChart3, BookOpen, Bot, FlaskConical, LayoutDashboard, PanelLeftClose, PanelLeftOpen, Split, type LucideIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { transition } from '@/design-system/motion';
 import { Button } from '@/shared/components/ui/button';
@@ -16,6 +16,7 @@ interface NavEntry { label: string; icon: LucideIcon; to: string; active: (pathn
 const pages: NavEntry[] = [
   { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: (pathname, hash) => pathname === '/dashboard' && hash !== '#analytics' },
   { label: 'Analytics', icon: BarChart3, to: '/dashboard#analytics', active: (pathname, hash) => pathname === '/dashboard' && hash === '#analytics' },
+  { label: 'Guide', icon: BookOpen, to: '/guide', active: (pathname) => pathname === '/guide' },
 ];
 
 // Modules without a backend yet. They stay visible but disabled, never as working features.
