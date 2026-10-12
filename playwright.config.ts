@@ -18,7 +18,7 @@ export default defineConfig({
   use: { baseURL: 'http://127.0.0.1:4173', browserName: 'chromium', channel: 'chromium', trace: 'retain-on-failure' },
   webServer: [
     { command: 'npm run backend', url: 'http://127.0.0.1:8000/health', reuseExistingServer: false,
-      env: { DATABASE_URL: databaseUrl, MIGRATION_DATABASE_URL: '', RDL_DB_POOL_MODE: 'direct',
+      env: { DATABASE_URL: databaseUrl, MIGRATION_DATABASE_URL: '', OPENAI_API_KEY: '', RDL_DB_POOL_MODE: 'direct',
         RDL_DB_SSLMODE: 'disable', PGHOSTADDR: database.hostname === '[::1]' ? '::1' : '127.0.0.1' } },
     { command: 'npm run preview', url: 'http://127.0.0.1:4173', reuseExistingServer: false },
   ],

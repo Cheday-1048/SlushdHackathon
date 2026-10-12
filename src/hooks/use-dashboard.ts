@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import { api } from '../api/client';
+import { api, isDemoMode } from '../api/client';
 import type { AnalyticsDashboard, Health, ReportingFilter } from '../api/schemas';
 
 type DashboardState = { status: 'loading' } | { status: 'success'; data: AnalyticsDashboard } | { status: 'error'; message: string };
-export type ConnectionState = { status: 'checking' } | { status: 'connected'; health: Health } | { status: 'disconnected'; message: string };
+export type ConnectionState = { status: 'demo' } | { status: 'checking' } | { status: 'connected'; health: Health } | { status: 'disconnected'; message: string };
 
 export function useDashboard() {
   const [attempt, setAttempt] = useState(0);
@@ -23,6 +23,7 @@ export function useDashboard() {
   }, [attempt, filter]);
 
   useEffect(() => {
+    if (isDemoMode()) { setConnection({ status: 'demo' }); return; }
     const controller = new AbortController();
     setConnection({ status: 'checking' });
     void api.health(controller.signal).then(

@@ -53,7 +53,7 @@ export function WorkflowDiagram() {
                   <span className="flex items-center gap-1.5 text-[11px] text-muted-foreground"><span aria-hidden className={cn('size-2 rounded-full', statusDot[item.status])} />{position + 1}</span>
                 </span>
                 <span className="min-w-0 text-sm font-semibold">{item.title}</span>
-                <span className="sr-only">{item.status === 'planned' ? 'Planned.' : item.status === 'partial' ? 'Partly in the MVP.' : 'Available in the MVP.'}</span>
+                <span className="sr-only">{item.status === 'planned' ? 'Planned.' : item.status === 'partial' ? 'Partly implemented.' : 'Implemented.'}</span>
               </button>
               {position < workflow.length - 1 && (
                 <span aria-hidden className="absolute top-1/2 -right-2.5 z-10 hidden -translate-y-1/2 lg:block">
@@ -94,7 +94,7 @@ export function WorkflowDiagram() {
               </dl>
             </div>
             <div className={cn('rounded-xl border px-4 py-3 text-sm', stage.status === 'planned' ? 'border-border bg-muted/40' : stage.status === 'partial' ? 'border-warning/40 bg-warning/10' : 'border-success/40 bg-success/10')}>
-              <span className="font-medium">In the MVP today: </span>{stage.today}
+              <span className="font-medium">Status today: </span>{stage.today}
             </div>
             <div className="flex items-center justify-between gap-3">
               <Button size="sm" variant="ghost" onClick={() => select((index - 1 + workflow.length) % workflow.length)} aria-label="Previous stage"><ChevronLeft aria-hidden />Previous</Button>

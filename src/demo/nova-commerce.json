@@ -1,0 +1,2243 @@
+{
+ "business": {
+  "name": "Nova Commerce",
+  "industry": "E-commerce / Retail",
+  "currency": "USD",
+  "timezone": "UTC",
+  "period": {
+   "start": "2026-09-01",
+   "end": "2026-09-30"
+  },
+  "asOfDate": "2026-09-30"
+ },
+ "products": [
+  {
+   "id": "1cfd6b65-fc1a-5e50-abb5-c2af3176dee3",
+   "name": "Insulated water bottle",
+   "sku": "DEMO-BTL-02"
+  },
+  {
+   "id": "a9dbf947-8b8a-594e-a3c0-d24048d42a1e",
+   "name": "Minimal wall clock",
+   "sku": "DEMO-CLK-12"
+  },
+  {
+   "id": "c226b84e-f947-5fb1-8eb5-68781895b33a",
+   "name": "Cedar soy candle",
+   "sku": "DEMO-CND-05"
+  },
+  {
+   "id": "0bc61df4-d804-572c-9cde-7f16cadd7a89",
+   "name": "Amber reed diffuser",
+   "sku": "DEMO-DIF-11"
+  },
+  {
+   "id": "770f292f-58e5-5a0c-ba9d-6e1f55c8da3f",
+   "name": "Desk reading lamp",
+   "sku": "DEMO-LMP-08"
+  },
+  {
+   "id": "27c0275b-6cb1-58f8-92ed-a7ae228d3438",
+   "name": "Ceramic coffee mug",
+   "sku": "DEMO-MUG-01"
+  },
+  {
+   "id": "35640c4a-178d-58ab-a600-e049b503c05d",
+   "name": "Linen notebook",
+   "sku": "DEMO-NBK-04"
+  },
+  {
+   "id": "649a5703-5a79-517e-b83c-0314c8fe2cab",
+   "name": "Stoneware planter",
+   "sku": "DEMO-PLN-09"
+  },
+  {
+   "id": "036d4ae8-0f34-5f96-a10b-e651e9fd7c51",
+   "name": "Loose leaf tea tin",
+   "sku": "DEMO-TEA-06"
+  },
+  {
+   "id": "71d12776-5d2d-5f29-8fa6-d8c0b66943fc",
+   "name": "Cotton throw blanket",
+   "sku": "DEMO-THR-07"
+  },
+  {
+   "id": "45fb035b-7ffe-5a92-98fd-79f7b6ff6351",
+   "name": "Canvas everyday tote",
+   "sku": "DEMO-TOT-03"
+  },
+  {
+   "id": "087bc3e8-c0f3-5a7e-9df4-b3702d4495a7",
+   "name": "Oak serving tray",
+   "sku": "DEMO-TRY-10"
+  }
+ ],
+ "days": [
+  {
+   "date": "2026-09-01",
+   "revenue": "1058.70",
+   "cogs": "402.90",
+   "orders": 9,
+   "visitors": 290,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "1450.00",
+    "shipping": "25.20",
+    "platform_fees": "0.00",
+    "other_operating": "149.00",
+    "advertising": "42.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "24.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "28.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "252.00",
+     "cogs": "112.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "74.00",
+     "cogs": "24.80"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "94.40",
+     "cogs": "25.80"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "140.00",
+     "cogs": "52.80"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.50",
+     "cogs": "5.10"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "207.00",
+     "cogs": "84.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "49.80",
+     "cogs": "15.60"
+    }
+   }
+  },
+  {
+   "date": "2026-09-02",
+   "revenue": "697.30",
+   "cogs": "263.50",
+   "orders": 9,
+   "visitors": 307,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "28.00",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "56.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "160.00",
+     "cogs": "62.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "78.40",
+     "cogs": "28.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "118.50",
+     "cogs": "43.50"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "12.90"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "129.50",
+     "cogs": "52.80"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "138.00",
+     "cogs": "56.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "24.90",
+     "cogs": "7.80"
+    }
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "revenue": "893.62",
+   "cogs": "337.50",
+   "orders": 10,
+   "visitors": 324,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "30.80",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "70.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "224.00",
+     "cogs": "86.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "165.20",
+     "cogs": "57.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "39.50",
+     "cogs": "14.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "55.50",
+     "cogs": "18.60"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "59.20",
+     "cogs": "17.20"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "35.00",
+     "cogs": "13.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "84.10",
+     "cogs": "30.60"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "186.30",
+     "cogs": "84.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "44.82",
+     "cogs": "15.60"
+    }
+   }
+  },
+  {
+   "date": "2026-09-04",
+   "revenue": "914.26",
+   "cogs": "335.70",
+   "orders": 11,
+   "visitors": 341,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "33.60",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "54.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 10,
+     "unitsReturned": 0,
+     "revenue": "320.00",
+     "cogs": "124.00"
+    },
+    "DEMO-CLK-12": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "116.00",
+     "cogs": "48.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "106.40",
+     "cogs": "38.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 9,
+     "unitsReturned": 0,
+     "revenue": "166.50",
+     "cogs": "55.80"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "12.90"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "31.50",
+     "cogs": "13.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "53.65",
+     "cogs": "20.40"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "72.21",
+     "cogs": "23.40"
+    }
+   }
+  },
+  {
+   "date": "2026-09-05",
+   "revenue": "1516.06",
+   "cogs": "565.90",
+   "orders": 15,
+   "visitors": 438,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "47.60",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "80.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "24.80"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "268.60",
+     "cogs": "101.50"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "37.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 10,
+     "unitsReturned": 0,
+     "revenue": "183.15",
+     "cogs": "62.00"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "17.20"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "175.00",
+     "cogs": "66.00"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "43.50",
+     "cogs": "15.30"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "414.00",
+     "cogs": "168.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "171.81",
+     "cogs": "54.60"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "19.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-06",
+   "revenue": "1595.54",
+   "cogs": "603.20",
+   "orders": 16,
+   "visitors": 455,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "50.40",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "64.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "211.20",
+     "cogs": "86.80"
+    },
+    "DEMO-CLK-12": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "58.00",
+     "cogs": "24.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "28.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "229.10",
+     "cogs": "87.00"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "252.00",
+     "cogs": "112.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 10,
+     "unitsReturned": 0,
+     "revenue": "181.30",
+     "cogs": "62.00"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 9,
+     "unitsReturned": 0,
+     "revenue": "140.80",
+     "cogs": "38.70"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "210.00",
+     "cogs": "79.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "43.50",
+     "cogs": "15.30"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "89.64",
+     "cogs": "31.20"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "96.00",
+     "cogs": "38.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-07",
+   "revenue": "767.51",
+   "cogs": "283.00",
+   "orders": 9,
+   "visitors": 392,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "25.20",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "66.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "150.40",
+     "cogs": "62.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "28.50"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "37.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "92.50",
+     "cogs": "31.00"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "12.90"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "70.00",
+     "cogs": "26.40"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "72.50",
+     "cogs": "25.50"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "69.00",
+     "cogs": "28.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "97.11",
+     "cogs": "31.20"
+    }
+   }
+  },
+  {
+   "date": "2026-09-08",
+   "revenue": "735.41",
+   "cogs": "277.80",
+   "orders": 8,
+   "visitors": 409,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "28.00",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "50.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "128.00",
+     "cogs": "49.60"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.00",
+     "cogs": "9.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "18.50",
+     "cogs": "6.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "32.00",
+     "cogs": "8.60"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "105.00",
+     "cogs": "39.60"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "101.50",
+     "cogs": "35.70"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "131.10",
+     "cogs": "56.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "47.31",
+     "cogs": "15.60"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "144.00",
+     "cogs": "57.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "revenue": "1058.20",
+   "cogs": "416.60",
+   "orders": 11,
+   "visitors": 426,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "30.80",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "64.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "86.40",
+     "cogs": "37.20"
+    },
+    "DEMO-CLK-12": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "104.40",
+     "cogs": "48.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "71.10",
+     "cogs": "29.00"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "168.00",
+     "cogs": "75.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 8,
+     "unitsReturned": 0,
+     "revenue": "148.00",
+     "cogs": "49.60"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "12.90"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "35.00",
+     "cogs": "13.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "40.60",
+     "cogs": "15.30"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "138.00",
+     "cogs": "56.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "74.70",
+     "cogs": "23.40"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "144.00",
+     "cogs": "57.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-10",
+   "revenue": "907.00",
+   "cogs": "349.10",
+   "orders": 10,
+   "visitors": 443,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "33.60",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "48.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "124.80",
+     "cogs": "49.60"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "109.20",
+     "cogs": "38.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "168.00",
+     "cogs": "75.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "74.00",
+     "cogs": "24.80"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "17.20"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "66.50",
+     "cogs": "26.40"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.50",
+     "cogs": "5.10"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "207.00",
+     "cogs": "84.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-11",
+   "revenue": "1127.20",
+   "cogs": "408.60",
+   "orders": 13,
+   "visitors": 290,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "36.40",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "62.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 12,
+     "unitsReturned": 0,
+     "revenue": "380.80",
+     "cogs": "148.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "53.20",
+     "cogs": "19.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "74.00",
+     "cogs": "24.80"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "17.20"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "210.00",
+     "cogs": "79.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "29.00",
+     "cogs": "10.20"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "69.00",
+     "cogs": "28.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 8,
+     "unitsReturned": 0,
+     "revenue": "199.20",
+     "cogs": "62.40"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "19.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-12",
+   "revenue": "1327.05",
+   "cogs": "486.60",
+   "orders": 16,
+   "visitors": 387,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "50.40",
+    "platform_fees": "0.00",
+    "other_operating": "87.60",
+    "advertising": "58.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "224.00",
+     "cogs": "86.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "134.40",
+     "cogs": "47.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "158.00",
+     "cogs": "58.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 11,
+     "unitsReturned": 0,
+     "revenue": "203.50",
+     "cogs": "68.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "76.80",
+     "cogs": "21.50"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "210.00",
+     "cogs": "79.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "27.55",
+     "cogs": "10.20"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "193.20",
+     "cogs": "84.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "99.60",
+     "cogs": "31.20"
+    }
+   }
+  },
+  {
+   "date": "2026-09-13",
+   "revenue": "653.65",
+   "cogs": "237.10",
+   "orders": 11,
+   "visitors": 404,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "36.40",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "72.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "32.00",
+     "cogs": "12.40"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "193.20",
+     "cogs": "66.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "74.00",
+     "cogs": "24.80"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "85.55",
+     "cogs": "30.60"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "69.00",
+     "cogs": "28.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "24.90",
+     "cogs": "7.80"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "96.00",
+     "cogs": "38.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "revenue": "719.20",
+   "cogs": "260.50",
+   "orders": 9,
+   "visitors": 341,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "28.00",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "44.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.80",
+     "cogs": "12.40"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "56.00",
+     "cogs": "19.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "110.60",
+     "cogs": "43.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "37.00",
+     "cogs": "12.40"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "96.00",
+     "cogs": "25.80"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "70.00",
+     "cogs": "26.40"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "58.00",
+     "cogs": "20.40"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "69.00",
+     "cogs": "28.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "49.80",
+     "cogs": "15.60"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "144.00",
+     "cogs": "57.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "revenue": "777.15",
+   "cogs": "277.70",
+   "orders": 10,
+   "visitors": 358,
+   "expenses": {
+    "employee_costs": "1850.00",
+    "rent": "0.00",
+    "shipping": "30.80",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "58.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "156.80",
+     "cogs": "62.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "109.20",
+     "cogs": "38.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "35.55",
+     "cogs": "14.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 10,
+     "unitsReturned": 0,
+     "revenue": "185.00",
+     "cogs": "62.00"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "80.00",
+     "cogs": "21.50"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "35.00",
+     "cogs": "13.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.50",
+     "cogs": "5.10"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "74.70",
+     "cogs": "23.40"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "86.40",
+     "cogs": "38.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-16",
+   "revenue": "1032.81",
+   "cogs": "374.20",
+   "orders": 11,
+   "visitors": 375,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "33.60",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "42.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "192.00",
+     "cogs": "74.40"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "56.00",
+     "cogs": "19.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "168.00",
+     "cogs": "75.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "37.00",
+     "cogs": "12.40"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "108.80",
+     "cogs": "30.10"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "35.00",
+     "cogs": "13.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.50",
+     "cogs": "5.10"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 10,
+     "unitsReturned": 0,
+     "revenue": "246.51",
+     "cogs": "78.00"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "96.00",
+     "cogs": "38.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-17",
+   "revenue": "1041.31",
+   "cogs": "381.20",
+   "orders": 11,
+   "visitors": 392,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "36.40",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "56.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 8,
+     "unitsReturned": 0,
+     "revenue": "256.00",
+     "cogs": "99.20"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.00",
+     "cogs": "9.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "118.50",
+     "cogs": "43.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "111.00",
+     "cogs": "37.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "16.00",
+     "cogs": "4.30"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "31.50",
+     "cogs": "13.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "101.50",
+     "cogs": "35.70"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "207.00",
+     "cogs": "84.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "171.81",
+     "cogs": "54.60"
+    }
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "revenue": "1521.95",
+   "cogs": "563.30",
+   "orders": 14,
+   "visitors": 409,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "39.20",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "70.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "156.80",
+     "cogs": "62.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "28.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "118.50",
+     "cogs": "43.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "109.15",
+     "cogs": "37.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "80.00",
+     "cogs": "21.50"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "210.00",
+     "cogs": "79.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 8,
+     "unitsReturned": 0,
+     "revenue": "113.10",
+     "cogs": "40.80"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "476.10",
+     "cogs": "196.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "174.30",
+     "cogs": "54.60"
+    }
+   }
+  },
+  {
+   "date": "2026-09-19",
+   "revenue": "1098.45",
+   "cogs": "424.00",
+   "orders": 11,
+   "visitors": 506,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "36.40",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "66.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "24.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.00",
+     "cogs": "9.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "118.50",
+     "cogs": "43.50"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "37.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "86.95",
+     "cogs": "31.00"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.40",
+     "cogs": "4.30"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "105.00",
+     "cogs": "39.60"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "400.20",
+     "cogs": "168.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "149.40",
+     "cogs": "46.80"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "19.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-20",
+   "revenue": "1114.76",
+   "cogs": "395.60",
+   "orders": 13,
+   "visitors": 523,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "39.20",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "80.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "192.00",
+     "cogs": "74.40"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 9,
+     "unitsReturned": 0,
+     "revenue": "252.00",
+     "cogs": "85.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "39.50",
+     "cogs": "14.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "92.50",
+     "cogs": "31.00"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "112.00",
+     "cogs": "30.10"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "101.50",
+     "cogs": "39.60"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "65.25",
+     "cogs": "25.50"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "138.00",
+     "cogs": "56.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "122.01",
+     "cogs": "39.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "revenue": "851.35",
+   "cogs": "321.40",
+   "orders": 10,
+   "visitors": 290,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "30.80",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "52.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.80",
+     "cogs": "12.40"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "109.20",
+     "cogs": "38.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "118.50",
+     "cogs": "43.50"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "16.00",
+     "cogs": "4.30"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 8,
+     "unitsReturned": 0,
+     "revenue": "276.50",
+     "cogs": "105.60"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "27.55",
+     "cogs": "10.20"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "200.10",
+     "cogs": "84.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "74.70",
+     "cogs": "23.40"
+    }
+   }
+  },
+  {
+   "date": "2026-09-22",
+   "revenue": "738.55",
+   "cogs": "263.30",
+   "orders": 11,
+   "visitors": 307,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "33.60",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "66.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "24.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "109.20",
+     "cogs": "38.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "90.65",
+     "cogs": "31.00"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "12.90"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "175.00",
+     "cogs": "66.00"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "29.00",
+     "cogs": "10.20"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "69.00",
+     "cogs": "28.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "74.70",
+     "cogs": "23.40"
+    }
+   }
+  },
+  {
+   "date": "2026-09-23",
+   "revenue": "557.70",
+   "cogs": "192.50",
+   "orders": 11,
+   "visitors": 324,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "36.40",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "50.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "24.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.00",
+     "cogs": "9.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 9,
+     "unitsReturned": 0,
+     "revenue": "162.80",
+     "cogs": "55.80"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "96.00",
+     "cogs": "25.80"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "105.00",
+     "cogs": "39.60"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "29.00",
+     "cogs": "10.20"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "24.90",
+     "cogs": "7.80"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "19.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-24",
+   "revenue": "1026.87",
+   "cogs": "386.80",
+   "orders": 13,
+   "visitors": 341,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "39.20",
+    "platform_fees": "0.00",
+    "other_operating": "65.25",
+    "advertising": "64.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "24.80"
+    },
+    "DEMO-CLK-12": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "232.00",
+     "cogs": "96.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.00",
+     "cogs": "9.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "37.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 11,
+     "unitsReturned": 0,
+     "revenue": "194.25",
+     "cogs": "68.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "17.20"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "70.00",
+     "cogs": "26.40"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "69.00",
+     "cogs": "28.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "94.62",
+     "cogs": "31.20"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "19.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-25",
+   "revenue": "551.31",
+   "cogs": "202.70",
+   "orders": 8,
+   "visitors": 358,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "25.20",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "48.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "64.00",
+     "cogs": "24.80"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "50.40",
+     "cogs": "19.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "103.60",
+     "cogs": "37.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "16.00",
+     "cogs": "4.30"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "29.00",
+     "cogs": "10.20"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "69.00",
+     "cogs": "28.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "97.11",
+     "cogs": "31.20"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "43.20",
+     "cogs": "19.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-26",
+   "revenue": "1180.26",
+   "cogs": "439.00",
+   "orders": 12,
+   "visitors": 455,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "39.20",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "74.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "128.00",
+     "cogs": "49.60"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.00",
+     "cogs": "9.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "193.55",
+     "cogs": "72.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "111.00",
+     "cogs": "37.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "60.80",
+     "cogs": "17.20"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "29.00",
+     "cogs": "10.20"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 7,
+     "unitsReturned": 0,
+     "revenue": "483.00",
+     "cogs": "196.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "146.91",
+     "cogs": "46.80"
+    }
+   }
+  },
+  {
+   "date": "2026-09-27",
+   "revenue": "1207.70",
+   "cogs": "459.40",
+   "orders": 15,
+   "visitors": 472,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "42.00",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "58.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "96.00",
+     "cogs": "37.20"
+    },
+    "DEMO-CLK-12": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "58.00",
+     "cogs": "24.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "159.60",
+     "cogs": "57.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "118.50",
+     "cogs": "43.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "111.00",
+     "cogs": "37.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "92.80",
+     "cogs": "25.80"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "140.00",
+     "cogs": "52.80"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.50",
+     "cogs": "5.10"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "248.40",
+     "cogs": "112.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "24.90",
+     "cogs": "7.80"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "144.00",
+     "cogs": "57.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-28",
+   "revenue": "937.60",
+   "cogs": "361.00",
+   "orders": 10,
+   "visitors": 409,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "33.60",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "60.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 9,
+     "unitsReturned": 0,
+     "revenue": "288.00",
+     "cogs": "111.60"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "112.00",
+     "cogs": "38.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "39.50",
+     "cogs": "14.50"
+    },
+    "DEMO-LMP-08": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "84.00",
+     "cogs": "37.50"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "51.80",
+     "cogs": "18.60"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.40",
+     "cogs": "4.30"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "101.50",
+     "cogs": "39.60"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "14.50",
+     "cogs": "5.10"
+    },
+    "DEMO-THR-07": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "207.00",
+     "cogs": "84.00"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "24.90",
+     "cogs": "7.80"
+    }
+   }
+  },
+  {
+   "date": "2026-09-29",
+   "revenue": "892.00",
+   "cogs": "329.80",
+   "orders": 12,
+   "visitors": 426,
+   "expenses": {
+    "employee_costs": "0.00",
+    "rent": "0.00",
+    "shipping": "36.40",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "44.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 10,
+     "unitsReturned": 0,
+     "revenue": "320.00",
+     "cogs": "124.00"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "56.00",
+     "cogs": "19.00"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "71.10",
+     "cogs": "29.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "18.50",
+     "cogs": "6.20"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "12.90"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "175.00",
+     "cogs": "66.00"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 9,
+     "unitsReturned": 0,
+     "revenue": "130.50",
+     "cogs": "45.90"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "24.90",
+     "cogs": "7.80"
+    },
+    "DEMO-TRY-10": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "48.00",
+     "cogs": "19.00"
+    }
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "revenue": "871.16",
+   "cogs": "306.10",
+   "orders": 13,
+   "visitors": 443,
+   "expenses": {
+    "employee_costs": "1850.00",
+    "rent": "0.00",
+    "shipping": "39.20",
+    "platform_fees": "0.00",
+    "other_operating": "0.00",
+    "advertising": "58.00"
+   },
+   "products": {
+    "DEMO-BTL-02": {
+     "unitsSold": 8,
+     "unitsReturned": 0,
+     "revenue": "249.60",
+     "cogs": "99.20"
+    },
+    "DEMO-CND-05": {
+     "unitsSold": 1,
+     "unitsReturned": 0,
+     "revenue": "28.00",
+     "cogs": "9.50"
+    },
+    "DEMO-DIF-11": {
+     "unitsSold": 2,
+     "unitsReturned": 0,
+     "revenue": "79.00",
+     "cogs": "29.00"
+    },
+    "DEMO-MUG-01": {
+     "unitsSold": 4,
+     "unitsReturned": 0,
+     "revenue": "74.00",
+     "cogs": "24.80"
+    },
+    "DEMO-NBK-04": {
+     "unitsSold": 8,
+     "unitsReturned": 0,
+     "revenue": "128.00",
+     "cogs": "34.40"
+    },
+    "DEMO-PLN-09": {
+     "unitsSold": 3,
+     "unitsReturned": 0,
+     "revenue": "105.00",
+     "cogs": "39.60"
+    },
+    "DEMO-TEA-06": {
+     "unitsSold": 6,
+     "unitsReturned": 0,
+     "revenue": "85.55",
+     "cogs": "30.60"
+    },
+    "DEMO-TOT-03": {
+     "unitsSold": 5,
+     "unitsReturned": 0,
+     "revenue": "122.01",
+     "cogs": "39.00"
+    }
+   }
+  }
+ ]
+}

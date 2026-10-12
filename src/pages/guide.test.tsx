@@ -23,10 +23,11 @@ describe('Guide page', () => {
     expect(screen.getByRole('heading', { name: 'The current build is a hackathon MVP' })).toBeInTheDocument();
   });
 
-  it('states that the build is an MVP and labels illustrative scenario numbers', () => {
+  it('states that the build is an MVP and labels the scenario figures honestly', () => {
     renderGuide();
     expect(screen.getAllByText(/hackathon MVP and proof of concept/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/All numbers in this scenario are illustrative/)).toBeInTheDocument();
+    expect(screen.getByText(/Step 3 shows a planned capability/)).toBeInTheDocument();
+    expect(screen.getByText(/hypothetical results under stated assumptions, not forecasts/)).toBeInTheDocument();
   });
 
   it('separates available and planned modules and explains each one', () => {
@@ -35,8 +36,11 @@ describe('Guide page', () => {
     for (const title of ['Dashboard', 'Business Analytics', 'Simulation Lab', 'A/B Arena', 'Goal Optimizer', 'AI Decision Assistant']) expect(headings).toContain(title);
     fireEvent.click(screen.getByRole('button', { name: /Show details for Simulation Lab/ }));
     const details = screen.getByRole('region', { name: 'Simulation Lab details' });
-    expect(details).toHaveTextContent('Not built yet');
-    expect(details).toHaveTextContent('What-if analysis');
+    expect(details).toHaveTextContent('Implemented today');
+    expect(details).toHaveTextContent('Seven assumptions');
+    expect(details).toHaveTextContent('not available in Demo Mode');
+    fireEvent.click(screen.getByRole('button', { name: /Show details for AI Decision Assistant/ }));
+    expect(screen.getByRole('region', { name: 'AI Decision Assistant details' })).toHaveTextContent('no live OpenAI request has been made');
   });
 
   it('lets the reader step through the workflow and shows what works today', async () => {
@@ -44,7 +48,7 @@ describe('Guide page', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Next stage' }));
     expect(await screen.findByRole('heading', { name: 'Data Processing', level: 3 })).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: /AI Analysis/ }));
-    expect(await screen.findByText(/The repository contains no AI integration/)).toBeInTheDocument();
+    expect(await screen.findByText(/no live OpenAI request has been made/)).toBeInTheDocument();
   });
 
   it('filters the MVP versus final product comparison and shows the verification status', () => {
@@ -53,7 +57,7 @@ describe('Guide page', () => {
     expect(titles()).toHaveLength(capabilities.length);
     fireEvent.click(screen.getByRole('button', { name: 'Planned' }));
     expect(titles()).toHaveLength(capabilities.filter((item) => item.status === 'planned').length);
-    expect(screen.getByText(/Not verified: a live Supabase connection/)).toBeInTheDocument();
+    expect(screen.getByText(/Not verified: a live OpenAI request, a live Supabase connection/)).toBeInTheDocument();
   });
 });
 
@@ -97,6 +101,8 @@ describe('Guide navigation', () => {
     expect(link).toHaveAttribute('href', '/guide');
     expect(link).toHaveAttribute('aria-current', 'page');
     expect(screen.getByRole('heading', { level: 1, name: 'Guide' })).toBeInTheDocument();
-    for (const name of ['Simulation Lab', 'AI Assistant', 'A/B Testing']) expect(screen.getByRole('button', { name: `${name} Planned` })).toBeDisabled();
+    expect(screen.getByRole('link', { name: 'Simulation Lab' })).toHaveAttribute('href', '/simulation-lab');
+    expect(screen.getByRole('link', { name: 'AI Assistant' })).toHaveAttribute('href', '/ai-assistant');
+    expect(screen.getByRole('button', { name: 'A/B Testing Planned' })).toBeDisabled();
   });
 });

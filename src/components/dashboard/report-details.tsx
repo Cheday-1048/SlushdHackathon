@@ -9,7 +9,7 @@ export function ReportDetails({ data, format, connection }: { data: AnalyticsDas
   const incompleteTraffic = summary.data_completeness.traffic_days < summary.data_completeness.expected_traffic_days;
   const items: [string, string][] = [
     ['Currency', summary.currency],
-    ['Data source', 'PostgreSQL · synthetic data'],
+    ['Data source', connection.status === 'demo' ? 'Bundled demo dataset · synthetic data' : 'PostgreSQL · synthetic data'],
     ['Reporting period', `${summary.reporting_period.start} to ${summary.reporting_period.end}`],
     ['Total orders', format.number.format(summary.order_count)],
     ['Total visitors', incompleteTraffic ? `${format.number.format(summary.visitors)} recorded (incomplete)` : format.number.format(summary.visitors)],
@@ -18,7 +18,7 @@ export function ReportDetails({ data, format, connection }: { data: AnalyticsDas
     ['Total expenses', format.amount(summary.total_expenses)],
     ['Average order value', format.amount(summary.average_order_value)],
     ['Gross margin', format.percentage(summary.gross_profit_margin)],
-    ['API service', connection.status === 'connected' ? connection.health.service : 'Health check unavailable'],
+    ['API service', connection.status === 'connected' ? connection.health.service : connection.status === 'demo' ? 'Demo Mode (no backend)' : 'Health check unavailable'],
   ];
   return (
     <section aria-label="Report details">

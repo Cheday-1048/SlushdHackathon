@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowDown, ArrowRight, Check, Lock, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { architecture } from '@/content/guide';
 import { transition } from '@/design-system/motion';
 import { Card } from '@/shared/components/ui/card';
@@ -45,11 +45,11 @@ export function ArchitectureDiagram() {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground" aria-label="Legend" role="group">
-        <span className="flex items-center gap-2"><span aria-hidden className="h-4 w-8 rounded-md border border-border bg-card" />Implemented in the MVP</span>
+        <span className="flex items-center gap-2"><span aria-hidden className="h-4 w-8 rounded-md border border-border bg-card" />Implemented</span>
         <span className="flex items-center gap-2"><span aria-hidden className="h-4 w-8 rounded-md border border-dashed border-muted-foreground/70 bg-card/40" />Planned, not designed yet</span>
       </div>
 
-      <div className="grid items-center gap-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr]">
+      <div className="grid items-center gap-2 lg:grid-cols-(--arch-cols)" style={{ '--arch-cols': implemented.flatMap((_, index) => (index === 0 ? ['minmax(0,1fr)'] : ['auto', 'minmax(0,1fr)'])).join(' ') } as CSSProperties}>
         {implemented.map((node, position) => (
           <div key={node.id} className="contents">
             {nodeButton(node.id)}

@@ -16,13 +16,13 @@ interface NavEntry { label: string; icon: LucideIcon; to: string; active: (pathn
 const pages: NavEntry[] = [
   { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard', active: (pathname, hash) => pathname === '/dashboard' && hash !== '#analytics' },
   { label: 'Analytics', icon: BarChart3, to: '/dashboard#analytics', active: (pathname, hash) => pathname === '/dashboard' && hash === '#analytics' },
+  { label: 'Simulation Lab', icon: FlaskConical, to: '/simulation-lab', active: (pathname) => pathname === '/simulation-lab' },
+  { label: 'AI Assistant', icon: Bot, to: '/ai-assistant', active: (pathname) => pathname === '/ai-assistant' },
   { label: 'Guide', icon: BookOpen, to: '/guide', active: (pathname) => pathname === '/guide' },
 ];
 
-// Modules without a backend yet. They stay visible but disabled, never as working features.
+// Real-traffic A/B testing has no backend yet. It stays visible but disabled, never as a working feature.
 const planned = [
-  { label: 'Simulation Lab', icon: FlaskConical },
-  { label: 'AI Assistant', icon: Bot },
   { label: 'A/B Testing', icon: Split },
 ];
 
@@ -103,8 +103,8 @@ export function Sidebar({ collapsed, onCollapsedChange }: { collapsed: boolean; 
 
         {!collapsed && (
           <div className="shrink-0 border-t border-border px-5 py-4 text-xs text-muted-foreground">
-            <p className="font-medium text-foreground">Phase 04</p>
-            <p>Dashboard and analytics · synthetic business data</p>
+            <p className="font-medium text-foreground">Phase 08</p>
+            <p>Decision support · synthetic business data</p>
           </div>
         )}
       </motion.aside>

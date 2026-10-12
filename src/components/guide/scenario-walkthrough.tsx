@@ -110,7 +110,7 @@ export function ScenarioWalkthrough() {
         <p className="max-w-3xl">{scenario.situation}</p>
         <div role="note" className="flex items-start gap-3 rounded-xl border border-warning/40 bg-warning/10 px-4 py-3 text-sm">
           <Info className="mt-0.5 size-[18px] shrink-0 text-warning" aria-hidden />
-          <p><span className="font-semibold">Illustrative example. </span>{scenario.disclaimer}</p>
+          <p><span className="font-semibold">How to read this. </span>{scenario.disclaimer}</p>
         </div>
       </Card>
 

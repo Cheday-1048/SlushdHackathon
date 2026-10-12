@@ -24,11 +24,11 @@ The `@/` alias points to `src/` (tsconfig, Vite and Vitest). Template code that 
 | 01-landing | none | Not integrated. The app has no marketing site. |
 | 02-onboarding | none (no authentication backend) | Not integrated. |
 | 04-compact | none | The starter ships this template as an unimplemented placeholder. |
-| 05-ai-interface | "AI Assistant" (planned, disabled) | Not integrated. No backend. |
+| 05-ai-interface | AI Assistant (`/ai-assistant`, Phase 08) | The assistant backend exists and its existing page now uses the shared shell and tokens; the template layout itself is not adopted. |
 | 08-project-management | none | Not integrated. No backend. |
 | 09-workspace | none | Not integrated. No backend. |
 
-Modules without a backend (Simulation Lab, AI Assistant, A/B Testing) stay in the sidebar as disabled "Planned" entries and are not presented as working features.
+Simulation Lab, A/B Arena, Goal Optimizer and the AI assistant (phases 05-08) are implemented in the backend and reachable from the sidebar (`/simulation-lab`, `/ai-assistant`). Real-traffic A/B Testing has no backend, so it stays in the sidebar as a disabled "Planned" entry.
 
 ## Dashboard data rules
 
@@ -36,3 +36,16 @@ Modules without a backend (Simulation Lab, AI Assistant, A/B Testing) stay in th
 - Unknown values (`null`) show as "Unavailable" and appear as gaps in charts, never as zero.
 - Operating margin has no daily series in the API, so its card shows the period figure only and is not selectable for the chart.
 - No trend or period-over-period badges are shown because the API does not provide a previous period.
+
+## Demo Mode (`VITE_DEMO_MODE=true`)
+
+Runs the app on bundled sample data with no backend or database, for presentations and for the public demo.
+
+- **Data:** `src/demo/nova-commerce.json` is the backend's own synthetic September 2026 store ("Nova Commerce"), exported by running the real seed and finance engine as additive per-day components. `src/demo/aggregate.ts` rebuilds any reporting period from them with the backend's rounding rules (exact cents, ROUND_HALF_UP) and validates the result with the existing Zod contract.
+- **Proof:** `src/demo/reference-ranges.fixture.json` holds real analytics-service responses for nine periods; `aggregate.test.ts` requires an exact match. The sample period reproduces the README results (revenue 29,371.63, operating profit 10,182.18, 342 orders).
+- **Separation:** `src/api/client.ts` switches the data source at call time; the hook skips the health check and reports a `demo` connection, so the UI never says "API connected". Real mode is unchanged.
+- **Presets** end on the dataset's last day (2026-09-30), because the data stops there.
+- **Not available in Demo Mode:** Simulation Lab and the AI assistant call backend services; their routes explain this.
+- **Guide:** steps 1-2 of the business scenario use the same demo data; steps 4-6 use output of the real Simulation, A/B Arena and Goal Optimizer engines on it (`src/demo/engine-examples.json`).
+
+`vercel.json` sets `VITE_DEMO_MODE=true` for the Vercel build. Remove that entry and set `VITE_API_BASE_URL` to deploy against a real backend.

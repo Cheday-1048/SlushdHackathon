@@ -1,0 +1,206 @@
+{
+ "period": {
+  "start": "2026-09-15",
+  "end": "2026-09-21"
+ },
+ "baseline": {
+  "revenue": "7437.78",
+  "gross_profit": "4700.38",
+  "operating_profit": "2179.98",
+  "operating_profit_margin": "29.31",
+  "conversion_rate": "2.80",
+  "advertising_expenditure": "424.00",
+  "order_count": 80,
+  "visitors": 2853,
+  "currency": "USD"
+ },
+ "previews": [
+  {
+   "name": "Reduce advertising by $60",
+   "parameters": {
+    "selling_price_change_pct": "0",
+    "discount_pct": "0",
+    "expected_conversion_rate": null,
+    "visitor_change_pct": "-8",
+    "unit_cost_change_pct": "0",
+    "advertising_budget_change_amount": "-60",
+    "additional_operating_expense_amount": "0.00"
+   },
+   "status": "ready",
+   "simulated": {
+    "revenue": "6842.76",
+    "cogs": "2518.41",
+    "gross_profit": "4324.35",
+    "gross_profit_margin": "63.20",
+    "contribution_profit": "3733.66",
+    "contribution_margin": "54.56",
+    "operating_expenses": "2076.69",
+    "advertising_expenditure": "364.00",
+    "operating_profit": "1883.66",
+    "operating_profit_margin": "27.53",
+    "expected_orders": "73.600000",
+    "expected_visitors": "2624.760000",
+    "assumed_conversion_rate": "2.804066",
+    "conversion_rate_source": "historical_ratio",
+    "customer_shipping_revenue": "0.00",
+    "shipping_expenses": "226.69",
+    "platform_fees": "0.00",
+    "employee_expenses": "1850.00",
+    "rent_expenses": "0.00",
+    "other_operating_expenses": "0.00",
+    "total_expenses": "2440.69"
+   },
+   "differences": {
+    "revenue": "-595.02",
+    "operating_profit": "-296.32",
+    "gross_profit": "-376.03",
+    "orders": "-6.400000",
+    "revenue_change_pct": "-8.00",
+    "profit_change_pct": "-13.59"
+   }
+  },
+  {
+   "name": "Raise prices by 4%",
+   "parameters": {
+    "selling_price_change_pct": "4",
+    "discount_pct": "0",
+    "expected_conversion_rate": "2.65",
+    "visitor_change_pct": "0",
+    "unit_cost_change_pct": "0",
+    "advertising_budget_change_amount": "0.00",
+    "additional_operating_expense_amount": "0.00"
+   },
+   "status": "ready",
+   "simulated": {
+    "revenue": "7310.29",
+    "cogs": "2587.00",
+    "gross_profit": "4723.29",
+    "gross_profit_margin": "64.61",
+    "contribution_profit": "4066.43",
+    "contribution_margin": "55.63",
+    "operating_expenses": "2082.86",
+    "advertising_expenditure": "424.00",
+    "operating_profit": "2216.43",
+    "operating_profit_margin": "30.32",
+    "expected_orders": "75.604500",
+    "expected_visitors": "2853.000000",
+    "assumed_conversion_rate": "2.650000",
+    "conversion_rate_source": "user_assumption",
+    "customer_shipping_revenue": "0.00",
+    "shipping_expenses": "232.86",
+    "platform_fees": "0.00",
+    "employee_expenses": "1850.00",
+    "rent_expenses": "0.00",
+    "other_operating_expenses": "0.00",
+    "total_expenses": "2506.86"
+   },
+   "differences": {
+    "revenue": "-127.49",
+    "operating_profit": "36.45",
+    "gross_profit": "22.91",
+    "orders": "-4.395500",
+    "revenue_change_pct": "-1.71",
+    "profit_change_pct": "1.67"
+   }
+  }
+ ],
+ "arena": {
+  "snapshot_id": "sha256:db8dcb3ec9e71a337ddd3732e2914ff7049b2f5f5cee30e5b816a3652d656f4d",
+  "scenarios": [
+   {
+    "name": "Reduce advertising by $60",
+    "simulated": {
+     "revenue": "6842.76",
+     "operating_profit": "1883.66",
+     "operating_profit_margin": "27.53",
+     "expected_orders": "73.600000"
+    },
+    "differences": {
+     "revenue": "-595.02",
+     "operating_profit": "-296.32",
+     "gross_profit": "-376.03",
+     "orders": "-6.400000",
+     "revenue_change_pct": "-8.00",
+     "profit_change_pct": "-13.59"
+    }
+   },
+   {
+    "name": "Raise prices by 4%",
+    "simulated": {
+     "revenue": "7310.29",
+     "operating_profit": "2216.43",
+     "operating_profit_margin": "30.32",
+     "expected_orders": "75.604500"
+    },
+    "differences": {
+     "revenue": "-127.49",
+     "operating_profit": "36.45",
+     "gross_profit": "22.91",
+     "orders": "-4.395500",
+     "revenue_change_pct": "-1.71",
+     "profit_change_pct": "1.67"
+    }
+   }
+  ]
+ },
+ "optimization": {
+  "status": "feasible",
+  "target_profit_increase_pct": "10",
+  "target_operating_profit": "2397.98",
+  "candidates_evaluated": 15,
+  "feasible_candidate_count": 4,
+  "recommendations": [
+   {
+    "name": "Strategy 1",
+    "parameters": {
+     "selling_price_change_pct": "6.0000",
+     "discount_pct": "0.0000",
+     "expected_conversion_rate": null,
+     "visitor_change_pct": "0",
+     "unit_cost_change_pct": "0",
+     "advertising_budget_change_amount": "0.00",
+     "additional_operating_expense_amount": "0.00"
+    },
+    "simulated": {
+     "revenue": "7884.05",
+     "operating_profit": "2626.25",
+     "operating_profit_margin": "33.31"
+    }
+   },
+   {
+    "name": "Strategy 2",
+    "parameters": {
+     "selling_price_change_pct": "4.5000",
+     "discount_pct": "0.0000",
+     "expected_conversion_rate": null,
+     "visitor_change_pct": "0",
+     "unit_cost_change_pct": "0",
+     "advertising_budget_change_amount": "0.00",
+     "additional_operating_expense_amount": "0.00"
+    },
+    "simulated": {
+     "revenue": "7772.48",
+     "operating_profit": "2514.68",
+     "operating_profit_margin": "32.35"
+    }
+   },
+   {
+    "name": "Strategy 3",
+    "parameters": {
+     "selling_price_change_pct": "6.0000",
+     "discount_pct": "2.5000",
+     "expected_conversion_rate": null,
+     "visitor_change_pct": "0",
+     "unit_cost_change_pct": "0",
+     "advertising_budget_change_amount": "0.00",
+     "additional_operating_expense_amount": "0.00"
+    },
+    "simulated": {
+     "revenue": "7686.95",
+     "operating_profit": "2429.15",
+     "operating_profit_margin": "31.60"
+    }
+   }
+  ]
+ }
+}

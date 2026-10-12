@@ -38,15 +38,16 @@ function FeatureCard({ feature, defaultOpen = false }: { feature: FeatureModule;
           <motion.div id={panelId} role="region" aria-label={`${feature.title} details`} initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={transition.base} className="overflow-hidden">
             <div className="flex flex-col gap-4 border-t border-border pt-4 text-sm">
               <div>
-                <h4 className="mb-1.5 font-semibold">In the MVP today</h4>
+                <h4 className="mb-1.5 font-semibold">Implemented today</h4>
                 {feature.mvp.length === 0
                   ? <p className="text-muted-foreground">Not built yet. The sidebar lists this module as Planned and disabled.</p>
                   : <ul className="flex flex-col gap-1.5 text-muted-foreground">{feature.mvp.map((line) => <li key={line} className="flex gap-2"><span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full bg-success" />{line}</li>)}</ul>}
               </div>
               <div>
-                <h4 className="mb-1.5 font-semibold">{feature.mvp.length === 0 ? 'Vision for the full product' : 'Also planned for the full product'}</h4>
+                <h4 className="mb-1.5 font-semibold">{feature.mvp.length === 0 ? 'Vision for the full product' : 'Not built yet'}</h4>
                 <ul className="flex flex-col gap-1.5 text-muted-foreground">{feature.vision.map((line) => <li key={line} className="flex gap-2"><span aria-hidden className="mt-2 size-1.5 shrink-0 rounded-full border border-muted-foreground" />{line}</li>)}</ul>
               </div>
+              {feature.needsBackend && <p className="rounded-lg border border-border bg-muted/40 px-3 py-2 text-xs text-muted-foreground">Runs on the FastAPI backend, so it is not available in Demo Mode.</p>}
               {feature.to && <Link to={feature.to} className="inline-flex items-center gap-1.5 self-start rounded-lg font-medium text-primary outline-none hover:underline focus-visible:ring-[3px] focus-visible:ring-ring/40">Open {feature.title} in the app<ExternalLink className="size-3.5" aria-hidden /></Link>}
             </div>
           </motion.div>

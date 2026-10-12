@@ -8,16 +8,11 @@ Costs use booked amounts: no input-VAT or income-tax calculation is attempted.
 
 from decimal import Decimal, ROUND_CEILING, ROUND_HALF_UP, localcontext
 
+from .profit import money, profit_totals
 from .types import DataCompleteness, FinancialInput, FinancialResult, RefundLine, SaleLine
 
-CENT = Decimal("0.01")
 ZERO = Decimal("0.00")
 HUNDRED = Decimal("100")
-
-
-def money(value: Decimal) -> Decimal:
-    """Round to the engine's two-decimal currency precision."""
-    return value.quantize(CENT, rounding=ROUND_HALF_UP)
 
 
 def split_vat(amount: Decimal, vat_rate: Decimal, includes_vat: bool) -> tuple[Decimal, Decimal]:
@@ -30,12 +25,6 @@ def split_vat(amount: Decimal, vat_rate: Decimal, includes_vat: bool) -> tuple[D
         return exclusive, money(amount) - exclusive
     exclusive = money(amount)
     return exclusive, money(amount * vat_rate / HUNDRED)
-
-
-def _margin(profit: Decimal | None, revenue: Decimal | None) -> Decimal | None:
-    if profit is None or revenue is None or revenue <= 0:
-        return None
-    return money(profit / revenue * HUNDRED)
 
 
 def validate_refund_history(sale: SaleLine, refunds: list[RefundLine]) -> None:
@@ -160,8 +149,6 @@ def _calculate(data: FinancialInput) -> FinancialResult:
         None if discounted_sales is None or shipping_revenue is None or refunds is None else
         discounted_sales + shipping_revenue - refunds
     )
-    gross_profit = None if revenue is None or cogs is None else revenue - cogs
-
     expense_buckets = {
         "employee_costs": ZERO, "rent": ZERO, "shipping": ZERO,
         "platform_fees": ZERO, "software": ZERO, "miscellaneous": ZERO,
@@ -170,14 +157,13 @@ def _calculate(data: FinancialInput) -> FinancialResult:
         if entry.category != "advertising":
             expense_buckets[entry.category] += money(entry.amount)
     ads = sum((money(amount) for amount in data.ad_spend), ZERO)
-    operating_expenses = sum(expense_buckets.values(), ZERO)
-    total_expenses = operating_expenses + ads
     other_expenses = expense_buckets["software"] + expense_buckets["miscellaneous"]
-    contribution = (
-        None if gross_profit is None else
-        gross_profit - expense_buckets["shipping"] - expense_buckets["platform_fees"] - ads
+    profits = profit_totals(
+        revenue=revenue, cogs=cogs, advertising=ads,
+        employee=expense_buckets["employee_costs"], rent=expense_buckets["rent"],
+        shipping=expense_buckets["shipping"], platform_fees=expense_buckets["platform_fees"],
+        other=other_expenses,
     )
-    operating_profit = None if gross_profit is None else gross_profit - total_expenses
     average_order_value = None if revenue is None or data.order_count == 0 else money(revenue / data.order_count)
     conversion_rate = (
         money(Decimal(data.order_count) / Decimal(data.visitors) * HUNDRED) if data.visitors else
@@ -191,10 +177,10 @@ def _calculate(data: FinancialInput) -> FinancialResult:
 
     fixed_costs = expense_buckets["employee_costs"] + expense_buckets["rent"] + other_expenses
     break_even = None
-    if data.order_count > 0 and contribution is not None and contribution > 0:
+    if data.order_count > 0 and profits.contribution_profit is not None and profits.contribution_profit > 0:
         # Multiplying before division avoids prematurely rounding per-order
         # contribution. This is a period-mix estimate, not a sales forecast.
-        break_even = int((fixed_costs * data.order_count / contribution).to_integral_value(rounding=ROUND_CEILING))
+        break_even = int((fixed_costs * data.order_count / profits.contribution_profit).to_integral_value(rounding=ROUND_CEILING))
 
     return FinancialResult(
         gross_sales=gross_sales,
@@ -210,20 +196,20 @@ def _calculate(data: FinancialInput) -> FinancialResult:
         cogs_before_returns=cogs_before_returns,
         cogs_reversed=cogs_reversed,
         cogs=cogs,
-        gross_profit=gross_profit,
-        gross_profit_margin=_margin(gross_profit, revenue),
-        contribution_profit=contribution,
-        contribution_margin=_margin(contribution, revenue),
+        gross_profit=profits.gross_profit,
+        gross_profit_margin=profits.gross_profit_margin,
+        contribution_profit=profits.contribution_profit,
+        contribution_margin=profits.contribution_margin,
         advertising_expenditure=ads,
         employee_expenses=expense_buckets["employee_costs"],
         rent_expenses=expense_buckets["rent"],
         shipping_expenses=expense_buckets["shipping"],
         platform_fees=expense_buckets["platform_fees"],
         other_operating_expenses=other_expenses,
-        operating_expenses=operating_expenses,
-        total_expenses=total_expenses,
-        operating_profit=operating_profit,
-        operating_profit_margin=_margin(operating_profit, revenue),
+        operating_expenses=profits.operating_expenses,
+        total_expenses=profits.total_expenses,
+        operating_profit=profits.operating_profit,
+        operating_profit_margin=profits.operating_profit_margin,
         average_order_value=average_order_value,
         conversion_rate=conversion_rate,
         break_even_order_quantity=break_even,

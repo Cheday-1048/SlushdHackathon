@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Analytics } from '../components/analytics';
 import { ReportingFilterControl } from '../components/reporting-filter';
 import { API_BASE_URL } from '../api/client';
+import { business } from '../demo/aggregate';
 import { KpiOverview } from '../components/dashboard/kpi-overview';
 import { chartMetrics, type MetricId } from '../components/dashboard/metrics';
 import { PerformanceChart } from '../components/dashboard/performance-chart';
@@ -21,7 +22,8 @@ export function DashboardPage() {
   const { dashboard, connection, retry, filter, setFilter } = useDashboard();
   const [metricId, setMetricId] = useState<MetricId>('revenue');
   const loading = dashboard.status === 'loading' || connection.status === 'checking';
-  const connectionLabel = { checking: 'Checking API connection', connected: 'API connected', disconnected: 'API disconnected' }[connection.status];
+  const demo = connection.status === 'demo';
+  const connectionLabel = { demo: 'Demo Mode · Synthetic Data', checking: 'Checking API connection', connected: 'API connected', disconnected: 'API disconnected' }[connection.status];
   useEffect(() => {
     if (dashboard.status === 'success' && window.location.hash === '#analytics') document.getElementById('analytics')?.scrollIntoView();
   }, [dashboard.status]);
@@ -42,9 +44,11 @@ export function DashboardPage() {
 
     <section aria-label="API connection" className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-2xl border border-border bg-card px-4 py-3 shadow-soft backdrop-blur-xl">
       <span role="status" className="inline-flex items-center gap-2 text-sm font-medium">
-        <span aria-hidden="true" className={cn('size-2 rounded-full', connection.status === 'connected' && 'bg-success', connection.status === 'checking' && 'animate-pulse bg-warning', connection.status === 'disconnected' && 'bg-destructive')} />{connectionLabel}
+        <span aria-hidden="true" className={cn('size-2 rounded-full', (connection.status === 'connected' || demo) && 'bg-success', connection.status === 'checking' && 'animate-pulse bg-warning', connection.status === 'disconnected' && 'bg-destructive')} />{connectionLabel}
       </span>
-      <code className="font-mono text-xs text-muted-foreground [overflow-wrap:anywhere]">{API_BASE_URL}</code>
+      {demo
+        ? <span className="text-xs text-muted-foreground">{business.name} · {business.industry} · September 2026 · bundled sample data, no backend</span>
+        : <code className="font-mono text-xs text-muted-foreground [overflow-wrap:anywhere]">{API_BASE_URL}</code>}
     </section>
     {connection.status === 'disconnected' && <Notice tone="error" role="alert"><strong className="font-semibold">Health check failed</strong><p className="text-muted-foreground">{connection.message}</p></Notice>}
 
@@ -68,7 +72,7 @@ export function DashboardPage() {
         && [data.revenue, data.cogs, data.total_expenses, data.gross_profit, data.operating_profit].every((value) => value !== null && Number(value) === 0);
       const metric = chartMetrics.find((item) => item.id === metricId) ?? chartMetrics[0];
       return <>
-        <Notice><div className="flex flex-wrap items-center gap-2"><Badge>Database demo</Badge><p>{data.data_source.description}</p></div></Notice>
+        <Notice><div className="flex flex-wrap items-center gap-2"><Badge>{demo ? 'Demo dataset' : 'Database demo'}</Badge><p>{data.data_source.description}</p></div></Notice>
         {!data.data_completeness.is_complete && <Notice tone="warning" role="alert"><strong className="font-semibold">Financial data is incomplete</strong><p>Some values may be incomplete. Metrics that cannot be calculated are shown as unavailable.</p>{data.data_completeness.warnings.map((warning, index) => <p key={`${index}-${warning}`}>{warning}</p>)}</Notice>}
         {empty && <Notice role="status"><p>No activity in this reporting period.</p></Notice>}
         <KpiOverview data={success} format={format} activeMetricId={metric.id} onSelectMetric={setMetricId} />
@@ -77,6 +81,6 @@ export function DashboardPage() {
         <Analytics data={success} />
       </>;
     })()}
-    <footer className="pb-2 text-xs text-muted-foreground">Phase 04 · Dashboard and business analytics</footer>
+    <footer className="pb-2 text-xs text-muted-foreground">Dashboard and business analytics</footer>
   </>;
 }

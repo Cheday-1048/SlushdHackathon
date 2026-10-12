@@ -15,9 +15,9 @@ export function StatusComparison() {
   const visible = capabilities.filter((item) => filter === 'all' || item.status === filter);
 
   const summary: { status: Status; icon: typeof CheckCircle2; text: string }[] = [
-    { status: 'available', icon: CheckCircle2, text: 'Available in MVP' },
-    { status: 'partial', icon: CircleDot, text: 'Partly in MVP' },
-    { status: 'planned', icon: CircleDashed, text: 'Planned for the full product' },
+    { status: 'available', icon: CheckCircle2, text: 'Implemented' },
+    { status: 'partial', icon: CircleDot, text: 'Partly implemented' },
+    { status: 'planned', icon: CircleDashed, text: 'Planned (not built)' },
   ];
 
   return (
@@ -37,7 +37,7 @@ export function StatusComparison() {
         label="Filter capabilities"
         value={filter}
         onChange={setFilter}
-        options={[{ value: 'all', label: `All (${capabilities.length})` }, { value: 'available', label: 'Available' }, { value: 'partial', label: 'Partly' }, { value: 'planned', label: 'Planned' }]}
+        options={[{ value: 'all', label: `All (${capabilities.length})` }, { value: 'available', label: 'Implemented' }, { value: 'partial', label: 'Partly' }, { value: 'planned', label: 'Planned' }]}
       />
 
       <ul className="grid gap-3 md:grid-cols-2" aria-label="Capabilities">

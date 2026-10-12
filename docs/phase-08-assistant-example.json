@@ -1,0 +1,339 @@
+{
+  "verification": {
+    "provider": "MockTransport with prescribed tool decisions; no live OpenAI request",
+    "calculations": "Existing FinanceService and GoalOptimizationService against actual local PostgreSQL demo data"
+  },
+  "request": {
+    "message": "Increase my operating profit by 20% without increasing advertising costs.",
+    "start_date": "2026-09-01",
+    "end_date": "2026-09-30"
+  },
+  "response": {
+    "message": "The existing Goal Optimizer found 2 feasible candidates among 15 evaluated strategies and returned 2 recommendations. The calculated operating-profit target is 12218.62 USD. Historical metrics are observed demo data; strategy outcomes are hypothetical. Review the interpreted request below before using a strategy. Unless specified in your message, planning defaults are price changes from 0% to 10%, discounts up to 10%, no additional advertising or operating expense, historical conversion, unchanged visitors and unit costs, and no minimum margin. These are planning assumptions, not observed business responses.",
+    "metrics": {
+      "gross_sales": "29816.50",
+      "discounts": "444.87",
+      "vat_exclusive_sales_revenue": "29371.63",
+      "customer_shipping_revenue": "0.00",
+      "vat_collected_sales": "2937.21",
+      "refunds": "0.00",
+      "vat_refunded": "0.00",
+      "net_vat_collected": "2937.21",
+      "net_sales_revenue": "29371.63",
+      "revenue": "29371.63",
+      "cogs_before_returns": "10906.00",
+      "cogs_reversed": "0.00",
+      "cogs": "10906.00",
+      "gross_profit": "18465.63",
+      "gross_profit_margin": "62.87",
+      "contribution_profit": "15634.03",
+      "contribution_margin": "53.23",
+      "advertising_expenditure": "1776.00",
+      "employee_expenses": "3700.00",
+      "rent_expenses": "1450.00",
+      "shipping_expenses": "1055.60",
+      "platform_fees": "0.00",
+      "other_operating_expenses": "301.85",
+      "operating_expenses": "6507.45",
+      "total_expenses": "8283.45",
+      "operating_profit": "10182.18",
+      "operating_profit_margin": "34.67",
+      "average_order_value": "85.88",
+      "conversion_rate": "2.94",
+      "break_even_order_quantity": 120,
+      "order_count": 342,
+      "visitors": 11635,
+      "data_completeness": {
+        "is_complete": true,
+        "warnings": [],
+        "missing_vat_lines": 0,
+        "missing_refund_orders": 0,
+        "missing_shipping_orders": 0,
+        "missing_restock_refunds": 0,
+        "missing_order_items": 0,
+        "traffic_days": 30,
+        "expected_traffic_days": 30
+      },
+      "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+      "currency": "USD",
+      "reporting_period": {
+        "start": "2026-09-01",
+        "end": "2026-09-30"
+      },
+      "data_source": {
+        "type": "database_demo",
+        "description": "Synthetic demo store data persisted in PostgreSQL. All metrics are computed from database records; no live merchant is connected."
+      }
+    },
+    "optimization": {
+      "model_version": "aggregate-v1",
+      "search_version": "grid-v1",
+      "snapshot_id": "sha256:d3ffaa0af4294ccbb1794d0e61306660571304e328ece6394fbe8b89ba45dd4f",
+      "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+      "currency": "USD",
+      "reporting_period": {
+        "start": "2026-09-01",
+        "end": "2026-09-30"
+      },
+      "baseline": {
+        "gross_sales": "29816.50",
+        "discounts": "444.87",
+        "vat_exclusive_sales_revenue": "29371.63",
+        "customer_shipping_revenue": "0.00",
+        "vat_collected_sales": "2937.21",
+        "refunds": "0.00",
+        "vat_refunded": "0.00",
+        "net_vat_collected": "2937.21",
+        "net_sales_revenue": "29371.63",
+        "revenue": "29371.63",
+        "cogs_before_returns": "10906.00",
+        "cogs_reversed": "0.00",
+        "cogs": "10906.00",
+        "gross_profit": "18465.63",
+        "gross_profit_margin": "62.87",
+        "contribution_profit": "15634.03",
+        "contribution_margin": "53.23",
+        "advertising_expenditure": "1776.00",
+        "employee_expenses": "3700.00",
+        "rent_expenses": "1450.00",
+        "shipping_expenses": "1055.60",
+        "platform_fees": "0.00",
+        "other_operating_expenses": "301.85",
+        "operating_expenses": "6507.45",
+        "total_expenses": "8283.45",
+        "operating_profit": "10182.18",
+        "operating_profit_margin": "34.67",
+        "average_order_value": "85.88",
+        "conversion_rate": "2.94",
+        "break_even_order_quantity": 120,
+        "order_count": 342,
+        "visitors": 11635,
+        "data_completeness": {
+          "is_complete": true,
+          "warnings": [],
+          "missing_vat_lines": 0,
+          "missing_refund_orders": 0,
+          "missing_shipping_orders": 0,
+          "missing_restock_refunds": 0,
+          "missing_order_items": 0,
+          "traffic_days": 30,
+          "expected_traffic_days": 30
+        },
+        "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+        "currency": "USD",
+        "reporting_period": {
+          "start": "2026-09-01",
+          "end": "2026-09-30"
+        },
+        "data_source": {
+          "type": "database_demo",
+          "description": "Synthetic demo store data persisted in PostgreSQL. All metrics are computed from database records; no live merchant is connected."
+        }
+      },
+      "request": {
+        "start_date": "2026-09-01",
+        "end_date": "2026-09-30",
+        "target_profit_increase_pct": "20",
+        "constraints": {
+          "min_selling_price_change_pct": "0",
+          "max_selling_price_change_pct": "10",
+          "max_discount_pct": "10",
+          "max_advertising_increase_amount": "0",
+          "max_additional_operating_expense_amount": "0",
+          "minimum_operating_profit_margin_pct": null
+        },
+        "behavioral_assumptions": {
+          "conversion_mode": "historical",
+          "expected_conversion_rate": null,
+          "visitor_change_pct": "0",
+          "unit_cost_change_pct": "0"
+        },
+        "search": {
+          "price_points": 5,
+          "discount_points": 3,
+          "advertising_points": 2,
+          "expense_points": 2,
+          "max_candidates": 625
+        }
+      },
+      "target_operating_profit": "12218.62",
+      "target_profit_difference": "2036.44",
+      "candidates_evaluated": 15,
+      "feasible_candidate_count": 2,
+      "status": "feasible",
+      "recommendations": [
+        {
+          "status": "ready",
+          "simulated": {
+            "revenue": "32308.79",
+            "cogs": "10906.00",
+            "gross_profit": "21402.79",
+            "gross_profit_margin": "66.24",
+            "contribution_profit": "18571.19",
+            "contribution_margin": "57.48",
+            "operating_expenses": "6507.45",
+            "advertising_expenditure": "1776.00",
+            "operating_profit": "13119.34",
+            "operating_profit_margin": "40.61",
+            "expected_orders": "342.000000",
+            "expected_visitors": "11635.000000",
+            "assumed_conversion_rate": "2.939407",
+            "conversion_rate_source": "historical_ratio",
+            "customer_shipping_revenue": "0.00",
+            "shipping_expenses": "1055.60",
+            "platform_fees": "0.00",
+            "employee_expenses": "3700.00",
+            "rent_expenses": "1450.00",
+            "other_operating_expenses": "301.85",
+            "total_expenses": "8283.45"
+          },
+          "differences": {
+            "revenue": "2937.16",
+            "operating_profit": "2937.16",
+            "gross_profit": "2937.16",
+            "orders": "0.000000",
+            "revenue_change_pct": "10.00",
+            "profit_change_pct": "28.85"
+          },
+          "assumptions": [
+            "Hypothetical aggregate scenario, not a prediction or guaranteed business outcome.",
+            "The selected historical period's product mix, net merchandise basket, and refund/restock pattern remain constant per expected order.",
+            "Revenue is VAT-exclusive and already reflects historical discounts and dated refunds; VAT is not removed again.",
+            "Selling-price change applies first, then the additional scenario discount; historical discounts are not applied twice. Customer shipping charges do not receive these price changes.",
+            "Expected order volume and visitors are fractional expectations rounded to six decimal places; the same published order volume scales revenue and variable costs. Money rounds HALF_UP to currency cents per component.",
+            "Net historical COGS scales with expected order volume and unit-cost change. Carrier shipping, platform fees and customer shipping revenue scale with order volume at the observed per-order mix.",
+            "Employee, rent and other operating expenses remain fixed for the selected period; additional operating expense is added to other expenses.",
+            "Advertising uses historical AdSpend plus the explicit currency change and does not scale with orders; mirrored advertising expenses are excluded by the finance engine.",
+            "Conversion is a separate user assumption, or the exact historical orders-to-visitors ratio when left unchanged; price, discount and advertising changes do not automatically change it.",
+            "Operating profit follows the financial report definition and is not accounting net profit. Unrecorded costs and existing accounting limitations remain outside the model."
+          ],
+          "warnings": [],
+          "id": "064599bd-3da2-50c7-ab88-c33f5d165d36",
+          "name": "Strategy 1",
+          "parameters": {
+            "selling_price_change_pct": "10.0000",
+            "discount_pct": "0.0000",
+            "expected_conversion_rate": null,
+            "visitor_change_pct": "0",
+            "unit_cost_change_pct": "0",
+            "advertising_budget_change_amount": "0.00",
+            "additional_operating_expense_amount": "0.00"
+          },
+          "constraints_satisfied": [
+            "Selling price change stays between 0% and 10% inclusive.",
+            "Additional discount stays between 0% and 10% inclusive.",
+            "Advertising increase stays between 0 and 0 in store currency.",
+            "Additional operating expenses stay between 0 and 0 in store currency.",
+            "Expected operating profit must be at least 12218.62 in store currency.",
+            "No minimum operating profit margin was requested."
+          ]
+        },
+        {
+          "status": "ready",
+          "simulated": {
+            "revenue": "31574.50",
+            "cogs": "10906.00",
+            "gross_profit": "20668.50",
+            "gross_profit_margin": "65.46",
+            "contribution_profit": "17836.90",
+            "contribution_margin": "56.49",
+            "operating_expenses": "6507.45",
+            "advertising_expenditure": "1776.00",
+            "operating_profit": "12385.05",
+            "operating_profit_margin": "39.22",
+            "expected_orders": "342.000000",
+            "expected_visitors": "11635.000000",
+            "assumed_conversion_rate": "2.939407",
+            "conversion_rate_source": "historical_ratio",
+            "customer_shipping_revenue": "0.00",
+            "shipping_expenses": "1055.60",
+            "platform_fees": "0.00",
+            "employee_expenses": "3700.00",
+            "rent_expenses": "1450.00",
+            "other_operating_expenses": "301.85",
+            "total_expenses": "8283.45"
+          },
+          "differences": {
+            "revenue": "2202.87",
+            "operating_profit": "2202.87",
+            "gross_profit": "2202.87",
+            "orders": "0.000000",
+            "revenue_change_pct": "7.50",
+            "profit_change_pct": "21.63"
+          },
+          "assumptions": [
+            "Hypothetical aggregate scenario, not a prediction or guaranteed business outcome.",
+            "The selected historical period's product mix, net merchandise basket, and refund/restock pattern remain constant per expected order.",
+            "Revenue is VAT-exclusive and already reflects historical discounts and dated refunds; VAT is not removed again.",
+            "Selling-price change applies first, then the additional scenario discount; historical discounts are not applied twice. Customer shipping charges do not receive these price changes.",
+            "Expected order volume and visitors are fractional expectations rounded to six decimal places; the same published order volume scales revenue and variable costs. Money rounds HALF_UP to currency cents per component.",
+            "Net historical COGS scales with expected order volume and unit-cost change. Carrier shipping, platform fees and customer shipping revenue scale with order volume at the observed per-order mix.",
+            "Employee, rent and other operating expenses remain fixed for the selected period; additional operating expense is added to other expenses.",
+            "Advertising uses historical AdSpend plus the explicit currency change and does not scale with orders; mirrored advertising expenses are excluded by the finance engine.",
+            "Conversion is a separate user assumption, or the exact historical orders-to-visitors ratio when left unchanged; price, discount and advertising changes do not automatically change it.",
+            "Operating profit follows the financial report definition and is not accounting net profit. Unrecorded costs and existing accounting limitations remain outside the model."
+          ],
+          "warnings": [],
+          "id": "cb7fc831-a0cb-5b32-9fea-df3b2a3492b2",
+          "name": "Strategy 2",
+          "parameters": {
+            "selling_price_change_pct": "7.5000",
+            "discount_pct": "0.0000",
+            "expected_conversion_rate": null,
+            "visitor_change_pct": "0",
+            "unit_cost_change_pct": "0",
+            "advertising_budget_change_amount": "0.00",
+            "additional_operating_expense_amount": "0.00"
+          },
+          "constraints_satisfied": [
+            "Selling price change stays between 0% and 10% inclusive.",
+            "Additional discount stays between 0% and 10% inclusive.",
+            "Advertising increase stays between 0 and 0 in store currency.",
+            "Additional operating expenses stay between 0 and 0 in store currency.",
+            "Expected operating profit must be at least 12218.62 in store currency.",
+            "No minimum operating profit margin was requested."
+          ]
+        }
+      ],
+      "rejections": {
+        "below_profit_target": 13,
+        "below_minimum_margin": 0,
+        "unavailable": 0
+      },
+      "assumptions": [
+        "Recommendations are the highest operating-profit candidates in the tested grid, under the stated assumptions and constraints; they are not guaranteed real-world optimal strategies.",
+        "Conversion, visitor change and unit-cost change are fixed user assumptions across all candidates. Conversion is not an independently optimized business decision.",
+        "The model has no validated price-demand relationship: prices, discounts and advertising do not automatically change conversion or visitors. Actual customer responses remain unknown.",
+        "Advertising increases and additional operating expenses are optional spending decisions. Without an assumed behavioral benefit, added spending reduces operating profit in this model.",
+        "With conversion and traffic held fixed, the grid often favors the highest permitted price and the lowest discount or optional spend. This is a model consequence, not validated evidence that demand will remain unchanged.",
+        "The grid includes range endpoints and evenly spaced rounded values. It can miss feasible or better strategies between tested points.",
+        "Target operating profit is rounded upward to the next currency cent so a fractional-cent target is never reported as satisfied below its requested value.",
+        "All candidates retain the exact historical orders-to-visitors conversion ratio.",
+        "Hypothetical aggregate scenario, not a prediction or guaranteed business outcome.",
+        "The selected historical period's product mix, net merchandise basket, and refund/restock pattern remain constant per expected order.",
+        "Revenue is VAT-exclusive and already reflects historical discounts and dated refunds; VAT is not removed again.",
+        "Selling-price change applies first, then the additional scenario discount; historical discounts are not applied twice. Customer shipping charges do not receive these price changes.",
+        "Expected order volume and visitors are fractional expectations rounded to six decimal places; the same published order volume scales revenue and variable costs. Money rounds HALF_UP to currency cents per component.",
+        "Net historical COGS scales with expected order volume and unit-cost change. Carrier shipping, platform fees and customer shipping revenue scale with order volume at the observed per-order mix.",
+        "Employee, rent and other operating expenses remain fixed for the selected period; additional operating expense is added to other expenses.",
+        "Advertising uses historical AdSpend plus the explicit currency change and does not scale with orders; mirrored advertising expenses are excluded by the finance engine.",
+        "Conversion is a separate user assumption, or the exact historical orders-to-visitors ratio when left unchanged; price, discount and advertising changes do not automatically change it.",
+        "Operating profit follows the financial report definition and is not accounting net profit. Unrecorded costs and existing accounting limitations remain outside the model."
+      ],
+      "constraint_explanations": [
+        "Selling price change stays between 0% and 10% inclusive.",
+        "Additional discount stays between 0% and 10% inclusive.",
+        "Advertising increase stays between 0 and 0 in store currency.",
+        "Additional operating expenses stay between 0 and 0 in store currency.",
+        "Rejected candidates are counted once: unavailable first, then below profit target, then below minimum margin.",
+        "Expected operating profit must be at least 12218.62 in store currency.",
+        "No minimum operating profit margin was requested."
+      ],
+      "warnings": []
+    },
+    "tools_used": [
+      "get_store_metrics",
+      "run_goal_optimization"
+    ]
+  }
+}

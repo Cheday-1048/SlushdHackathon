@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { architecture, capabilities, features, presentation, scenario, sections, workflow } from './guide';
+import { facts } from './scenario-data';
 
 // Vitest runs from the repository root.
 const exists = (path: string) => existsSync(resolve(process.cwd(), path));
@@ -42,16 +43,24 @@ describe('guide content', () => {
       if (feature.status === 'planned') expect(feature.mvp, feature.title).toHaveLength(0);
       else expect(feature.mvp.length, feature.title).toBeGreaterThan(0);
     }
-    expect(features.filter((feature) => feature.status === 'available').map((feature) => feature.id)).toEqual(['dashboard', 'analytics']);
+    expect(features.filter((feature) => feature.status === 'available').map((feature) => feature.id)).toEqual(['dashboard', 'analytics', 'simulation', 'arena', 'optimizer', 'assistant']);
   });
 
   it('follows the requested presentation order', () => {
     expect(presentation.map((step) => step.id)).toEqual(['overview', 'problem', 'solution', 'workflow', 'features', 'scenario', 'vision']);
   });
 
-  it('marks every scenario module after step two as not yet fully available', () => {
-    expect(scenario.steps.slice(0, 2).every((step) => step.status === 'available')).toBe(true);
-    expect(scenario.steps.slice(2, 6).every((step) => step.status === 'planned')).toBe(true);
+  it('grounds the scenario in the demo data and keeps the planned step honest', () => {
+    expect(facts.revenueChangePct).toBeGreaterThan(0);
+    expect(facts.marginAfter).toBeLessThan(facts.marginBefore);
+    const status = Object.fromEntries(scenario.steps.map((step) => [step.id, step.status]));
+    expect(status).toMatchObject({ see: 'available', dig: 'available', explain: 'planned', simulate: 'available', compare: 'available', optimize: 'available', decide: 'partial' });
+  });
+
+  it('only lists the capabilities that exist as planned when no code exists for them', () => {
+    const planned = capabilities.filter((item) => item.status === 'planned').map((item) => item.id);
+    expect(planned).toEqual(expect.arrayContaining(['ai-causes', 'live-ab', 'live-ai', 'own-data', 'auth', 'hosting']));
+    for (const id of ['simulation', 'arena', 'optimizer', 'assistant']) expect(planned).not.toContain(id);
   });
 
   it('describes the planned architecture only as unspecified design intent', () => {
