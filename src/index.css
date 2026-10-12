@@ -103,6 +103,23 @@ td:last-child { white-space: normal; min-width: 95px; }
 tfoot { font-weight: 600; }
 .table-sku { display: block; white-space: nowrap; }
 .table-empty { padding: 20px 0; font-size: 13px; }
+.simulation-context { margin-bottom: 16px; }
+.simulation-baseline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.scenario-form { margin: 24px 0; padding: 24px; }
+.scenario-form > p { margin-top: 8px; }
+.scenario-form fieldset { border: 0; padding: 0; margin: 22px 0; min-width: 0; }
+.scenario-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.scenario-field { min-width: 0; }
+.scenario-field label { display: block; font-size: 13px; margin-bottom: 8px; }
+.scenario-field input { display: block; width: 100%; min-width: 0; min-height: 39px; padding: 8px 10px; color: var(--foreground); background: var(--card); border: 1px solid var(--border); border-radius: 6px; }
+.scenario-field input[aria-invalid="true"] { border-color: #8c302c; }
+.scenario-field p { margin-top: 6px; }
+.scenario-submit-help { max-width: 620px; }
+.simulation-deltas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.simulation-chart { margin-top: 20px; }
+.assumptions-list, .simulation-results ul, .simulation-results li { font-size: 13px; line-height: 1.6; }
+.assumptions-list { padding-left: 20px; margin-bottom: 0; }
+.assumptions-list li + li { margin-top: 8px; }
 @media (min-width: 1500px) { .kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 1100px) { .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .main-content { padding: 28px; } }
 @media (max-width: 760px) {
@@ -120,5 +137,32 @@ tfoot { font-weight: 600; }
   .filter-fields label { min-width: 0; flex: 1 1 160px; }
   .filter-fields input, .filter-fields select { width: 100%; min-width: 0; }
   .data-table-panel { padding: 18px 14px; }
+  .scenario-form { padding: 20px 16px; }
+  .scenario-fields, .simulation-deltas { grid-template-columns: 1fr; }
 }
 @media (max-width: 420px) { .kpi-grid { grid-template-columns: 1fr; } .page-header { align-items: flex-start; } }
+.arena-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 18px 0; }
+.arena-toolbar > p { flex: 1 1 240px; }
+.arena-editors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.arena-editor { min-width: 0; margin: 0; padding: 20px; }
+.arena-editor .scenario-fields { grid-template-columns: 1fr; gap: 18px; }
+.arena-difference { display: block; margin-top: 5px; font-size: 11px; font-weight: 400; color: var(--muted); white-space: normal; min-width: 120px; }
+.arena-improvement { color: #1d6945; }
+.arena-loss { color: #a22d29; }
+.arena-excluded { opacity: .55; }
+.arena-evaluation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 20px 0; }
+.arena-evaluation-item { min-width: 0; display: grid; gap: 10px; }
+.arena-evaluation-item label { font-size: 13px; overflow-wrap: anywhere; }
+.simulation-results details > summary { cursor: pointer; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.simulation-results details[open] > summary { margin-bottom: 20px; }
+@media (max-width: 760px) { .arena-editors, .arena-evaluation { grid-template-columns: 1fr; } }
+
+.optimizer-recommendations { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.optimizer-recommendations article { min-width: 0; }
+.optimizer-recommendations h4 { margin: 20px 0 10px; }
+.optimizer-recommendations details { margin: 18px 0; }
+.scenario-field select { width: 100%; min-height: 42px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; background: white; font: inherit; }
+@media (max-width: 1100px) { .optimizer-recommendations { grid-template-columns: 1fr; } }
+
+.scenario-field textarea { display: block; width: 100%; min-width: 0; padding: 10px; color: var(--foreground); background: var(--card); border: 1px solid var(--border); border-radius: 6px; font: inherit; resize: vertical; }
+.assistant-message { white-space: pre-wrap; overflow-wrap: anywhere; }

@@ -1,12 +1,12 @@
-# Retail Decision Lab — Phase 04
+# Retail Decision Lab — Phase 08
 
-A React dashboard backed by FastAPI and persistent PostgreSQL records for one **synthetic retail store**. Phase 04 connects store-timezone date filters, six Recharts views, product performance and expense analytics to the existing Decimal financial engine. One database snapshot supplies all dashboard sections. The existing dashboard design and prior API contracts are preserved. Authentication, AI, simulations, optimization and experimentation remain outside this phase.
+A React application backed by FastAPI and persistent PostgreSQL records for one **synthetic retail store**. Phase 08 adds a minimal AI Decision Assistant: OpenAI interprets a natural-language goal and calls two validated backend tools to retrieve historical metrics and invoke the existing Goal Optimizer. Financial results and explanations come from the existing services. Calculated strategies can be sent to the existing A/B Arena. Dashboard, single-scenario, comparison and manual optimization workflows remain available. Authentication, probabilistic modeling and real-world experimentation remain outside this phase.
 
-See the [Phase 04 analytics report](docs/phase-04-report.md), [financial definitions and assumptions](docs/phase-03-financial-engine.md), and the [actual financial example response](docs/phase-03-summary-example.json).
+See the [Phase 08 assistant report](docs/phase-08-report.md), [Phase 07 optimization report](docs/phase-07-report.md), [actual optimization response](docs/phase-07-optimization-example.json), [Phase 06 Arena report](docs/phase-06-report.md), and [financial definitions and assumptions](docs/phase-03-financial-engine.md).
 
 GitHub target: [Cheday-1048/SlushdHackathon](https://github.com/Cheday-1048/SlushdHackathon). See [the two-developer workflow](docs/contributing.md) for cloning, branch ownership and integration, and [the API handoff](docs/api.md) for request/response contracts. Publication status is recorded in [the import report](docs/github-import-report.md).
 
-Supabase is the intended PostgreSQL host. Its credentials were not supplied during development, so a live Supabase connection has **not** been verified. Local PostgreSQL verification and its limits are recorded in [the Phase 04 report](docs/phase-04-report.md).
+Supabase is the intended PostgreSQL host. Its credentials were not supplied during development, so a live Supabase connection has **not** been verified. Local PostgreSQL verification and its limits are recorded in [the Phase 07 report](docs/phase-07-report.md).
 
 ## Architecture and stack
 
@@ -15,14 +15,14 @@ src/
   api/             Typed fetch client and Zod response validation
   components/      Existing layout, KPI cards and UI primitives
   hooks/           Loading, error and retry lifecycle
-  pages/           Dashboard, including an empty reporting state
+  pages/           Dashboard and Simulation Lab
 backend/app/
-  api/             Health, analytics, finance, legacy dashboard, products and expenses routes
+  api/             Health, analytics, finance, simulations, legacy dashboard and catalog routes
   core/            Environment configuration
   db/              SQLAlchemy models, connection management and demo IDs
   repositories/    Scoped transaction, refund, cost and traffic queries
   schemas/         Pydantic API contracts
-  services/        Analytics grouping, financial reporting and pure finance/ arithmetic
+  services/        Analytics/reporting plus pure finance/ and simulation/ arithmetic
   seed.py          Deterministic, additive synthetic seed
 backend/migrations/ Version-controlled Alembic revisions
 backend/tests/     Unit and isolated PostgreSQL integration tests
@@ -164,6 +164,9 @@ Open [the dashboard](http://127.0.0.1:5173) and [FastAPI's API documentation](ht
 | `GET /health` | Liveness only: `{ "status": "ok", "service": "Retail Decision Lab API" }`. Does not claim database readiness. |
 | `GET /api/analytics/dashboard` | One scoped reporting snapshot: finance summary, daily series, product performance, expense categories, store timezone and current store date. |
 | `GET /api/finance/summary` | Authoritative financial report: VAT-exclusive revenue, historical COGS, gross/contribution/operating profits, expense buckets, returns, margins, break-even and completeness. |
+| `POST /api/simulations/preview` | Read-only hypothetical scenario with explicit dates and seven validated parameters; returns the authoritative baseline, projections, differences, assumptions and warnings. |
+| `POST /api/simulations/compare` | Compare 2–4 named scenarios with unique UUIDs against one shared baseline snapshot; includes all preview results, additional comparative deltas and a deterministic baseline fingerprint. |
+| `POST /api/optimization/goal` | Search at most 625 candidate strategies against one baseline, with a percentage profit target, explicit fixed behavioral assumptions and decision constraints. Returns up to three feasible strategies or an explained unavailable/unachievable result. |
 | `GET /api/dashboard/summary` | Deprecated Phase 02 compatibility contract: completed merchandise revenue under its original tax-exclusive convention, without refund/customer-shipping adjustments. |
 | `GET /api/products` | Product list with `limit` (1–100, default 50) and `offset` (minimum 0). |
 | `GET /api/expenses` | Expense list with the same pagination and optional reporting dates. |
@@ -175,6 +178,12 @@ Money and percentages serialize as **decimal strings**, which React validates an
 The dashboard uses `/api/analytics/dashboard`, whose nested `summary` matches the existing finance endpoint for the same dates. The analytics endpoint accepts `preset=last_7_days`, `last_30_days` or `last_90_days`, or a pair of custom dates. Presets include the current day in the store timezone. Custom ranges allow at most 366 inclusive days. With no filters it uses the explicitly labeled sample period. Presets and explicit dates cannot be combined.
 
 Six charts show daily revenue, orders, visitors/conversion, revenue versus operating expenses, product revenue and expense categories. Product and expense tables plus a collapsible daily table expose exact values. Missing traffic and monetary inputs stay unavailable; customer shipping and operating costs are not allocated to products. Changing a filter replaces all sections together, with loading, errors and retry support.
+
+Open **Simulation Lab** in the sidebar. Load a historical date range, adjust selling prices, additional discount, conversion, visitors, unit costs, advertising or additional operating expense, then select **Run simulation**. Blank conversion preserves the exact historical ratio. Price changes apply before the additional discount. Order volume, net merchandise/COGS, carrier shipping and platform fees follow the documented aggregate model; fixed expenses stay fixed and advertising changes independently. Results show fractional expected orders, money, margins, differences and applied assumptions. Editing an input clears the previous result. Missing historical inputs or an absent sales/traffic baseline produce warnings and unavailable projections. No scenario is persisted and no historical records are changed.
+
+Choose **A/B Arena** on that same page to add, duplicate, name, edit or remove up to four scenarios. **Compare scenarios** runs them against one freshly loaded financial snapshot. The comparison table and revenue/operating-profit chart preserve input order and show differences from baseline. Select a scenario manually or exclude it from consideration; no winner is automatically chosen. Editing scenarios invalidates the comparison, and **Reset comparison** restores two default drafts. This is a hypothetical strategy comparison, not a live A/B experiment. Drafts, selections and exclusions are kept only in the current browser view.
+
+Choose **Goal Optimizer** to set a profit-increase target, price range, maximum discount, maximum additional advertising/operating spending and an optional operating-margin floor. Choose historical conversion or supply an explicit conversion assumption; visitor and unit-cost changes remain fixed for every candidate. **Find Strategies** evaluates a small deterministic grid and shows up to three feasible strategies with financial impact and constraint explanations. **Send to A/B Arena** opens the historical strategy and the selected recommendation as editable drafts. Results are best only among tested candidates under the specified assumptions; a fixed-demand model often favors the highest allowed price and lowest optional spending. An unreachable target is disclosed without inventing demand. Percentage targets require positive, complete historical operating profit.
 
 The unchanged financial definitions apply: Sales recognize completed/partially refunded/refunded/returned orders; pending and cancelled orders are excluded. Refunds use their own event dates. Every price, discount, VAT rate and cost comes from transaction snapshots. Customer shipping is revenue, while carrier shipping is a cost. AdSpend alone supplies advertising totals. Operating profit is revenue minus COGS, non-advertising operating costs and ads; it is not accounting net profit. [The financial engine document](docs/phase-03-financial-engine.md) defines every field, rounding rule, null case and accounting assumption.
 
@@ -204,9 +213,17 @@ The following retained definitions describe the **legacy Phase 02 endpoint** onl
 
 A valid empty financial reporting interval returns zero recorded monetary amounts; margins, AOV and break-even remain unavailable. Missing traffic dates produce a warning and null conversion. The legacy endpoint retains its previous all-zero empty contract. Missing database configuration, unavailable PostgreSQL or missing migrations return a clear 503 response without mock fallback; an unseeded demo returns 404. The frontend shows loading, error/retry and empty states. Check the connection and migrations when a healthy `/health` coexists with a dashboard error.
 
+## AI Assistant configuration
+
+Set `OPENAI_API_KEY` only in the backend environment (or ignored `backend/.env`) and restart the backend. `OPENAI_MODEL` defaults to `gpt-4.1-mini` and can be changed to a Responses-compatible model with function calling available to your API project. Never use a `VITE_` variable for credentials. The implementation uses the existing HTTP client and the [OpenAI Responses API function-calling contract](https://developers.openai.com/api/docs/guides/function-calling); the [default model documentation](https://developers.openai.com/api/docs/models/gpt-4.1-mini) lists Responses and function-calling support.
+
+Open **AI Assistant**, load the historical reporting period, and enter a complete goal such as: “Increase my operating profit by 20% without increasing advertising costs.” Each message is independent; repeat all constraints when refining a goal. If bounds are omitted, the disclosed exploration defaults are price changes from 0% to 10%, additional discount up to 10%, no extra advertising or operating spending, and unchanged conversion, visitors and unit costs. The applied optimizer request and limitations are visible with the result. Use **Send to A/B Arena** to compare a calculated recommendation against the historical strategy.
+
+Without an API key, only the assistant returns an actionable configuration error; the existing dashboard and manual simulation/optimization workflows continue to work. The assistant never executes model-written SQL/code or displays model-authored financial figures. It sends the merchant message and aggregated synthetic store metrics to OpenAI with response storage disabled. No real-store access, record updates, durable chat memory or live experiment is implemented. Live OpenAI access has not been verified in this workspace because no key was supplied.
+
 ## Verification
 
-Phase 04 preserves the existing 228 backend and 19 frontend tests and adds analytics, date-filter and browser coverage. Exact executed results are recorded in [the Phase 04 report](docs/phase-04-report.md). No schema migration is needed for analytics. Local verification uses PostgreSQL 16.2 on macOS Apple Silicon; live Supabase and Windows execution remain unverified.
+Phase 08 preserves existing regression tests and adds controlled tool execution, invalid model output, provider failure, missing credentials and assistant-to-Arena coverage. Exact executed results are recorded in [the Phase 08 report](docs/phase-08-report.md). No schema migration or dependency change is needed. Local verification uses PostgreSQL 16.2 on macOS Apple Silicon; live Supabase and Windows execution remain unverified.
 
 Unit tests run without database credentials; PostgreSQL integration tests explicitly skip when `TEST_DATABASE_URL` is absent.
 
@@ -299,10 +316,10 @@ npm run test:e2e
 
 Playwright validates the local `rdl_test_*` destination, starts FastAPI with that URL and starts the production preview. Stop existing servers on ports 8000 and 4173 first. Successful browser requests reach the real API/database; failure cases are intercepted deliberately. Close the dedicated terminal afterward so its temporary database settings do not affect normal development.
 
-The GitHub Actions matrix configures PostgreSQL 17 with `ankane/setup-postgres@v1` on macOS and Windows, then runs backend, frontend and browser checks. A workflow being present does not establish that a hosted run passed. See [the Phase 04 report](docs/phase-04-report.md) for actual results and outstanding live-host verification.
+The GitHub Actions matrix configures PostgreSQL 17 with `ankane/setup-postgres@v1` on macOS and Windows, then runs backend, frontend and browser checks. A workflow being present does not establish that a hosted run passed. See [the Phase 08 report](docs/phase-08-report.md) for actual results and outstanding live-host verification. Tests replace the OpenAI transport and never require a paid API key; browser test servers explicitly disable that key.
 
 ## Provenance and hackathon use
 
-The workspace was empty when Phase 01 began. Its project source was created during that task; dependencies are third-party packages, and the button follows the shadcn/ui composition pattern. Phases 02–04 extend that foundation while preserving the existing frontend design. This history does not establish event eligibility; record the actual event development window and follow the event's rules.
+The workspace was empty when Phase 01 began. Its project source was created during that task; dependencies are third-party packages, and the button follows the shadcn/ui composition pattern. Phases 02–08 extend that foundation while preserving the existing frontend design. This history does not establish event eligibility; record the actual event development window and follow the event's rules.
 
-The [Phase 01](docs/phase-01-report.md), [Phase 02](docs/phase-02-report.md) and [Phase 03](docs/phase-03-report.md) reports remain as historical verification. The current implementation stops at Phase 04.
+The [Phase 01](docs/phase-01-report.md), [Phase 02](docs/phase-02-report.md), [Phase 03](docs/phase-03-report.md), [Phase 04](docs/phase-04-report.md), [Phase 05](docs/phase-05-report.md), [Phase 06](docs/phase-06-report.md) and [Phase 07](docs/phase-07-report.md) reports remain as historical verification. The current implementation stops at Phase 08.

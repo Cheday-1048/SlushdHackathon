@@ -1,4 +1,4 @@
-name: Phase 04 verification
+name: Phase 08 verification
 
 on: [push, pull_request, workflow_dispatch]
 

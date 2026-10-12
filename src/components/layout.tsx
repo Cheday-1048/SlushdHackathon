@@ -3,8 +3,6 @@ import type { ReactNode } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const futureSections = [
-  { label: 'Simulation Lab', icon: FlaskConical },
-  { label: 'AI Assistant', icon: Bot },
   { label: 'A/B Testing', icon: Split },
 ];
 
@@ -16,9 +14,11 @@ export function Layout({ children }: { children: ReactNode }) {
       <nav aria-label="Main navigation">
         <NavLink to="/dashboard" className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}><LayoutDashboard size={18} aria-hidden="true" />Dashboard</NavLink>
         <Link to="/dashboard#analytics" className="nav-item" onClick={() => document.getElementById('analytics')?.scrollIntoView()}><BarChart3 size={18} aria-hidden="true" />Analytics</Link>
+        <NavLink to="/simulation-lab" className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}><FlaskConical size={18} aria-hidden="true" />Simulation Lab</NavLink>
+        <NavLink to="/ai-assistant" className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}><Bot size={18} aria-hidden="true" />AI Assistant</NavLink>
         {futureSections.map(({ label, icon: Icon }) => <button className="nav-item future-item" key={label} disabled title="Planned for a future phase"><Icon size={18} aria-hidden="true" /><span>{label}</span><span className="planned">Planned</span></button>)}
       </nav>
-      <div className="phase-note"><strong>Phase 04</strong><p className="muted small">Dashboard and analytics<br />Synthetic business data</p></div>
+      <div className="phase-note"><strong>Phase 08</strong><p className="muted small">AI-assisted decisions<br />Synthetic business data</p></div>
     </aside>
     <main id="main-content" className="main-content">{children}</main>
   </div>;

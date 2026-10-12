@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Retail Decision Lab API",
-    "version": "0.4.0"
+    "version": "0.8.0"
   },
   "paths": {
     "/health": {
@@ -342,6 +342,314 @@
         }
       }
     },
+    "/api/simulations/preview": {
+      "post": {
+        "tags": [
+          "simulations"
+        ],
+        "summary": "Preview",
+        "description": "Read-only hypothetical aggregate scenario for the configured demo store. Dates are inclusive and limited to 366 days. Scenario amounts use decimal strings in the store currency. Conversion is an explicit user assumption or the exact historical ratio; it is not predicted. Incomplete or unsupported baselines return status unavailable with null projections and warnings. Invalid parameters, including an advertising change that makes its budget negative, return 422.",
+        "operationId": "preview_api_simulations_preview_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationPreview"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/simulations/compare": {
+      "post": {
+        "tags": [
+          "simulations"
+        ],
+        "summary": "Compare",
+        "description": "Compare two to four named hypothetical scenarios against one shared historical baseline. The baseline is loaded once in the read-only snapshot transaction. All financial projections reuse the existing aggregate-v1 simulation engine; no real-world experiment or automatic ranking occurs. Responses retain the full baseline, its deterministic SHA-256 fingerprint, applied parameters and scenario IDs. Missing inputs return unavailable scenario results. Undefined percentage changes are null. Invalid parameters or duplicate scenario IDs return 422.",
+        "operationId": "compare_api_simulations_compare_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ComparisonRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationComparison"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/optimization/goal": {
+      "post": {
+        "tags": [
+          "optimization"
+        ],
+        "summary": "Optimize Goal",
+        "description": "Search at most 625 deterministic strategy candidates against one read-only demo-store financial snapshot. Prices, discounts and optional spend are decisions; conversion, traffic and unit cost remain explicit fixed assumptions. No causal demand response is inferred. Return up to three highest operating-profit feasible grid candidates, or an explicit target_not_achievable/unavailable status. Percentage goals require positive baseline operating profit. Money uses Decimal strings and targets round upward to cents; searches above the requested cap return 422.",
+        "operationId": "optimize_goal_api_optimization_goal_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoalOptimizationRequest-Input"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalOptimizationResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assistant/chat": {
+      "post": {
+        "tags": [
+          "assistant"
+        ],
+        "summary": "Chat",
+        "description": "Stateless AI interpretation with two validated read-only demo-store tools. Financial answers are authored from existing service results; model prose is never displayed. No store selector, record changes, conversation persistence, or real-world experiments.",
+        "operationId": "chat_api_assistant_chat_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssistantChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssistantChatResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad Gateway",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Gateway Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/products": {
       "get": {
         "tags": [
@@ -609,6 +917,326 @@
           "product_warnings"
         ],
         "title": "AnalyticsDashboard"
+      },
+      "AssistantChatRequest": {
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Start Date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "title": "End Date"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start_date",
+          "end_date",
+          "message"
+        ],
+        "title": "AssistantChatRequest"
+      },
+      "AssistantChatResponse": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FinanceSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "optimization": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/GoalOptimizationResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tools_used": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "get_store_metrics",
+                "run_goal_optimization"
+              ]
+            },
+            "type": "array",
+            "maxItems": 2,
+            "title": "Tools Used"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "message",
+          "tools_used"
+        ],
+        "title": "AssistantChatResponse"
+      },
+      "BehavioralAssumptions-Input": {
+        "properties": {
+          "conversion_mode": {
+            "type": "string",
+            "enum": [
+              "historical",
+              "explicit"
+            ],
+            "title": "Conversion Mode"
+          },
+          "expected_conversion_rate": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "decimal_places": 4,
+                "ge": 0,
+                "le": 100,
+                "max_digits": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Conversion Rate"
+          },
+          "visitor_change_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Visitor Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 10000,
+            "max_digits": 16
+          },
+          "unit_cost_change_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Unit Cost Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "conversion_mode"
+        ],
+        "title": "BehavioralAssumptions"
+      },
+      "BehavioralAssumptions-Output": {
+        "properties": {
+          "conversion_mode": {
+            "type": "string",
+            "enum": [
+              "historical",
+              "explicit"
+            ],
+            "title": "Conversion Mode"
+          },
+          "expected_conversion_rate": {
+            "anyOf": [
+              {
+                "type": "string",
+                "decimal_places": 4,
+                "ge": 0,
+                "le": 100,
+                "max_digits": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Conversion Rate"
+          },
+          "visitor_change_pct": {
+            "type": "string",
+            "title": "Visitor Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 10000,
+            "max_digits": 16
+          },
+          "unit_cost_change_pct": {
+            "type": "string",
+            "title": "Unit Cost Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "conversion_mode"
+        ],
+        "title": "BehavioralAssumptions"
+      },
+      "ComparisonMetrics": {
+        "properties": {
+          "orders_change_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Orders Change Pct"
+          },
+          "gross_profit_change_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Profit Change Pct"
+          },
+          "operating_expenses_difference": {
+            "type": "string",
+            "title": "Operating Expenses Difference"
+          },
+          "operating_expenses_change_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operating Expenses Change Pct"
+          },
+          "advertising_expenditure_difference": {
+            "type": "string",
+            "title": "Advertising Expenditure Difference"
+          },
+          "advertising_expenditure_change_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Advertising Expenditure Change Pct"
+          },
+          "conversion_rate_difference_pp": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversion Rate Difference Pp"
+          },
+          "operating_profit_margin_difference_pp": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operating Profit Margin Difference Pp"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "orders_change_pct",
+          "gross_profit_change_pct",
+          "operating_expenses_difference",
+          "operating_expenses_change_pct",
+          "advertising_expenditure_difference",
+          "advertising_expenditure_change_pct",
+          "conversion_rate_difference_pp",
+          "operating_profit_margin_difference_pp"
+        ],
+        "title": "ComparisonMetrics"
+      },
+      "ComparisonRequest": {
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Start Date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "title": "End Date"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioConfiguration"
+            },
+            "type": "array",
+            "maxItems": 4,
+            "minItems": 2,
+            "title": "Scenarios"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start_date",
+          "end_date",
+          "scenarios"
+        ],
+        "title": "ComparisonRequest"
       },
       "DailyAnalytics": {
         "properties": {
@@ -1352,6 +1980,407 @@
         ],
         "title": "FinanceSummary"
       },
+      "GoalConstraints-Input": {
+        "properties": {
+          "min_selling_price_change_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Min Selling Price Change Pct",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "max_selling_price_change_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Max Selling Price Change Pct",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "max_discount_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Max Discount Pct",
+            "decimal_places": 4,
+            "ge": 0,
+            "le": 100,
+            "max_digits": 16
+          },
+          "max_advertising_increase_amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Max Advertising Increase Amount",
+            "decimal_places": 2,
+            "ge": 0,
+            "max_digits": 16
+          },
+          "max_additional_operating_expense_amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Max Additional Operating Expense Amount",
+            "decimal_places": 2,
+            "ge": 0,
+            "max_digits": 16
+          },
+          "minimum_operating_profit_margin_pct": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "decimal_places": 4,
+                "ge": 0,
+                "le": 100,
+                "max_digits": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minimum Operating Profit Margin Pct"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "min_selling_price_change_pct",
+          "max_selling_price_change_pct",
+          "max_discount_pct",
+          "max_advertising_increase_amount",
+          "max_additional_operating_expense_amount"
+        ],
+        "title": "GoalConstraints"
+      },
+      "GoalConstraints-Output": {
+        "properties": {
+          "min_selling_price_change_pct": {
+            "type": "string",
+            "title": "Min Selling Price Change Pct",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "max_selling_price_change_pct": {
+            "type": "string",
+            "title": "Max Selling Price Change Pct",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "max_discount_pct": {
+            "type": "string",
+            "title": "Max Discount Pct",
+            "decimal_places": 4,
+            "ge": 0,
+            "le": 100,
+            "max_digits": 16
+          },
+          "max_advertising_increase_amount": {
+            "type": "string",
+            "title": "Max Advertising Increase Amount",
+            "decimal_places": 2,
+            "ge": 0,
+            "max_digits": 16
+          },
+          "max_additional_operating_expense_amount": {
+            "type": "string",
+            "title": "Max Additional Operating Expense Amount",
+            "decimal_places": 2,
+            "ge": 0,
+            "max_digits": 16
+          },
+          "minimum_operating_profit_margin_pct": {
+            "anyOf": [
+              {
+                "type": "string",
+                "decimal_places": 4,
+                "ge": 0,
+                "le": 100,
+                "max_digits": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minimum Operating Profit Margin Pct"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "min_selling_price_change_pct",
+          "max_selling_price_change_pct",
+          "max_discount_pct",
+          "max_advertising_increase_amount",
+          "max_additional_operating_expense_amount"
+        ],
+        "title": "GoalConstraints"
+      },
+      "GoalOptimizationRequest-Input": {
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Start Date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "title": "End Date"
+          },
+          "target_profit_increase_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Target Profit Increase Pct",
+            "decimal_places": 4,
+            "ge": 0,
+            "le": 10000,
+            "max_digits": 16
+          },
+          "constraints": {
+            "$ref": "#/components/schemas/GoalConstraints-Input"
+          },
+          "behavioral_assumptions": {
+            "$ref": "#/components/schemas/BehavioralAssumptions-Input"
+          },
+          "search": {
+            "$ref": "#/components/schemas/SearchParameters"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start_date",
+          "end_date",
+          "target_profit_increase_pct",
+          "constraints",
+          "behavioral_assumptions"
+        ],
+        "title": "GoalOptimizationRequest"
+      },
+      "GoalOptimizationRequest-Output": {
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Start Date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "title": "End Date"
+          },
+          "target_profit_increase_pct": {
+            "type": "string",
+            "title": "Target Profit Increase Pct",
+            "decimal_places": 4,
+            "ge": 0,
+            "le": 10000,
+            "max_digits": 16
+          },
+          "constraints": {
+            "$ref": "#/components/schemas/GoalConstraints-Output"
+          },
+          "behavioral_assumptions": {
+            "$ref": "#/components/schemas/BehavioralAssumptions-Output"
+          },
+          "search": {
+            "$ref": "#/components/schemas/SearchParameters"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start_date",
+          "end_date",
+          "target_profit_increase_pct",
+          "constraints",
+          "behavioral_assumptions"
+        ],
+        "title": "GoalOptimizationRequest"
+      },
+      "GoalOptimizationResponse": {
+        "properties": {
+          "model_version": {
+            "type": "string",
+            "const": "aggregate-v1",
+            "title": "Model Version",
+            "default": "aggregate-v1"
+          },
+          "search_version": {
+            "type": "string",
+            "const": "grid-v1",
+            "title": "Search Version",
+            "default": "grid-v1"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "title": "Snapshot Id"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Currency"
+          },
+          "reporting_period": {
+            "$ref": "#/components/schemas/ReportingPeriod"
+          },
+          "baseline": {
+            "$ref": "#/components/schemas/FinanceSummary"
+          },
+          "request": {
+            "$ref": "#/components/schemas/GoalOptimizationRequest-Output"
+          },
+          "target_operating_profit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Operating Profit"
+          },
+          "target_profit_difference": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Profit Difference"
+          },
+          "candidates_evaluated": {
+            "type": "integer",
+            "maximum": 625.0,
+            "minimum": 0.0,
+            "title": "Candidates Evaluated"
+          },
+          "feasible_candidate_count": {
+            "type": "integer",
+            "maximum": 625.0,
+            "minimum": 0.0,
+            "title": "Feasible Candidate Count"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "feasible",
+              "target_not_achievable",
+              "unavailable"
+            ],
+            "title": "Status"
+          },
+          "recommendations": {
+            "items": {
+              "$ref": "#/components/schemas/RecommendedStrategy"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Recommendations"
+          },
+          "rejections": {
+            "$ref": "#/components/schemas/RejectionCounts"
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          },
+          "constraint_explanations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Constraint Explanations"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "store_id",
+          "currency",
+          "reporting_period",
+          "baseline",
+          "request",
+          "target_operating_profit",
+          "target_profit_difference",
+          "candidates_evaluated",
+          "feasible_candidate_count",
+          "status",
+          "recommendations",
+          "rejections",
+          "assumptions",
+          "constraint_explanations",
+          "warnings"
+        ],
+        "title": "GoalOptimizationResponse"
+      },
       "HTTPValidationError": {
         "properties": {
           "detail": {
@@ -1571,6 +2600,110 @@
         ],
         "title": "ProductRead"
       },
+      "RecommendedStrategy": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "unavailable"
+            ],
+            "title": "Status"
+          },
+          "simulated": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SimulatedMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "differences": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SimulationDifferences"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/ScenarioParameters-Output"
+          },
+          "constraints_satisfied": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Constraints Satisfied"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "simulated",
+          "differences",
+          "assumptions",
+          "warnings",
+          "id",
+          "name",
+          "parameters",
+          "constraints_satisfied"
+        ],
+        "title": "RecommendedStrategy"
+      },
+      "RejectionCounts": {
+        "properties": {
+          "below_profit_target": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Below Profit Target",
+            "default": 0
+          },
+          "below_minimum_margin": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Below Minimum Margin",
+            "default": 0
+          },
+          "unavailable": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Unavailable",
+            "default": 0
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "RejectionCounts"
+      },
       "ReportingPeriod": {
         "properties": {
           "start": {
@@ -1591,6 +2724,719 @@
           "end"
         ],
         "title": "ReportingPeriod"
+      },
+      "ScenarioConfiguration": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/ScenarioParameters-Input"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "ScenarioConfiguration"
+      },
+      "ScenarioParameters-Input": {
+        "properties": {
+          "selling_price_change_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Selling Price Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "discount_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Discount Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": 0,
+            "le": 100,
+            "max_digits": 16
+          },
+          "expected_conversion_rate": {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "decimal_places": 4,
+                "ge": 0,
+                "le": 100,
+                "max_digits": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Conversion Rate"
+          },
+          "visitor_change_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Visitor Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 10000,
+            "max_digits": 16
+          },
+          "unit_cost_change_pct": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Unit Cost Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "advertising_budget_change_amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Advertising Budget Change Amount",
+            "default": "0.00",
+            "decimal_places": 2,
+            "max_digits": 16
+          },
+          "additional_operating_expense_amount": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Additional Operating Expense Amount",
+            "default": "0.00",
+            "decimal_places": 2,
+            "ge": 0,
+            "max_digits": 16
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ScenarioParameters"
+      },
+      "ScenarioParameters-Output": {
+        "properties": {
+          "selling_price_change_pct": {
+            "type": "string",
+            "title": "Selling Price Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "discount_pct": {
+            "type": "string",
+            "title": "Discount Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": 0,
+            "le": 100,
+            "max_digits": 16
+          },
+          "expected_conversion_rate": {
+            "anyOf": [
+              {
+                "type": "string",
+                "decimal_places": 4,
+                "ge": 0,
+                "le": 100,
+                "max_digits": 16
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Conversion Rate"
+          },
+          "visitor_change_pct": {
+            "type": "string",
+            "title": "Visitor Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 10000,
+            "max_digits": 16
+          },
+          "unit_cost_change_pct": {
+            "type": "string",
+            "title": "Unit Cost Change Pct",
+            "default": "0",
+            "decimal_places": 4,
+            "ge": -100,
+            "le": 1000,
+            "max_digits": 16
+          },
+          "advertising_budget_change_amount": {
+            "type": "string",
+            "title": "Advertising Budget Change Amount",
+            "default": "0.00",
+            "decimal_places": 2,
+            "max_digits": 16
+          },
+          "additional_operating_expense_amount": {
+            "type": "string",
+            "title": "Additional Operating Expense Amount",
+            "default": "0.00",
+            "decimal_places": 2,
+            "ge": 0,
+            "max_digits": 16
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ScenarioParameters"
+      },
+      "ScenarioResult": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "unavailable"
+            ],
+            "title": "Status"
+          },
+          "simulated": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SimulatedMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "differences": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SimulationDifferences"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/ScenarioParameters-Output"
+          },
+          "comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ComparisonMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "simulated",
+          "differences",
+          "assumptions",
+          "warnings",
+          "id",
+          "name",
+          "parameters",
+          "comparison"
+        ],
+        "title": "ScenarioResult"
+      },
+      "SearchParameters": {
+        "properties": {
+          "price_points": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 2.0,
+            "title": "Price Points",
+            "default": 5
+          },
+          "discount_points": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 2.0,
+            "title": "Discount Points",
+            "default": 3
+          },
+          "advertising_points": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 2.0,
+            "title": "Advertising Points",
+            "default": 2
+          },
+          "expense_points": {
+            "type": "integer",
+            "maximum": 5.0,
+            "minimum": 2.0,
+            "title": "Expense Points",
+            "default": 2
+          },
+          "max_candidates": {
+            "type": "integer",
+            "maximum": 625.0,
+            "minimum": 1.0,
+            "title": "Max Candidates",
+            "default": 625
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "SearchParameters"
+      },
+      "SimulatedMetrics": {
+        "properties": {
+          "revenue": {
+            "type": "string",
+            "title": "Revenue"
+          },
+          "cogs": {
+            "type": "string",
+            "title": "Cogs"
+          },
+          "gross_profit": {
+            "type": "string",
+            "title": "Gross Profit"
+          },
+          "gross_profit_margin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Profit Margin"
+          },
+          "contribution_profit": {
+            "type": "string",
+            "title": "Contribution Profit"
+          },
+          "contribution_margin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contribution Margin"
+          },
+          "operating_expenses": {
+            "type": "string",
+            "title": "Operating Expenses"
+          },
+          "advertising_expenditure": {
+            "type": "string",
+            "title": "Advertising Expenditure"
+          },
+          "operating_profit": {
+            "type": "string",
+            "title": "Operating Profit"
+          },
+          "operating_profit_margin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operating Profit Margin"
+          },
+          "expected_orders": {
+            "type": "string",
+            "title": "Expected Orders"
+          },
+          "expected_visitors": {
+            "type": "string",
+            "title": "Expected Visitors"
+          },
+          "assumed_conversion_rate": {
+            "type": "string",
+            "title": "Assumed Conversion Rate"
+          },
+          "conversion_rate_source": {
+            "type": "string",
+            "enum": [
+              "historical_ratio",
+              "user_assumption"
+            ],
+            "title": "Conversion Rate Source"
+          },
+          "customer_shipping_revenue": {
+            "type": "string",
+            "title": "Customer Shipping Revenue"
+          },
+          "shipping_expenses": {
+            "type": "string",
+            "title": "Shipping Expenses"
+          },
+          "platform_fees": {
+            "type": "string",
+            "title": "Platform Fees"
+          },
+          "employee_expenses": {
+            "type": "string",
+            "title": "Employee Expenses"
+          },
+          "rent_expenses": {
+            "type": "string",
+            "title": "Rent Expenses"
+          },
+          "other_operating_expenses": {
+            "type": "string",
+            "title": "Other Operating Expenses"
+          },
+          "total_expenses": {
+            "type": "string",
+            "title": "Total Expenses"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "revenue",
+          "cogs",
+          "gross_profit",
+          "gross_profit_margin",
+          "contribution_profit",
+          "contribution_margin",
+          "operating_expenses",
+          "advertising_expenditure",
+          "operating_profit",
+          "operating_profit_margin",
+          "expected_orders",
+          "expected_visitors",
+          "assumed_conversion_rate",
+          "conversion_rate_source",
+          "customer_shipping_revenue",
+          "shipping_expenses",
+          "platform_fees",
+          "employee_expenses",
+          "rent_expenses",
+          "other_operating_expenses",
+          "total_expenses"
+        ],
+        "title": "SimulatedMetrics"
+      },
+      "SimulationComparison": {
+        "properties": {
+          "model_version": {
+            "type": "string",
+            "const": "aggregate-v1",
+            "title": "Model Version",
+            "default": "aggregate-v1"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "title": "Snapshot Id"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Currency"
+          },
+          "reporting_period": {
+            "$ref": "#/components/schemas/ReportingPeriod"
+          },
+          "baseline": {
+            "$ref": "#/components/schemas/FinanceSummary"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioResult"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "store_id",
+          "currency",
+          "reporting_period",
+          "baseline",
+          "scenarios",
+          "assumptions",
+          "warnings"
+        ],
+        "title": "SimulationComparison"
+      },
+      "SimulationDifferences": {
+        "properties": {
+          "revenue": {
+            "type": "string",
+            "title": "Revenue"
+          },
+          "operating_profit": {
+            "type": "string",
+            "title": "Operating Profit"
+          },
+          "gross_profit": {
+            "type": "string",
+            "title": "Gross Profit"
+          },
+          "orders": {
+            "type": "string",
+            "title": "Orders"
+          },
+          "revenue_change_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revenue Change Pct"
+          },
+          "profit_change_pct": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profit Change Pct"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "revenue",
+          "operating_profit",
+          "gross_profit",
+          "orders",
+          "revenue_change_pct",
+          "profit_change_pct"
+        ],
+        "title": "SimulationDifferences"
+      },
+      "SimulationPreview": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "unavailable"
+            ],
+            "title": "Status"
+          },
+          "simulated": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SimulatedMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "differences": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SimulationDifferences"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "model_version": {
+            "type": "string",
+            "const": "aggregate-v1",
+            "title": "Model Version",
+            "default": "aggregate-v1"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Currency"
+          },
+          "reporting_period": {
+            "$ref": "#/components/schemas/ReportingPeriod"
+          },
+          "baseline": {
+            "$ref": "#/components/schemas/FinanceSummary"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/ScenarioParameters-Output"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "simulated",
+          "differences",
+          "assumptions",
+          "warnings",
+          "store_id",
+          "currency",
+          "reporting_period",
+          "baseline",
+          "parameters"
+        ],
+        "title": "SimulationPreview"
+      },
+      "SimulationRequest": {
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Start Date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "title": "End Date"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/ScenarioParameters-Input"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start_date",
+          "end_date"
+        ],
+        "title": "SimulationRequest"
       },
       "ValidationError": {
         "properties": {

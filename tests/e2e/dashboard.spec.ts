@@ -184,7 +184,9 @@ test('product and expense endpoints expose persisted demo store records', async 
 
 test('future modules remain disabled and unknown routes have a return path', async ({ page }) => {
   await page.goto('/dashboard');
-  for (const name of ['Simulation Lab', 'AI Assistant', 'A/B Testing']) await expect(page.getByRole('button', { name: `${name} Planned` })).toBeDisabled();
+  await expect(page.getByRole('link', { name: 'Simulation Lab', exact: true })).toHaveAttribute('href', '/simulation-lab');
+  await expect(page.getByRole('link', { name: 'AI Assistant', exact: true })).toHaveAttribute('href', '/ai-assistant');
+  await expect(page.getByRole('button', { name: 'A/B Testing Planned' })).toBeDisabled();
   await page.goto('/missing');
   await expect(page.getByRole('heading', { name: 'Page not found' })).toBeVisible();
   await page.getByRole('link', { name: 'Back to dashboard' }).click();

@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     service_name: str = "Retail Decision Lab API"
     database_url: SecretStr | None = Field(default=None, validation_alias="DATABASE_URL")
     migration_database_url: SecretStr | None = Field(default=None, validation_alias="MIGRATION_DATABASE_URL")
+    openai_api_key: SecretStr | None = Field(default=None, validation_alias="OPENAI_API_KEY")
+    openai_model: str = Field(default="gpt-4.1-mini", validation_alias="OPENAI_MODEL", min_length=1, max_length=120, pattern=r"^[a-zA-Z0-9._:-]+$")
+    assistant_request_timeout_seconds: float = Field(default=15, ge=1, le=30)
+    assistant_total_timeout_seconds: float = Field(default=45, ge=1, le=60)
     db_pool_mode: Literal["direct", "session", "transaction"] = "session"
     db_sslmode: Literal["disable", "require", "verify-ca", "verify-full"] = "require"
     db_ssl_root_cert: Path | None = None
@@ -35,7 +39,7 @@ class Settings(BaseSettings):
         "http://127.0.0.1:4173",
     ]
 
-    @field_validator("database_url", "migration_database_url", mode="before")
+    @field_validator("database_url", "migration_database_url", "openai_api_key", mode="before")
     @classmethod
     def empty_url_is_unconfigured(cls, value):
         return None if value == "" else value
