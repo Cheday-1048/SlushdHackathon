@@ -2,17 +2,17 @@
 
 ## Mevcut durum
 
-**Yerel MVP hazır ve doğrulandı; GitHub aktarımı erişim nedeniyle tamamlanmadı.**
+**Doğrulanmış MVP, kullanıcının isteğiyle kendi hesabındaki yeni private repository'ye yayınlandı.**
 
-Kullanıcı tarafından verilen hedef: https://github.com/Helincharm/SlushdHackathon.git. Repository sahibi `Helincharm`, adı `SlushdHackathon`. Yerel `origin` bu hedefe ayarlanır. Bağlı GitHub connector hesabı `Cheday-1048`.
+Yeni hedef: https://github.com/Cheday-1048/SlushdHackathon.git. Sahibi `Cheday-1048`, adı `SlushdHackathon`. `origin` yeni hedefe ayarlandı. GitHub Desktop'taki açık `Cheday-1048` oturumu üzerinden private repository oluşturuldu ve MVP commit'leri `main` branch'ine push edildi. Yeni repository boş oluşturulduğu için import PR'ı gerekmedi. Başka repository'nin dosyası veya geçmişi değiştirilmedi.
 
-- Connector repository okuması 404 (`Not Found`) döndürdü; collaborator permission sonucu `null`.
-- HTTPS `git ls-remote` kimlik doğrulaması başarısız oldu (`Invalid username or token`).
-- SSH okuması mevcut known_hosts içinde GitHub host key bulunmadığı için başarısız oldu; host doğrulaması bypass edilmedi.
-- Hedefin varlığı, boşluğu, dosyaları, varsayılan branch'i ve yazma yetkisi henüz doğrulanamadı. 404 tek başına repository'nin bulunmadığını kanıtlamaz; private repository veya connector erişim eksikliği olabilir.
-- GitHub commit/push/PR veya uzak branch oluşturma gerçekleştirilmedi. Yerel `main` çalışma hazırlığını saklar; `feat/import-mvp`, `feat/backend`, `feat/frontend` henüz oluşturulmadı. Çalışma branch'leri güvenli GitHub import'undan sonra oluşturulmalıdır.
+Önceki `Helincharm/SlushdHackathon` hedefi connector tarafında 404 döndürdü ve HTTPS Git kimlik doğrulaması çalışmadı. Kullanıcı bunun ardından kendi hesabında yeni repository oluşturulmasını istedi. GitHub Desktop yayınlama işlemi **push complete** döndürdü; yerel `main`, `origin/main` izlemeye başladı. Connector yeni private repository için hâlâ 404 döndürüyor; Desktop oturumu bağımsız olarak çalışıyor. Shell Git kimlik doğrulaması da henüz yapılandırılmış değil.
 
-Repository sahibi `Cheday-1048` hesabına Write erişimi vermeli; Codex GitHub bağlantısında repository erişime açılmalıdır. Yerel Git push için de çalışan HTTPS veya SSH kimlik doğrulaması gerekir. Token/şifreyi chat'e veya projeye yazmayın. İki geliştiricinin kendi GitHub hesapları için Write yetkisini repository sahibi ayrıca sağlamalıdır; geliştirici hesapları bu görevde verilmedi.
+`feat/backend` ve `feat/frontend`, yayınlanan MVP'den başlayacak çalışma branch'leridir. Uzak ref'lerin yayınlama doğrulaması görev sonucunda bildirilir. `feat/import-mvp` yeni boş repository için kullanılmaz. `main` kararlı entegre sürüm olarak korunur.
+
+İki geliştiricinin GitHub hesaplarına Write erişimini repository sahibi ayrıca vermelidir; geliştirici hesapları henüz belirtilmedi. Connector üzerinden gelecekte PR işlemleri yapılacaksa bu private repository bağlantının erişim kapsamına eklenmelidir. GitHub Desktop üzerinden yayınlama başarılıdır. Token/şifreyi chat'e veya projeye yazmayın.
+
+Yayınlama sırasında çalışma klasöründe devam eden, commit edilmemiş simülasyon geliştirmeleri görüldü. Bunlar değiştirilmedi veya MVP commit'lerine dahil edilmedi; yayınlanan snapshot önceden doğrulanmış Phase 04 MVP'sidir.
 
 ## Mimari ve korunan MVP
 
@@ -22,7 +22,7 @@ Dashboard, tarih filtreleri, altı chart, finansal Decimal hesapları, ürün/gi
 
 ## Güvenlik incelemesi
 
-Başlangıçta yerel Git deposunda commit, reflog kaydı, tracked dosya veya Git object'i bulunmuyordu; yerelde eski commit'lerden sızabilecek bir sır geçmişi yoktu. Hedef repository geçmişi erişim açılmadan taranamaz.
+Başlangıçta yerel Git deposunda commit, reflog kaydı, tracked dosya veya Git object'i bulunmuyordu; yerelde eski commit'lerden sızabilecek bir sır geçmişi yoktu. Yeni hedefe taranmış yerel commit geçmişi yayınlandı; eski hedef geçmişi içe alınmadı.
 
 Gönderilecek dosyalarda private key, yaygın GitHub/cloud/service token, JWT, secret assignment ve credential içeren URL desenleri incelendi. URL adayları `backend/tests/` altında redaction/validation testlerine ait sabit sahte şifrelerdi; gerçek erişim bilgisi tespit edilmedi. Bu tarama desen tabanlıdır, matematiksel bir güvenlik garantisi değildir.
 
@@ -53,12 +53,8 @@ Kök `.env`, `backend/.env` ve aktif shell'de DATABASE_URL bulunmadı. Normal da
 
 Live Supabase bağlantısı, Windows çalıştırması ve GitHub Actions hosted çalıştırması bu görevde doğrulanmadı. API request/response sözleşmesi [api.md](api.md), [openapi.json](openapi.json) ve [api-examples.json](api-examples.json) içinde; ekip kurulumu [contributing.md](contributing.md) içinde bulunur.
 
-## Erişim açıldığında kalan aktarım adımları
+## Yayın sonrası geliştirme
 
-1. Repository metadata, yazma yetkisi, varsayılan branch, remote ref'ler ve dosyalar yeniden okunur.
-2. Boş hedefte doğrulanmış MVP hedefin varsayılan branch'ine push edilir; var olan içerikte ayrı clone yapılır, hedef geçmişinden `feat/import-mvp` oluşturulur. Çakışan dosyalar tek tek incelenir; mevcut içerik topluca temizlenmez.
-3. Mevcut yerel root commit ile hedef geçmişi zorla birleştirilmez. Hedef geçmişi temel alınır. Import branch'i push edilir ve mevcut içerik varsa PR açılır.
-4. MVP güvenle aktarılınca `feat/backend` ve `feat/frontend` uygun MVP commit'inden oluşturulur. Import PR'ı henüz entegre değilse bu branch'ler import commit'inden başlayabilir; `main` tabanlı geliştirme PR'ları import PR'ı entegre olana kadar bekler. Var olan branch'ler reset edilmez.
-5. Push edilen commit/ref'ler ve varsa PR doğrulanır; bu rapor gerçek sonuçla güncellenir.
+Clone ve branch çalışma komutları [geliştirici rehberinde](contributing.md) bulunur. Yeni geliştiriciler kendi PostgreSQL ortam değişkenlerini yapılandırmalı, migration ve demo seed'i uygulamalıdır. Çalışma branch'leri aynı doğrulanmış MVP commit'inden başlar; PR hedefi `main` olur.
 
-Force push, branch silme veya ilgisiz Git geçmişlerini birleştirme kullanılmaz.
+Force push, branch silme veya ilgisiz Git geçmişlerini birleştirme kullanılmadı. GitHub Actions hosted sonucu yerel test sonucundan bağımsızdır; CI run sonuçları ayrıca incelenmelidir. Branch protection veya geliştirici daveti bu görevde ayarlanmadı.
