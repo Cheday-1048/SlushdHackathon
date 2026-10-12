@@ -1,0 +1,1630 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Retail Decision Lab API",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dashboard/summary": {
+      "get": {
+        "tags": [
+          "dashboard"
+        ],
+        "summary": "Summary",
+        "description": "Phase 02 compatibility contract: completed merchandise sales under its original tax-exclusive convention, without refund or customer shipping adjustments. Use /api/finance/summary for VAT-aware financial reporting and completeness indicators.",
+        "operationId": "summary_api_dashboard_summary_get",
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardSummary"
+                }
+              }
+            }
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/finance/summary": {
+      "get": {
+        "tags": [
+          "finance"
+        ],
+        "summary": "Summary",
+        "description": "Historical demo-store financial metrics. Money and percentages are decimal strings; unknown dependent metrics are null. See docs/phase-03-financial-engine.md for definitions.",
+        "operationId": "summary_api_finance_summary_get",
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FinanceSummary"
+                }
+              }
+            }
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/analytics/dashboard": {
+      "get": {
+        "tags": [
+          "analytics"
+        ],
+        "summary": "Dashboard",
+        "description": "One consistent demo-store summary, daily series, product performance, and expense breakdown. All money and percentages use the Phase 03 Decimal engine. Rolling periods include the current store-local day. Custom dates are inclusive and limited to 366 days. No parameters selects the synthetic demo period.",
+        "operationId": "dashboard_api_analytics_dashboard_get",
+        "parameters": [
+          {
+            "name": "preset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "last_7_days",
+                    "last_30_days",
+                    "last_90_days"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Preset"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyticsDashboard"
+                }
+              }
+            }
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/products": {
+      "get": {
+        "tags": [
+          "store data"
+        ],
+        "summary": "Products",
+        "operationId": "products_api_products_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductList"
+                }
+              }
+            }
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/expenses": {
+      "get": {
+        "tags": [
+          "store data"
+        ],
+        "summary": "Expenses",
+        "operationId": "expenses_api_expenses_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Start Date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "End Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpenseList"
+                }
+              }
+            }
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnalyticsDashboard": {
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/FinanceSummary"
+          },
+          "store_timezone": {
+            "type": "string",
+            "title": "Store Timezone"
+          },
+          "as_of_date": {
+            "type": "string",
+            "format": "date",
+            "title": "As Of Date"
+          },
+          "selected_preset": {
+            "type": "string",
+            "enum": [
+              "demo",
+              "custom",
+              "last_7_days",
+              "last_30_days",
+              "last_90_days"
+            ],
+            "title": "Selected Preset"
+          },
+          "daily": {
+            "items": {
+              "$ref": "#/components/schemas/DailyAnalytics"
+            },
+            "type": "array",
+            "title": "Daily"
+          },
+          "products": {
+            "items": {
+              "$ref": "#/components/schemas/ProductAnalytics"
+            },
+            "type": "array",
+            "title": "Products"
+          },
+          "expenses": {
+            "items": {
+              "$ref": "#/components/schemas/ExpenseAnalytics"
+            },
+            "type": "array",
+            "title": "Expenses"
+          },
+          "unallocated_customer_shipping_revenue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unallocated Customer Shipping Revenue"
+          },
+          "product_warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Product Warnings"
+          }
+        },
+        "type": "object",
+        "required": [
+          "summary",
+          "store_timezone",
+          "as_of_date",
+          "selected_preset",
+          "daily",
+          "products",
+          "expenses",
+          "unallocated_customer_shipping_revenue",
+          "product_warnings"
+        ],
+        "title": "AnalyticsDashboard"
+      },
+      "DailyAnalytics": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "revenue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revenue"
+          },
+          "order_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Order Count"
+          },
+          "visitors": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Visitors"
+          },
+          "conversion_rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversion Rate"
+          },
+          "operating_expenses": {
+            "type": "string",
+            "title": "Operating Expenses"
+          },
+          "advertising_expenditure": {
+            "type": "string",
+            "title": "Advertising Expenditure"
+          },
+          "total_expenses": {
+            "type": "string",
+            "title": "Total Expenses"
+          },
+          "gross_profit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Profit"
+          },
+          "operating_profit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operating Profit"
+          },
+          "data_completeness": {
+            "$ref": "#/components/schemas/DataCompleteness"
+          }
+        },
+        "type": "object",
+        "required": [
+          "date",
+          "revenue",
+          "order_count",
+          "visitors",
+          "conversion_rate",
+          "operating_expenses",
+          "advertising_expenditure",
+          "total_expenses",
+          "gross_profit",
+          "operating_profit",
+          "data_completeness"
+        ],
+        "title": "DailyAnalytics"
+      },
+      "DashboardSummary": {
+        "properties": {
+          "revenue": {
+            "type": "string",
+            "title": "Revenue"
+          },
+          "total_orders": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total Orders"
+          },
+          "total_visitors": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Total Visitors"
+          },
+          "conversion_rate": {
+            "type": "string",
+            "title": "Conversion Rate",
+            "description": "Percentage of visitors who placed an order, rounded to two decimals"
+          },
+          "total_expenses": {
+            "type": "string",
+            "title": "Total Expenses"
+          },
+          "operating_expenses": {
+            "type": "string",
+            "title": "Operating Expenses"
+          },
+          "advertising_expenditure": {
+            "type": "string",
+            "title": "Advertising Expenditure"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Currency"
+          },
+          "reporting_period": {
+            "$ref": "#/components/schemas/ReportingPeriod"
+          },
+          "data_source": {
+            "$ref": "#/components/schemas/DataSource"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "revenue",
+          "total_orders",
+          "total_visitors",
+          "conversion_rate",
+          "total_expenses",
+          "operating_expenses",
+          "advertising_expenditure",
+          "currency",
+          "reporting_period",
+          "data_source"
+        ],
+        "title": "DashboardSummary"
+      },
+      "DataCompleteness": {
+        "properties": {
+          "is_complete": {
+            "type": "boolean",
+            "title": "Is Complete"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          },
+          "missing_vat_lines": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Missing Vat Lines"
+          },
+          "missing_refund_orders": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Missing Refund Orders"
+          },
+          "missing_shipping_orders": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Missing Shipping Orders"
+          },
+          "missing_restock_refunds": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Missing Restock Refunds"
+          },
+          "missing_order_items": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Missing Order Items"
+          },
+          "traffic_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Traffic Days"
+          },
+          "expected_traffic_days": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Traffic Days"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "is_complete",
+          "warnings",
+          "missing_vat_lines",
+          "missing_refund_orders",
+          "missing_shipping_orders",
+          "missing_restock_refunds",
+          "missing_order_items",
+          "traffic_days",
+          "expected_traffic_days"
+        ],
+        "title": "DataCompleteness"
+      },
+      "DataSource": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "const": "database_demo",
+            "title": "Type",
+            "default": "database_demo"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Description"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "title": "DataSource"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorResponse"
+      },
+      "ExpenseAnalytics": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "employee_costs",
+              "rent",
+              "shipping",
+              "platform_fees",
+              "other_operating",
+              "advertising"
+            ],
+            "title": "Category"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "label",
+          "amount"
+        ],
+        "title": "ExpenseAnalytics"
+      },
+      "ExpenseList": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ExpenseRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "Offset"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "data_source": {
+            "$ref": "#/components/schemas/DataSource"
+          },
+          "reporting_period": {
+            "$ref": "#/components/schemas/ReportingPeriod"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset",
+          "store_id",
+          "data_source",
+          "reporting_period"
+        ],
+        "title": "ExpenseList"
+      },
+      "ExpenseRead": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "amount": {
+            "type": "string",
+            "title": "Amount"
+          },
+          "expense_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Expense Date"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "included_in_operating_expenses": {
+            "type": "boolean",
+            "title": "Included In Operating Expenses",
+            "readOnly": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "store_id",
+          "category",
+          "amount",
+          "expense_date",
+          "description",
+          "created_at",
+          "included_in_operating_expenses"
+        ],
+        "title": "ExpenseRead"
+      },
+      "FinanceSummary": {
+        "properties": {
+          "gross_sales": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Sales"
+          },
+          "discounts": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Discounts"
+          },
+          "vat_exclusive_sales_revenue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vat Exclusive Sales Revenue"
+          },
+          "customer_shipping_revenue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Customer Shipping Revenue"
+          },
+          "vat_collected_sales": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vat Collected Sales"
+          },
+          "refunds": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Refunds"
+          },
+          "vat_refunded": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vat Refunded"
+          },
+          "net_vat_collected": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Net Vat Collected"
+          },
+          "net_sales_revenue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Net Sales Revenue"
+          },
+          "revenue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revenue"
+          },
+          "cogs_before_returns": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cogs Before Returns"
+          },
+          "cogs_reversed": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cogs Reversed"
+          },
+          "cogs": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cogs"
+          },
+          "gross_profit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Profit"
+          },
+          "gross_profit_margin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Profit Margin"
+          },
+          "contribution_profit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contribution Profit"
+          },
+          "contribution_margin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contribution Margin"
+          },
+          "advertising_expenditure": {
+            "type": "string",
+            "title": "Advertising Expenditure"
+          },
+          "employee_expenses": {
+            "type": "string",
+            "title": "Employee Expenses"
+          },
+          "rent_expenses": {
+            "type": "string",
+            "title": "Rent Expenses"
+          },
+          "shipping_expenses": {
+            "type": "string",
+            "title": "Shipping Expenses"
+          },
+          "platform_fees": {
+            "type": "string",
+            "title": "Platform Fees"
+          },
+          "other_operating_expenses": {
+            "type": "string",
+            "title": "Other Operating Expenses"
+          },
+          "operating_expenses": {
+            "type": "string",
+            "title": "Operating Expenses"
+          },
+          "total_expenses": {
+            "type": "string",
+            "title": "Total Expenses"
+          },
+          "operating_profit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operating Profit"
+          },
+          "operating_profit_margin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operating Profit Margin"
+          },
+          "average_order_value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Average Order Value"
+          },
+          "conversion_rate": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversion Rate"
+          },
+          "break_even_order_quantity": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Break Even Order Quantity"
+          },
+          "order_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Order Count"
+          },
+          "visitors": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Visitors"
+          },
+          "data_completeness": {
+            "$ref": "#/components/schemas/DataCompleteness"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "currency": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "title": "Currency"
+          },
+          "reporting_period": {
+            "$ref": "#/components/schemas/ReportingPeriod"
+          },
+          "data_source": {
+            "$ref": "#/components/schemas/DataSource"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "gross_sales",
+          "discounts",
+          "vat_exclusive_sales_revenue",
+          "customer_shipping_revenue",
+          "vat_collected_sales",
+          "refunds",
+          "vat_refunded",
+          "net_vat_collected",
+          "net_sales_revenue",
+          "revenue",
+          "cogs_before_returns",
+          "cogs_reversed",
+          "cogs",
+          "gross_profit",
+          "gross_profit_margin",
+          "contribution_profit",
+          "contribution_margin",
+          "advertising_expenditure",
+          "employee_expenses",
+          "rent_expenses",
+          "shipping_expenses",
+          "platform_fees",
+          "other_operating_expenses",
+          "operating_expenses",
+          "total_expenses",
+          "operating_profit",
+          "operating_profit_margin",
+          "average_order_value",
+          "conversion_rate",
+          "break_even_order_quantity",
+          "order_count",
+          "visitors",
+          "data_completeness",
+          "store_id",
+          "currency",
+          "reporting_period",
+          "data_source"
+        ],
+        "title": "FinanceSummary"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status",
+            "default": "ok"
+          },
+          "service": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Service"
+          }
+        },
+        "type": "object",
+        "required": [
+          "service"
+        ],
+        "title": "HealthResponse"
+      },
+      "ProductAnalytics": {
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Product Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "sku": {
+            "type": "string",
+            "title": "Sku"
+          },
+          "units_sold": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Units Sold"
+          },
+          "units_returned": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Units Returned"
+          },
+          "revenue": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revenue"
+          },
+          "cogs": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Cogs"
+          },
+          "gross_profit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Profit"
+          },
+          "gross_profit_margin": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gross Profit Margin"
+          },
+          "data_completeness": {
+            "$ref": "#/components/schemas/DataCompleteness"
+          }
+        },
+        "type": "object",
+        "required": [
+          "product_id",
+          "name",
+          "sku",
+          "units_sold",
+          "units_returned",
+          "revenue",
+          "cogs",
+          "gross_profit",
+          "gross_profit_margin",
+          "data_completeness"
+        ],
+        "title": "ProductAnalytics"
+      },
+      "ProductList": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ProductRead"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "Offset"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "data_source": {
+            "$ref": "#/components/schemas/DataSource"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset",
+          "store_id",
+          "data_source"
+        ],
+        "title": "ProductList"
+      },
+      "ProductRead": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "store_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Store Id"
+          },
+          "sku": {
+            "type": "string",
+            "title": "Sku"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "selling_price": {
+            "type": "string",
+            "title": "Selling Price"
+          },
+          "unit_cost": {
+            "type": "string",
+            "title": "Unit Cost"
+          },
+          "vat_rate": {
+            "type": "string",
+            "title": "Vat Rate"
+          },
+          "stock_quantity": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Stock Quantity"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "store_id",
+          "sku",
+          "name",
+          "selling_price",
+          "unit_cost",
+          "vat_rate",
+          "stock_quantity",
+          "created_at"
+        ],
+        "title": "ProductRead"
+      },
+      "ReportingPeriod": {
+        "properties": {
+          "start": {
+            "type": "string",
+            "format": "date",
+            "title": "Start"
+          },
+          "end": {
+            "type": "string",
+            "format": "date",
+            "title": "End"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "start",
+          "end"
+        ],
+        "title": "ReportingPeriod"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

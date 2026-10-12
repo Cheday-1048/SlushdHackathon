@@ -1,0 +1,1233 @@
+[
+  {
+    "method": "GET",
+    "path": "/health",
+    "status": 200,
+    "response": {
+      "status": "ok",
+      "service": "Retail Decision Lab API"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/analytics/dashboard?start_date=2026-09-01&end_date=2026-09-30",
+    "status": 200,
+    "response": {
+      "summary": {
+        "gross_sales": "29816.50",
+        "discounts": "444.87",
+        "vat_exclusive_sales_revenue": "29371.63",
+        "customer_shipping_revenue": "0.00",
+        "vat_collected_sales": "2937.21",
+        "refunds": "0.00",
+        "vat_refunded": "0.00",
+        "net_vat_collected": "2937.21",
+        "net_sales_revenue": "29371.63",
+        "revenue": "29371.63",
+        "cogs_before_returns": "10906.00",
+        "cogs_reversed": "0.00",
+        "cogs": "10906.00",
+        "gross_profit": "18465.63",
+        "gross_profit_margin": "62.87",
+        "contribution_profit": "15634.03",
+        "contribution_margin": "53.23",
+        "advertising_expenditure": "1776.00",
+        "employee_expenses": "3700.00",
+        "rent_expenses": "1450.00",
+        "shipping_expenses": "1055.60",
+        "platform_fees": "0.00",
+        "other_operating_expenses": "301.85",
+        "operating_expenses": "6507.45",
+        "total_expenses": "8283.45",
+        "operating_profit": "10182.18",
+        "operating_profit_margin": "34.67",
+        "average_order_value": "85.88",
+        "conversion_rate": "2.94",
+        "break_even_order_quantity": 120,
+        "order_count": 342,
+        "visitors": 11635,
+        "data_completeness": {
+          "is_complete": true,
+          "warnings": [],
+          "missing_vat_lines": 0,
+          "missing_refund_orders": 0,
+          "missing_shipping_orders": 0,
+          "missing_restock_refunds": 0,
+          "missing_order_items": 0,
+          "traffic_days": 30,
+          "expected_traffic_days": 30
+        },
+        "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+        "currency": "USD",
+        "reporting_period": {
+          "start": "2026-09-01",
+          "end": "2026-09-30"
+        },
+        "data_source": {
+          "type": "database_demo",
+          "description": "Synthetic demo store data persisted in PostgreSQL. All metrics are computed from database records; no live merchant is connected."
+        }
+      },
+      "store_timezone": "UTC",
+      "as_of_date": "2026-10-12",
+      "selected_preset": "custom",
+      "daily": [
+        {
+          "date": "2026-09-01",
+          "revenue": "1058.70",
+          "order_count": 9,
+          "visitors": 290,
+          "conversion_rate": "3.10",
+          "operating_expenses": "1624.20",
+          "advertising_expenditure": "42.00",
+          "total_expenses": "1666.20",
+          "gross_profit": "655.80",
+          "operating_profit": "-1010.40",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-02",
+          "revenue": "697.30",
+          "order_count": 9,
+          "visitors": 307,
+          "conversion_rate": "2.93",
+          "operating_expenses": "28.00",
+          "advertising_expenditure": "56.00",
+          "total_expenses": "84.00",
+          "gross_profit": "433.80",
+          "operating_profit": "349.80",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-03",
+          "revenue": "893.62",
+          "order_count": 10,
+          "visitors": 324,
+          "conversion_rate": "3.09",
+          "operating_expenses": "30.80",
+          "advertising_expenditure": "70.00",
+          "total_expenses": "100.80",
+          "gross_profit": "556.12",
+          "operating_profit": "455.32",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-04",
+          "revenue": "914.26",
+          "order_count": 11,
+          "visitors": 341,
+          "conversion_rate": "3.23",
+          "operating_expenses": "33.60",
+          "advertising_expenditure": "54.00",
+          "total_expenses": "87.60",
+          "gross_profit": "578.56",
+          "operating_profit": "490.96",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-05",
+          "revenue": "1516.06",
+          "order_count": 15,
+          "visitors": 438,
+          "conversion_rate": "3.42",
+          "operating_expenses": "47.60",
+          "advertising_expenditure": "80.00",
+          "total_expenses": "127.60",
+          "gross_profit": "950.16",
+          "operating_profit": "822.56",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-06",
+          "revenue": "1595.54",
+          "order_count": 16,
+          "visitors": 455,
+          "conversion_rate": "3.52",
+          "operating_expenses": "50.40",
+          "advertising_expenditure": "64.00",
+          "total_expenses": "114.40",
+          "gross_profit": "992.34",
+          "operating_profit": "877.94",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-07",
+          "revenue": "767.51",
+          "order_count": 9,
+          "visitors": 392,
+          "conversion_rate": "2.30",
+          "operating_expenses": "25.20",
+          "advertising_expenditure": "66.00",
+          "total_expenses": "91.20",
+          "gross_profit": "484.51",
+          "operating_profit": "393.31",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-08",
+          "revenue": "735.41",
+          "order_count": 8,
+          "visitors": 409,
+          "conversion_rate": "1.96",
+          "operating_expenses": "28.00",
+          "advertising_expenditure": "50.00",
+          "total_expenses": "78.00",
+          "gross_profit": "457.61",
+          "operating_profit": "379.61",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-09",
+          "revenue": "1058.20",
+          "order_count": 11,
+          "visitors": 426,
+          "conversion_rate": "2.58",
+          "operating_expenses": "30.80",
+          "advertising_expenditure": "64.00",
+          "total_expenses": "94.80",
+          "gross_profit": "641.60",
+          "operating_profit": "546.80",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-10",
+          "revenue": "907.00",
+          "order_count": 10,
+          "visitors": 443,
+          "conversion_rate": "2.26",
+          "operating_expenses": "33.60",
+          "advertising_expenditure": "48.00",
+          "total_expenses": "81.60",
+          "gross_profit": "557.90",
+          "operating_profit": "476.30",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-11",
+          "revenue": "1127.20",
+          "order_count": 13,
+          "visitors": 290,
+          "conversion_rate": "4.48",
+          "operating_expenses": "36.40",
+          "advertising_expenditure": "62.00",
+          "total_expenses": "98.40",
+          "gross_profit": "718.60",
+          "operating_profit": "620.20",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-12",
+          "revenue": "1327.05",
+          "order_count": 16,
+          "visitors": 387,
+          "conversion_rate": "4.13",
+          "operating_expenses": "138.00",
+          "advertising_expenditure": "58.00",
+          "total_expenses": "196.00",
+          "gross_profit": "840.45",
+          "operating_profit": "644.45",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-13",
+          "revenue": "653.65",
+          "order_count": 11,
+          "visitors": 404,
+          "conversion_rate": "2.72",
+          "operating_expenses": "36.40",
+          "advertising_expenditure": "72.00",
+          "total_expenses": "108.40",
+          "gross_profit": "416.55",
+          "operating_profit": "308.15",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-14",
+          "revenue": "719.20",
+          "order_count": 9,
+          "visitors": 341,
+          "conversion_rate": "2.64",
+          "operating_expenses": "28.00",
+          "advertising_expenditure": "44.00",
+          "total_expenses": "72.00",
+          "gross_profit": "458.70",
+          "operating_profit": "386.70",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-15",
+          "revenue": "777.15",
+          "order_count": 10,
+          "visitors": 358,
+          "conversion_rate": "2.79",
+          "operating_expenses": "1880.80",
+          "advertising_expenditure": "58.00",
+          "total_expenses": "1938.80",
+          "gross_profit": "499.45",
+          "operating_profit": "-1439.35",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-16",
+          "revenue": "1032.81",
+          "order_count": 11,
+          "visitors": 375,
+          "conversion_rate": "2.93",
+          "operating_expenses": "33.60",
+          "advertising_expenditure": "42.00",
+          "total_expenses": "75.60",
+          "gross_profit": "658.61",
+          "operating_profit": "583.01",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-17",
+          "revenue": "1041.31",
+          "order_count": 11,
+          "visitors": 392,
+          "conversion_rate": "2.81",
+          "operating_expenses": "36.40",
+          "advertising_expenditure": "56.00",
+          "total_expenses": "92.40",
+          "gross_profit": "660.11",
+          "operating_profit": "567.71",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-18",
+          "revenue": "1521.95",
+          "order_count": 14,
+          "visitors": 409,
+          "conversion_rate": "3.42",
+          "operating_expenses": "39.20",
+          "advertising_expenditure": "70.00",
+          "total_expenses": "109.20",
+          "gross_profit": "958.65",
+          "operating_profit": "849.45",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-19",
+          "revenue": "1098.45",
+          "order_count": 11,
+          "visitors": 506,
+          "conversion_rate": "2.17",
+          "operating_expenses": "36.40",
+          "advertising_expenditure": "66.00",
+          "total_expenses": "102.40",
+          "gross_profit": "674.45",
+          "operating_profit": "572.05",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-20",
+          "revenue": "1114.76",
+          "order_count": 13,
+          "visitors": 523,
+          "conversion_rate": "2.49",
+          "operating_expenses": "39.20",
+          "advertising_expenditure": "80.00",
+          "total_expenses": "119.20",
+          "gross_profit": "719.16",
+          "operating_profit": "599.96",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-21",
+          "revenue": "851.35",
+          "order_count": 10,
+          "visitors": 290,
+          "conversion_rate": "3.45",
+          "operating_expenses": "30.80",
+          "advertising_expenditure": "52.00",
+          "total_expenses": "82.80",
+          "gross_profit": "529.95",
+          "operating_profit": "447.15",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-22",
+          "revenue": "738.55",
+          "order_count": 11,
+          "visitors": 307,
+          "conversion_rate": "3.58",
+          "operating_expenses": "33.60",
+          "advertising_expenditure": "66.00",
+          "total_expenses": "99.60",
+          "gross_profit": "475.25",
+          "operating_profit": "375.65",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-23",
+          "revenue": "557.70",
+          "order_count": 11,
+          "visitors": 324,
+          "conversion_rate": "3.40",
+          "operating_expenses": "36.40",
+          "advertising_expenditure": "50.00",
+          "total_expenses": "86.40",
+          "gross_profit": "365.20",
+          "operating_profit": "278.80",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-24",
+          "revenue": "1026.87",
+          "order_count": 13,
+          "visitors": 341,
+          "conversion_rate": "3.81",
+          "operating_expenses": "104.45",
+          "advertising_expenditure": "64.00",
+          "total_expenses": "168.45",
+          "gross_profit": "640.07",
+          "operating_profit": "471.62",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-25",
+          "revenue": "551.31",
+          "order_count": 8,
+          "visitors": 358,
+          "conversion_rate": "2.23",
+          "operating_expenses": "25.20",
+          "advertising_expenditure": "48.00",
+          "total_expenses": "73.20",
+          "gross_profit": "348.61",
+          "operating_profit": "275.41",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-26",
+          "revenue": "1180.26",
+          "order_count": 12,
+          "visitors": 455,
+          "conversion_rate": "2.64",
+          "operating_expenses": "39.20",
+          "advertising_expenditure": "74.00",
+          "total_expenses": "113.20",
+          "gross_profit": "741.26",
+          "operating_profit": "628.06",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-27",
+          "revenue": "1207.70",
+          "order_count": 15,
+          "visitors": 472,
+          "conversion_rate": "3.18",
+          "operating_expenses": "42.00",
+          "advertising_expenditure": "58.00",
+          "total_expenses": "100.00",
+          "gross_profit": "748.30",
+          "operating_profit": "648.30",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-28",
+          "revenue": "937.60",
+          "order_count": 10,
+          "visitors": 409,
+          "conversion_rate": "2.44",
+          "operating_expenses": "33.60",
+          "advertising_expenditure": "60.00",
+          "total_expenses": "93.60",
+          "gross_profit": "576.60",
+          "operating_profit": "483.00",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-29",
+          "revenue": "892.00",
+          "order_count": 12,
+          "visitors": 426,
+          "conversion_rate": "2.82",
+          "operating_expenses": "36.40",
+          "advertising_expenditure": "44.00",
+          "total_expenses": "80.40",
+          "gross_profit": "562.20",
+          "operating_profit": "481.80",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        },
+        {
+          "date": "2026-09-30",
+          "revenue": "871.16",
+          "order_count": 13,
+          "visitors": 443,
+          "conversion_rate": "2.93",
+          "operating_expenses": "1889.20",
+          "advertising_expenditure": "58.00",
+          "total_expenses": "1947.20",
+          "gross_profit": "565.06",
+          "operating_profit": "-1382.14",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 1,
+            "expected_traffic_days": 1
+          }
+        }
+      ],
+      "products": [
+        {
+          "product_id": "1cfd6b65-fc1a-5e50-abb5-c2af3176dee3",
+          "name": "Insulated water bottle",
+          "sku": "DEMO-BTL-02",
+          "units_sold": 145,
+          "units_returned": 0,
+          "revenue": "4582.40",
+          "cogs": "1798.00",
+          "gross_profit": "2784.40",
+          "gross_profit_margin": "60.76",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "a9dbf947-8b8a-594e-a3c0-d24048d42a1e",
+          "name": "Minimal wall clock",
+          "sku": "DEMO-CLK-12",
+          "units_sold": 10,
+          "units_returned": 0,
+          "revenue": "568.40",
+          "cogs": "240.00",
+          "gross_profit": "328.40",
+          "gross_profit_margin": "57.78",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "c226b84e-f947-5fb1-8eb5-68781895b33a",
+          "name": "Cedar soy candle",
+          "sku": "DEMO-CND-05",
+          "units_sold": 89,
+          "units_returned": 0,
+          "revenue": "2441.60",
+          "cogs": "845.50",
+          "gross_profit": "1596.10",
+          "gross_profit_margin": "65.37",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "0bc61df4-d804-572c-9cde-7f16cadd7a89",
+          "name": "Amber reed diffuser",
+          "sku": "DEMO-DIF-11",
+          "units_sold": 67,
+          "units_returned": 0,
+          "revenue": "2599.10",
+          "cogs": "971.50",
+          "gross_profit": "1627.60",
+          "gross_profit_margin": "62.62",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "770f292f-58e5-5a0c-ba9d-6e1f55c8da3f",
+          "name": "Desk reading lamp",
+          "sku": "DEMO-LMP-08",
+          "units_sold": 17,
+          "units_returned": 0,
+          "revenue": "1428.00",
+          "cogs": "637.50",
+          "gross_profit": "790.50",
+          "gross_profit_margin": "55.36",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "27c0275b-6cb1-58f8-92ed-a7ae228d3438",
+          "name": "Ceramic coffee mug",
+          "sku": "DEMO-MUG-01",
+          "units_sold": 160,
+          "units_returned": 0,
+          "revenue": "2921.15",
+          "cogs": "992.00",
+          "gross_profit": "1929.15",
+          "gross_profit_margin": "66.04",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "35640c4a-178d-58ab-a600-e049b503c05d",
+          "name": "Linen notebook",
+          "sku": "DEMO-NBK-04",
+          "units_sold": 119,
+          "units_returned": 0,
+          "revenue": "1878.40",
+          "cogs": "511.70",
+          "gross_profit": "1366.70",
+          "gross_profit_margin": "72.76",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "649a5703-5a79-517e-b83c-0314c8fe2cab",
+          "name": "Stoneware planter",
+          "sku": "DEMO-PLN-09",
+          "units_sold": 91,
+          "units_returned": 0,
+          "revenue": "3153.50",
+          "cogs": "1201.20",
+          "gross_profit": "1952.30",
+          "gross_profit_margin": "61.91",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "036d4ae8-0f34-5f96-a10b-e651e9fd7c51",
+          "name": "Loose leaf tea tin",
+          "sku": "DEMO-TEA-06",
+          "units_sold": 96,
+          "units_returned": 0,
+          "revenue": "1365.90",
+          "cogs": "489.60",
+          "gross_profit": "876.30",
+          "gross_profit_margin": "64.16",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "71d12776-5d2d-5f29-8fa6-d8c0b66943fc",
+          "name": "Cotton throw blanket",
+          "sku": "DEMO-THR-07",
+          "units_sold": 66,
+          "units_returned": 0,
+          "revenue": "4457.40",
+          "cogs": "1848.00",
+          "gross_profit": "2609.40",
+          "gross_profit_margin": "58.54",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "45fb035b-7ffe-5a92-98fd-79f7b6ff6351",
+          "name": "Canvas everyday tote",
+          "sku": "DEMO-TOT-03",
+          "units_sold": 110,
+          "units_returned": 0,
+          "revenue": "2694.18",
+          "cogs": "858.00",
+          "gross_profit": "1836.18",
+          "gross_profit_margin": "68.15",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        },
+        {
+          "product_id": "087bc3e8-c0f3-5a7e-9df4-b3702d4495a7",
+          "name": "Oak serving tray",
+          "sku": "DEMO-TRY-10",
+          "units_sold": 27,
+          "units_returned": 0,
+          "revenue": "1281.60",
+          "cogs": "513.00",
+          "gross_profit": "768.60",
+          "gross_profit_margin": "59.97",
+          "data_completeness": {
+            "is_complete": true,
+            "warnings": [],
+            "missing_vat_lines": 0,
+            "missing_refund_orders": 0,
+            "missing_shipping_orders": 0,
+            "missing_restock_refunds": 0,
+            "missing_order_items": 0,
+            "traffic_days": 0,
+            "expected_traffic_days": 0
+          }
+        }
+      ],
+      "expenses": [
+        {
+          "category": "employee_costs",
+          "label": "Employee costs",
+          "amount": "3700.00"
+        },
+        {
+          "category": "rent",
+          "label": "Rent",
+          "amount": "1450.00"
+        },
+        {
+          "category": "shipping",
+          "label": "Shipping",
+          "amount": "1055.60"
+        },
+        {
+          "category": "platform_fees",
+          "label": "Platform fees",
+          "amount": "0.00"
+        },
+        {
+          "category": "other_operating",
+          "label": "Other operating expenses",
+          "amount": "301.85"
+        },
+        {
+          "category": "advertising",
+          "label": "Advertising",
+          "amount": "1776.00"
+        }
+      ],
+      "unallocated_customer_shipping_revenue": "0.00",
+      "product_warnings": []
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/finance/summary?start_date=2026-09-01&end_date=2026-09-30",
+    "status": 200,
+    "response": {
+      "gross_sales": "29816.50",
+      "discounts": "444.87",
+      "vat_exclusive_sales_revenue": "29371.63",
+      "customer_shipping_revenue": "0.00",
+      "vat_collected_sales": "2937.21",
+      "refunds": "0.00",
+      "vat_refunded": "0.00",
+      "net_vat_collected": "2937.21",
+      "net_sales_revenue": "29371.63",
+      "revenue": "29371.63",
+      "cogs_before_returns": "10906.00",
+      "cogs_reversed": "0.00",
+      "cogs": "10906.00",
+      "gross_profit": "18465.63",
+      "gross_profit_margin": "62.87",
+      "contribution_profit": "15634.03",
+      "contribution_margin": "53.23",
+      "advertising_expenditure": "1776.00",
+      "employee_expenses": "3700.00",
+      "rent_expenses": "1450.00",
+      "shipping_expenses": "1055.60",
+      "platform_fees": "0.00",
+      "other_operating_expenses": "301.85",
+      "operating_expenses": "6507.45",
+      "total_expenses": "8283.45",
+      "operating_profit": "10182.18",
+      "operating_profit_margin": "34.67",
+      "average_order_value": "85.88",
+      "conversion_rate": "2.94",
+      "break_even_order_quantity": 120,
+      "order_count": 342,
+      "visitors": 11635,
+      "data_completeness": {
+        "is_complete": true,
+        "warnings": [],
+        "missing_vat_lines": 0,
+        "missing_refund_orders": 0,
+        "missing_shipping_orders": 0,
+        "missing_restock_refunds": 0,
+        "missing_order_items": 0,
+        "traffic_days": 30,
+        "expected_traffic_days": 30
+      },
+      "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+      "currency": "USD",
+      "reporting_period": {
+        "start": "2026-09-01",
+        "end": "2026-09-30"
+      },
+      "data_source": {
+        "type": "database_demo",
+        "description": "Synthetic demo store data persisted in PostgreSQL. All metrics are computed from database records; no live merchant is connected."
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/dashboard/summary?start_date=2026-09-01&end_date=2026-09-30",
+    "status": 200,
+    "response": {
+      "revenue": "29371.63",
+      "total_orders": 342,
+      "total_visitors": 11635,
+      "conversion_rate": "2.94",
+      "total_expenses": "8283.45",
+      "operating_expenses": "6507.45",
+      "advertising_expenditure": "1776.00",
+      "currency": "USD",
+      "reporting_period": {
+        "start": "2026-09-01",
+        "end": "2026-09-30"
+      },
+      "data_source": {
+        "type": "database_demo",
+        "description": "Synthetic demo store data persisted in PostgreSQL. All metrics are computed from database records; no live merchant is connected."
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/products?limit=1&offset=0",
+    "status": 200,
+    "response": {
+      "items": [
+        {
+          "id": "1cfd6b65-fc1a-5e50-abb5-c2af3176dee3",
+          "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+          "sku": "DEMO-BTL-02",
+          "name": "Insulated water bottle",
+          "selling_price": "32.00",
+          "unit_cost": "12.40",
+          "vat_rate": "10.00",
+          "stock_quantity": 160,
+          "created_at": "2026-09-01T03:00:00+03:00"
+        }
+      ],
+      "total": 12,
+      "limit": 1,
+      "offset": 0,
+      "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+      "data_source": {
+        "type": "database_demo",
+        "description": "Synthetic demo store data persisted in PostgreSQL. All metrics are computed from database records; no live merchant is connected."
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/expenses?limit=1&offset=0&start_date=2026-09-01&end_date=2026-09-30",
+    "status": 200,
+    "response": {
+      "items": [
+        {
+          "id": "78ce1dbd-8042-5024-9934-856809a0bb89",
+          "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+          "category": "software",
+          "amount": "149.00",
+          "expense_date": "2026-09-01",
+          "description": "Synthetic retail software subscription",
+          "created_at": "2026-09-01T03:00:00+03:00",
+          "included_in_operating_expenses": true
+        }
+      ],
+      "total": 37,
+      "limit": 1,
+      "offset": 0,
+      "store_id": "7ae0c543-0dec-5081-ba0e-33d72c80e512",
+      "data_source": {
+        "type": "database_demo",
+        "description": "Synthetic demo store data persisted in PostgreSQL. All metrics are computed from database records; no live merchant is connected."
+      },
+      "reporting_period": {
+        "start": "2026-09-01",
+        "end": "2026-09-30"
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/analytics/dashboard?preset=last_7_days&start_date=2026-09-01",
+    "status": 422,
+    "response": {
+      "detail": [
+        {
+          "type": "value_error",
+          "loc": [
+            "query"
+          ],
+          "msg": "Value error, Provide a preset or both custom dates, not both",
+          "input": {
+            "preset": "last_7_days",
+            "start_date": "2026-09-01"
+          },
+          "ctx": {
+            "error": {}
+          }
+        }
+      ]
+    }
+  }
+]
