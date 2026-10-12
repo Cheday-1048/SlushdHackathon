@@ -3,7 +3,7 @@ import { api } from '../api/client';
 import type { AnalyticsDashboard, Health, ReportingFilter } from '../api/schemas';
 
 type DashboardState = { status: 'loading' } | { status: 'success'; data: AnalyticsDashboard } | { status: 'error'; message: string };
-type ConnectionState = { status: 'checking' } | { status: 'connected'; health: Health } | { status: 'disconnected'; message: string };
+export type ConnectionState = { status: 'checking' } | { status: 'connected'; health: Health } | { status: 'disconnected'; message: string };
 
 export function useDashboard() {
   const [attempt, setAttempt] = useState(0);

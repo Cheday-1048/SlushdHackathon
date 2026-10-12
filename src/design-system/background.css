@@ -1,0 +1,86 @@
+/* Styles for <AnimatedBackground />. Colors come from the --bg-* tokens. */
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--bg-base);
+}
+
+.bg-blob {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  opacity: var(--bg-blob-opacity);
+  will-change: transform;
+  animation: bg-drift var(--bg-drift-duration) ease-in-out infinite alternate;
+}
+.bg-blob-1 {
+  top: -30vmax;
+  left: -20vmax;
+  background: radial-gradient(closest-side, var(--bg-blob-1), transparent);
+}
+.bg-blob-2 {
+  top: -15vmax;
+  right: -25vmax;
+  background: radial-gradient(closest-side, var(--bg-blob-2), transparent);
+  animation-duration: calc(var(--bg-drift-duration) * 1.3);
+  animation-direction: alternate-reverse;
+}
+.bg-blob-3 {
+  bottom: -35vmax;
+  left: 20vw;
+  background: radial-gradient(closest-side, var(--bg-blob-3), transparent);
+  animation-duration: calc(var(--bg-drift-duration) * 1.6);
+}
+
+.bg-glow {
+  position: absolute;
+  inset: 0;
+  opacity: var(--glow-opacity);
+  background: radial-gradient(ellipse 60% 40% at 50% -10%, var(--bg-glow), transparent 70%);
+}
+
+.bg-grain {
+  position: absolute;
+  inset: 0;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--bg-grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.bg-static {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-static-image) center / cover no-repeat;
+}
+
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes bg-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6vmax, 4vmax, 0) scale(1.12);
+  }
+}
+
+/* Reduced motion: system preference OR the in-app "motion off" switch. */
+@media (prefers-reduced-motion: reduce) {
+  .bg-blob {
+    animation: none;
+  }
+}
+[data-motion='off'] .bg-blob {
+  animation: none;
+}

@@ -1,0 +1,81 @@
+/*
+ * Runtime appearance variants, applied as attributes on <html> by ThemeProvider.
+ * They only override tokens from tokens.css — there is no separate token system.
+ */
+
+:root {
+  --indigo-300: #9fa8da;
+  --indigo-600: #5c6bc0;
+}
+
+/* ── Accent presets (data-accent) ─────────────────────────────────────── */
+html[data-accent='teal'] {
+  --primary: var(--teal-600);
+  --primary-hover: var(--teal-900);
+  --ring: var(--teal-400);
+  --bg-blob-1: var(--teal-200);
+  --bg-glow: var(--teal-300);
+  --cta-from: var(--teal-600);
+}
+html.dark[data-accent='teal'] {
+  --primary: var(--teal-300);
+  --primary-hover: var(--teal-200);
+  --ring: var(--teal-300);
+  --bg-blob-1: var(--teal-600);
+  --bg-glow: var(--teal-400);
+  --cta-from: color-mix(in oklab, var(--teal-600) 55%, black);
+}
+
+html[data-accent='periwinkle'] {
+  --primary: var(--indigo-600);
+  --primary-hover: color-mix(in oklab, var(--indigo-600) 78%, black);
+  --ring: var(--indigo-600);
+  --bg-blob-1: var(--indigo-300);
+  --bg-glow: var(--indigo-300);
+  --cta-from: var(--indigo-600);
+}
+html.dark[data-accent='periwinkle'] {
+  --primary: var(--indigo-300);
+  --primary-hover: color-mix(in oklab, var(--indigo-300) 80%, white);
+  --ring: var(--indigo-300);
+  --bg-blob-1: var(--indigo-600);
+  --bg-glow: var(--indigo-600);
+  --cta-from: color-mix(in oklab, var(--indigo-600) 55%, black);
+}
+
+html[data-accent='lavender'] {
+  --primary: var(--lavender-500);
+  --primary-hover: color-mix(in oklab, var(--lavender-500) 78%, black);
+  --ring: var(--lavender-400);
+  --bg-blob-1: var(--lavender-200);
+  --bg-glow: var(--lavender-300);
+  --cta-from: var(--lavender-500);
+}
+html.dark[data-accent='lavender'] {
+  --primary: var(--lavender-300);
+  --primary-hover: color-mix(in oklab, var(--lavender-300) 80%, white);
+  --ring: var(--lavender-300);
+  --bg-blob-1: var(--lavender-500);
+  --bg-glow: var(--lavender-500);
+  --cta-from: color-mix(in oklab, var(--lavender-500) 55%, black);
+}
+
+/* ── Density (data-density) ───────────────────────────────────────────── */
+/* Tailwind derives every spacing/size utility from --spacing, so this tightens the whole UI. */
+html[data-density='compact'] {
+  --spacing: 0.215rem;
+}
+
+/* ── Motion preference (data-motion-pref="reduced") ───────────────────── */
+/* "System" simply omits the attribute and defers to prefers-reduced-motion. */
+html[data-motion-pref='reduced'] *,
+html[data-motion-pref='reduced'] *::before,
+html[data-motion-pref='reduced'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+html[data-motion-pref='reduced'] .bg-blob {
+  animation: none !important;
+}

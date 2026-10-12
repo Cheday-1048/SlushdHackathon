@@ -1,0 +1,179 @@
+/*
+ * DESIGN TOKENS — the single place to re-skin the app.
+ *
+ * Layer 1: primitive palettes, sampled from docs/design-references/palettes/.
+ * Layer 2: semantic tokens (light = :root, dark = .dark). Components only use these.
+ * Layer 3: non-color tokens (type, radius, shadow, motion, background, grain).
+ *
+ * To rebrand: edit the primitives (or point semantic tokens at other ramps).
+ */
+
+:root {
+  /* ── Primitives: cyan (palette "UI 50–950" + Hue Aesthetic) ─────────── */
+  --cyan-50: #f2fafd;
+  --cyan-100: #e4f3fa;
+  --cyan-200: #c2e7f5;
+  --cyan-300: #a2ddf0;
+  --cyan-400: #4fc0e1;
+  --cyan-500: #29a8ce;
+  --cyan-600: #1a88af;
+  --cyan-700: #166d8e;
+  --cyan-800: #165c76;
+  --cyan-900: #184d62;
+  --cyan-950: #103141;
+
+  /* ── Primitives: teal / turquoise (pearl aqua → dark teal) ─────────── */
+  --teal-50: #e0f2f1;
+  --teal-100: #b2dfdb;
+  --teal-200: #80cbc4;
+  --teal-300: #4db6ac;
+  --teal-400: #26a69a;
+  --teal-500: #3f98a0;
+  --teal-600: #347a86;
+  --teal-900: #11515b;
+
+  /* ── Primitives: icy blue ─────────────────────────────────────────── */
+  --ice-50: #e3f2fd;
+  --ice-100: #bbdefb;
+  --ice-200: #90caf9;
+  --ice-300: #64b5f6;
+  --ice-400: #6f8aaf;
+
+  /* ── Primitives: lavender (used sparingly as an accent) ────────────── */
+  --lavender-50: #f3e5f5;
+  --lavender-100: #ede7f6;
+  --lavender-200: #d1c4e9;
+  --lavender-300: #b39ddb;
+  --lavender-400: #9575cd;
+  --lavender-500: #7e57c2;
+  --lavender-700: #6d678e;
+
+  /* ── Primitives: status hues (from the pink / green / amber ramps) ─── */
+  --green-500: #66bb6a;
+  --green-700: #2f7d4f;
+  --amber-500: #ffa726;
+  --amber-700: #9a5b00;
+  --rose-500: #ec407a;
+  --rose-700: #b4234f;
+
+  /* ── Semantic tokens: LIGHT (default) ─────────────────────────────── */
+  --background: #f4fbfd;
+  --foreground: var(--cyan-950);
+  --surface: #ffffff;
+  --card: rgb(255 255 255 / 0.72);
+  --card-foreground: var(--cyan-950);
+  --popover: #ffffff;
+  --popover-foreground: var(--cyan-950);
+  --primary: var(--cyan-700);
+  --primary-hover: var(--cyan-800);
+  --primary-foreground: #ffffff;
+  --secondary: var(--cyan-100);
+  --secondary-foreground: var(--cyan-900);
+  --muted: var(--cyan-100);
+  --muted-foreground: #4b6f7e;
+  --accent: var(--lavender-100);
+  --accent-foreground: #4a3a7a;
+  --destructive: var(--rose-700);
+  --destructive-foreground: #ffffff;
+  --success: var(--green-700);
+  --warning: var(--amber-700);
+  --info: var(--cyan-700);
+  --border: rgb(22 109 142 / 0.16);
+  --input: rgb(22 109 142 / 0.28);
+  --ring: var(--cyan-500);
+
+  /* Categorical chart palette (chart-1 follows the active accent) */
+  --chart-1: var(--primary);
+  --chart-2: var(--lavender-500);
+  --chart-3: var(--teal-400);
+  --chart-4: var(--amber-500);
+  --chart-5: var(--rose-500);
+
+  /* Feature band (e.g. final call-to-action): gradient + text on top of it */
+  --cta-from: var(--cyan-700);
+  --cta-to: var(--teal-600);
+  --cta-accent: var(--lavender-400);
+  --cta-foreground: #ffffff;
+
+  /* ── Background system (consumed by <AnimatedBackground />) ─────────── */
+  --bg-base: var(--background);
+  --bg-blob-1: var(--cyan-300);
+  --bg-blob-2: var(--lavender-200);
+  --bg-blob-3: var(--teal-100);
+  --bg-blob-opacity: 0.75;
+  --bg-glow: var(--cyan-400);
+  --bg-grain-blend: multiply;
+  --bg-static-image: url('/assets/backgrounds/fallback-light.svg');
+
+  /* ── Typography (swap the family names to change fonts) ─────────────── */
+  --font-family-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-family-display: var(--font-family-sans);
+  --font-family-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, monospace;
+
+  /* ── Shape ─────────────────────────────────────────────────────────── */
+  --radius: 1rem;
+
+  /* ── Shadows: color + intensity are centrally tunable ──────────────── */
+  --shadow-color: 22 109 142; /* r g b */
+  --shadow-strength: 1; /* 0 disables shadows, 2 doubles them */
+
+  /* ── Motion ────────────────────────────────────────────────────────── */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 500ms;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --bg-drift-duration: 38s;
+
+  /* ── Grain / glow intensity (overridable at runtime) ───────────────── */
+  --grain-opacity: 0.18;
+  --glow-opacity: 0.35;
+}
+
+.dark {
+  --background: #08171f;
+  --foreground: #e4f3fa;
+  --surface: #0f2530;
+  --card: rgb(16 49 65 / 0.55);
+  --card-foreground: #e4f3fa;
+  --popover: #0f2a36;
+  --popover-foreground: #e4f3fa;
+  --primary: var(--cyan-400);
+  --primary-hover: var(--cyan-300);
+  --primary-foreground: var(--cyan-950);
+  --secondary: rgb(79 192 225 / 0.14);
+  --secondary-foreground: var(--cyan-200);
+  --muted: rgb(79 192 225 / 0.1);
+  --muted-foreground: #8fb4c3;
+  --accent: rgb(149 117 205 / 0.2);
+  --accent-foreground: var(--lavender-200);
+  --destructive: #f0648f;
+  --destructive-foreground: #1d0711;
+  --success: #7fd08a;
+  --warning: #ffc266;
+  --info: var(--cyan-300);
+  --border: rgb(162 221 240 / 0.14);
+  --input: rgb(162 221 240 / 0.24);
+  --ring: var(--cyan-400);
+
+  --chart-2: var(--lavender-300);
+  --chart-3: var(--teal-300);
+  --chart-4: #ffc266;
+  --chart-5: #f48fb1;
+
+  --cta-from: var(--cyan-800);
+  --cta-to: var(--teal-900);
+  --cta-accent: var(--lavender-500);
+  --cta-foreground: #f2fafd;
+
+  --bg-blob-1: var(--cyan-700);
+  --bg-blob-2: var(--lavender-500);
+  --bg-blob-3: var(--teal-600);
+  --bg-blob-opacity: 0.65;
+  --bg-glow: var(--cyan-500);
+  --bg-grain-blend: soft-light;
+  --bg-static-image: url('/assets/backgrounds/fallback-dark.svg');
+
+  --shadow-color: 0 0 0;
+  --grain-opacity: 0.28;
+  --glow-opacity: 0.28;
+}

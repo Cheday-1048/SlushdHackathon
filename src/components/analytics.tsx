@@ -6,7 +6,7 @@ import type { AnalyticsDashboard } from '../api/schemas';
 export const chartNumber = (value: string | null) => value === null ? null : Number(value);
 const dateTick = (value: string) => value.slice(5);
 const compactTick = (value: number) => new Intl.NumberFormat('en-US', { notation: 'compact' }).format(value);
-const COLORS = { revenue: '#245c4e', secondary: '#326d9c', visitors: '#7799ab', expense: '#9a632d' };
+const COLORS = { revenue: 'var(--chart-1)', secondary: 'var(--chart-2)', visitors: 'var(--chart-3)', expense: 'var(--chart-4)' };
 
 function ChartCard({ title, description, children, empty = false }: { title: string; description: string; children: ReactNode; empty?: boolean }) {
   return <section className="card chart-card" aria-label={title}>

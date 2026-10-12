@@ -1,65 +1,81 @@
-import { AlertCircle, Banknote, CircleDollarSign, RefreshCw, TrendingUp, Wallet, Percent } from 'lucide-react';
-import { useEffect } from 'react';
+import { AlertCircle, RefreshCw } from 'lucide-react';
+import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
 import { Analytics } from '../components/analytics';
 import { ReportingFilterControl } from '../components/reporting-filter';
 import { API_BASE_URL } from '../api/client';
-import { KpiCard } from '../components/kpi-card';
-import { Button } from '../components/ui/button';
+import { KpiOverview } from '../components/dashboard/kpi-overview';
+import { chartMetrics, type MetricId } from '../components/dashboard/metrics';
+import { PerformanceChart } from '../components/dashboard/performance-chart';
+import { ReportDetails } from '../components/dashboard/report-details';
+import { Notice, Skeleton } from '../components/dashboard/ui';
+import { Badge } from '@/shared/components/ui/badge';
+import { Button } from '@/shared/components/ui/button';
+import { Card } from '@/shared/components/ui/card';
+import { cn } from '@/shared/lib/utils';
+import { createFormatters, formatDate } from '@/lib/format';
 import { useDashboard } from '../hooks/use-dashboard';
-
-function formatDate(date: string) {
-  return new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
-}
 
 export function DashboardPage() {
   const { dashboard, connection, retry, filter, setFilter } = useDashboard();
+  const [metricId, setMetricId] = useState<MetricId>('revenue');
   const loading = dashboard.status === 'loading' || connection.status === 'checking';
   const connectionLabel = { checking: 'Checking API connection', connected: 'API connected', disconnected: 'API disconnected' }[connection.status];
   useEffect(() => {
     if (dashboard.status === 'success' && window.location.hash === '#analytics') document.getElementById('analytics')?.scrollIntoView();
   }, [dashboard.status]);
 
-  return <>
-    <header className="page-header">
-      <div><p className="eyebrow">RETAIL DECISION LAB</p><h1>Dashboard</h1><p className="muted">A snapshot of your business performance.</p></div>
-      <Button variant="outline" onClick={retry} disabled={loading}><RefreshCw size={16} aria-hidden="true" />{loading ? 'Loading…' : 'Refresh'}</Button>
-    </header>
-    <section className="connection-bar" aria-label="API connection">
-      <span className={`connection-status ${connection.status}`} role="status"><span className="status-dot" aria-hidden="true" />{connectionLabel}</span>
-      <code>{API_BASE_URL}</code>
-    </section>
-    {connection.status === 'disconnected' && <div className="notice error-notice" role="alert"><AlertCircle size={18} aria-hidden="true" /><div><strong>Health check failed</strong><p>{connection.message}</p></div></div>}
-    <ReportingFilterControl filter={filter} onChange={setFilter} period={dashboard.status === 'success' ? dashboard.data.summary.reporting_period : undefined} />
+  const success = dashboard.status === 'success' ? dashboard.data : null;
+  const period = success?.summary.reporting_period;
 
-    {dashboard.status === 'loading' && <section aria-busy="true" aria-label="Loading dashboard"><p role="status" className="loading-message">Loading dashboard from the API…</p><div className="kpi-grid">{Array.from({ length: 6 }, (_, index) => <div className="card loading-card" key={index} aria-hidden="true"><div className="placeholder label-placeholder" /><div className="placeholder value-placeholder" /></div>)}</div></section>}
-    {dashboard.status === 'error' && <section className="card error-panel" role="alert"><AlertCircle size={24} aria-hidden="true" /><h2>Dashboard unavailable</h2><p className="muted">{dashboard.message}</p><Button onClick={retry} disabled={loading}><RefreshCw size={16} aria-hidden="true" />Retry connection</Button></section>}
-    {dashboard.status === 'success' && (() => {
-      const analytics = dashboard.data;
-      const data = analytics.summary;
-      const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: data.currency, minimumFractionDigits: 2 });
-      const number = new Intl.NumberFormat('en-US');
-      const amount = (value: string | null) => value === null ? 'Unavailable' : currency.format(Number(value));
-      const percentage = (value: string | null) => value === null ? 'Unavailable' : `${number.format(Number(value))}%`;
+  return <>
+    <header className="flex flex-wrap items-start justify-between gap-4">
+      <div className="min-w-0 max-w-2xl">
+        <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">Retail Decision Lab</p>
+        <h2 className="mt-1 text-3xl font-semibold">Business overview</h2>
+        <p className="mt-1 text-muted-foreground">{period ? `${formatDate(period.start)} – ${formatDate(period.end)}` : 'A snapshot of your business performance.'}</p>
+        {success && <p className="mt-1 text-xs text-muted-foreground">Store timezone: {success.store_timezone} · Today in store: {success.as_of_date}</p>}
+      </div>
+      <Button variant="outline" onClick={retry} disabled={loading}><RefreshCw className={cn(loading && 'animate-spin')} aria-hidden="true" />{loading ? 'Loading…' : 'Refresh'}</Button>
+    </header>
+
+    <section aria-label="API connection" className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 rounded-2xl border border-border bg-card px-4 py-3 shadow-soft backdrop-blur-xl">
+      <span role="status" className="inline-flex items-center gap-2 text-sm font-medium">
+        <span aria-hidden="true" className={cn('size-2 rounded-full', connection.status === 'connected' && 'bg-success', connection.status === 'checking' && 'animate-pulse bg-warning', connection.status === 'disconnected' && 'bg-destructive')} />{connectionLabel}
+      </span>
+      <code className="font-mono text-xs text-muted-foreground [overflow-wrap:anywhere]">{API_BASE_URL}</code>
+    </section>
+    {connection.status === 'disconnected' && <Notice tone="error" role="alert"><strong className="font-semibold">Health check failed</strong><p className="text-muted-foreground">{connection.message}</p></Notice>}
+
+    <ReportingFilterControl filter={filter} onChange={setFilter} period={period} />
+
+    {dashboard.status === 'loading' && <section aria-busy="true" aria-label="Loading dashboard" className="flex flex-col gap-4">
+      <p role="status" className="text-sm text-muted-foreground">Loading dashboard from the API…</p>
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{Array.from({ length: 6 }, (_, index) => <Card key={index} aria-hidden="true" className="min-h-40 gap-4 p-5"><div className="flex items-center gap-3"><Skeleton className="size-9 rounded-xl" /><Skeleton className="h-4 w-1/2" /></div><Skeleton className="h-8 w-3/4" /><Skeleton className="h-8 w-full" /></Card>)}</div>
+      <Card aria-hidden="true" className="gap-4 p-6"><Skeleton className="h-5 w-40" /><Skeleton className="h-64 w-full" /></Card>
+    </section>}
+    {dashboard.status === 'error' && <motion.section role="alert" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col items-start gap-3 rounded-2xl border border-destructive/40 bg-card p-6 shadow-soft backdrop-blur-xl">
+      <span className="grid size-11 place-items-center rounded-full bg-destructive/12 text-destructive"><AlertCircle size={22} aria-hidden="true" /></span>
+      <h2 className="text-lg font-semibold">Dashboard unavailable</h2>
+      <p className="text-muted-foreground">{dashboard.message}</p>
+      <Button onClick={retry} disabled={loading}><RefreshCw aria-hidden="true" />Retry connection</Button>
+    </motion.section>}
+    {success && (() => {
+      const data = success.summary;
+      const format = createFormatters(data.currency);
       const empty = data.order_count === 0 && data.visitors === 0
         && [data.revenue, data.cogs, data.total_expenses, data.gross_profit, data.operating_profit].every((value) => value !== null && Number(value) === 0);
+      const metric = chartMetrics.find((item) => item.id === metricId) ?? chartMetrics[0];
       return <>
-        <div className="notice mock-notice"><span className="badge">Database demo</span><p>{data.data_source.description}</p></div>
-        {!data.data_completeness.is_complete && <div className="notice mock-notice" role="alert"><AlertCircle size={18} aria-hidden="true" /><div><strong>Financial data is incomplete</strong><p>Some values may be incomplete. Metrics that cannot be calculated are shown as unavailable.</p>{data.data_completeness.warnings.map((warning, index) => <p key={`${index}-${warning}`}>{warning}</p>)}</div></div>}
-        <div className="reporting-period"><h2>Business overview</h2><span className="muted small">{formatDate(data.reporting_period.start)} – {formatDate(data.reporting_period.end)}</span></div>
-        <p className="muted small period-context">Store timezone: {analytics.store_timezone} · Today in store: {analytics.as_of_date}</p>
-        {empty && <div className="notice" role="status"><p>No activity in this reporting period.</p></div>}
-        <section className="kpi-grid" aria-label="Business metrics">
-          <KpiCard label="Revenue" value={amount(data.revenue)} icon={CircleDollarSign} description="Net sales, excluding VAT" />
-          <KpiCard label="Gross profit" value={amount(data.gross_profit)} icon={TrendingUp} description="Revenue less cost of goods sold" />
-          <KpiCard label="Operating profit" value={amount(data.operating_profit)} icon={Wallet} description="After operating costs and advertising" />
-          <KpiCard label="Operating expenses" value={amount(data.operating_expenses)} icon={Banknote} description="Excludes advertising" />
-          <KpiCard label="Operating margin" value={percentage(data.operating_profit_margin)} icon={Percent} description="Operating profit ÷ revenue" />
-          <KpiCard label="Conversion rate" value={percentage(data.conversion_rate)} icon={Percent} description="Sales orders ÷ visitors" />
-        </section>
-        <section className="card data-details" aria-label="Report details"><h2>Report details</h2><dl><div><dt>Currency</dt><dd>{data.currency}</dd></div><div><dt>Data source</dt><dd>PostgreSQL · synthetic data</dd></div><div><dt>Reporting period</dt><dd>{data.reporting_period.start} to {data.reporting_period.end}</dd></div><div><dt>Total orders</dt><dd>{number.format(data.order_count)}</dd></div><div><dt>Total visitors</dt><dd>{data.data_completeness.traffic_days < data.data_completeness.expected_traffic_days ? `${number.format(data.visitors)} recorded (incomplete)` : number.format(data.visitors)}</dd></div><div><dt>Cost of goods sold</dt><dd>{amount(data.cogs)}</dd></div><div><dt>Advertising expenditure</dt><dd>{amount(data.advertising_expenditure)}</dd></div><div><dt>Total expenses</dt><dd>{amount(data.total_expenses)}</dd></div><div><dt>Average order value</dt><dd>{amount(data.average_order_value)}</dd></div><div><dt>Gross margin</dt><dd>{percentage(data.gross_profit_margin)}</dd></div><div><dt>API service</dt><dd>{connection.status === 'connected' ? connection.health.service : 'Health check unavailable'}</dd></div></dl><p className="muted small">Revenue excludes VAT and includes recorded returns and customer shipping. Total expenses include operating expenses and advertising once. Operating profit is before income tax. All displayed metrics are calculated from stored synthetic transactions.</p></section>
-        <Analytics data={analytics} />
+        <Notice><div className="flex flex-wrap items-center gap-2"><Badge>Database demo</Badge><p>{data.data_source.description}</p></div></Notice>
+        {!data.data_completeness.is_complete && <Notice tone="warning" role="alert"><strong className="font-semibold">Financial data is incomplete</strong><p>Some values may be incomplete. Metrics that cannot be calculated are shown as unavailable.</p>{data.data_completeness.warnings.map((warning, index) => <p key={`${index}-${warning}`}>{warning}</p>)}</Notice>}
+        {empty && <Notice role="status"><p>No activity in this reporting period.</p></Notice>}
+        <KpiOverview data={success} format={format} activeMetricId={metric.id} onSelectMetric={setMetricId} />
+        <PerformanceChart data={success} format={format} metric={metric} onMetricChange={setMetricId} />
+        <ReportDetails data={success} format={format} connection={connection} />
+        <Analytics data={success} />
       </>;
     })()}
-    <footer className="page-footer">Phase 04 · Dashboard and business analytics</footer>
+    <footer className="pb-2 text-xs text-muted-foreground">Phase 04 · Dashboard and business analytics</footer>
   </>;
 }
