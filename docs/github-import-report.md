@@ -8,7 +8,7 @@ Yeni hedef: https://github.com/Cheday-1048/SlushdHackathon.git. Sahibi `Cheday-1
 
 Önceki `Helincharm/SlushdHackathon` hedefi connector tarafında 404 döndürdü ve HTTPS Git kimlik doğrulaması çalışmadı. Kullanıcı bunun ardından kendi hesabında yeni repository oluşturulmasını istedi. GitHub Desktop yayınlama işlemi **push complete** döndürdü; yerel `main`, `origin/main` izlemeye başladı. Connector yeni private repository için hâlâ 404 döndürüyor; Desktop oturumu bağımsız olarak çalışıyor. Shell Git kimlik doğrulaması da henüz yapılandırılmış değil.
 
-`feat/backend` ve `feat/frontend`, yayınlanan MVP'den başlayacak çalışma branch'leridir. Uzak ref'lerin yayınlama doğrulaması görev sonucunda bildirilir. `feat/import-mvp` yeni boş repository için kullanılmaz. `main` kararlı entegre sürüm olarak korunur.
+`feat/backend` ve `feat/frontend`, yayınlanan MVP commit'i `3972256` üzerinden oluşturuldu ve GitHub'a push edildi. Her iki uzak branch'in aynı commit'e işaret ettiği yayınlama/fetch ile doğrulandı. `feat/import-mvp` yeni boş repository için kullanılmadı. `main` kararlı entegre sürüm olarak korunur; yayın sonrası dokümantasyon güncellemeleri de `main` üzerinden gönderilir.
 
 İki geliştiricinin GitHub hesaplarına Write erişimini repository sahibi ayrıca vermelidir; geliştirici hesapları henüz belirtilmedi. Connector üzerinden gelecekte PR işlemleri yapılacaksa bu private repository bağlantının erişim kapsamına eklenmelidir. GitHub Desktop üzerinden yayınlama başarılıdır. Token/şifreyi chat'e veya projeye yazmayın.
 
