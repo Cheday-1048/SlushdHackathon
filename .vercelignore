@@ -1,0 +1,7 @@
+# The Vercel project serves the Vite frontend only. Excluding the FastAPI backend keeps Vercel from
+# detecting a second (Python) service, which conflicts with the top-level settings in vercel.json.
+backend
+scripts
+tests
+docs
+.github

@@ -49,3 +49,7 @@ Runs the app on bundled sample data with no backend or database, for presentatio
 - **Guide:** steps 1-2 of the business scenario use the same demo data; steps 4-6 use output of the real Simulation, A/B Arena and Goal Optimizer engines on it (`src/demo/engine-examples.json`).
 
 `vercel.json` sets `VITE_DEMO_MODE=true` for the Vercel build. Remove that entry and set `VITE_API_BASE_URL` to deploy against a real backend.
+
+## Vercel deployment
+
+The Vercel project builds the Vite frontend (`vercel.json`: `npm run build`, output `dist`, SPA rewrite, Demo Mode). The repository also contains the FastAPI backend, and Vercel's multi-service detection would otherwise report two services (Vite and FastAPI) and reject the top-level `buildCommand`/`outputDirectory`/`framework` settings ("owning service is ambiguous"). `.vercelignore` excludes `backend/`, `scripts/`, `tests/`, `docs/` and `.github/` from the deployment so the project stays a plain Vite app. The backend needs its own host (for example Render) with a PostgreSQL database; point the frontend at it with `VITE_API_BASE_URL` and turn Demo Mode off.
