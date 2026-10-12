@@ -1,4 +1,4 @@
-# Retail Decision Lab — Phase 04
+# saleslab.AI — Phase 04
 
 A React dashboard backed by FastAPI and persistent PostgreSQL records for one **synthetic retail store**. Phase 04 connects store-timezone date filters, six Recharts views, product performance and expense analytics to the existing Decimal financial engine. One database snapshot supplies all dashboard sections. The existing dashboard design and prior API contracts are preserved. Authentication, AI, simulations, optimization and experimentation remain outside this phase.
 

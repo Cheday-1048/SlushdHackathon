@@ -1,5 +1,5 @@
 /** Product identity used by the shell. Nothing else in the app hardcodes the name. */
 export const brand = {
-  name: 'Retail Decision Lab',
+  name: 'saleslab.AI',
   tagline: 'Business workspace',
 } as const

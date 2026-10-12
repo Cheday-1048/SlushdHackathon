@@ -9,6 +9,7 @@ import { chartMetrics, type MetricId } from '../components/dashboard/metrics';
 import { PerformanceChart } from '../components/dashboard/performance-chart';
 import { ReportDetails } from '../components/dashboard/report-details';
 import { Notice, Skeleton } from '../components/dashboard/ui';
+import { brand } from '@/design-system/brand';
 import { Badge } from '@/shared/components/ui/badge';
 import { Button } from '@/shared/components/ui/button';
 import { Card } from '@/shared/components/ui/card';
@@ -31,7 +32,7 @@ export function DashboardPage() {
   return <>
     <header className="flex flex-wrap items-start justify-between gap-4">
       <div className="min-w-0 max-w-2xl">
-        <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">Retail Decision Lab</p>
+        <p className="text-xs font-medium tracking-wider text-muted-foreground uppercase">{brand.name}</p>
         <h2 className="mt-1 text-3xl font-semibold">Business overview</h2>
         <p className="mt-1 text-muted-foreground">{period ? `${formatDate(period.start)} – ${formatDate(period.end)}` : 'A snapshot of your business performance.'}</p>
         {success && <p className="mt-1 text-xs text-muted-foreground">Store timezone: {success.store_timezone} · Today in store: {success.as_of_date}</p>}
